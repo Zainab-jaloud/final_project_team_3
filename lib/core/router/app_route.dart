@@ -1,7 +1,7 @@
-import 'package:flutter_application/feature/home/screens/home_screen.dart';
+import 'package:flutter_application/feature/home/presentation/screens/home_screen.dart';
 import 'package:go_router/go_router.dart';
 
-class AppRoute { static final GoRouter pageRoute = GoRouter(
+class AppRoute { static final GoRouter pageRoute = GoRouter( initialLocation: '/home',
  routes: [
      GoRoute(
         path: '/home',
