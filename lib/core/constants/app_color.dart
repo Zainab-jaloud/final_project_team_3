@@ -6,6 +6,7 @@ class AppColors {
   static Color secondaryColor=Color(0xFF6941C6);
   static Color titleColor=Color(0xFF1F2A37);
   
+  static Color locationColor=Color(0xFF9DA4AE);
   
   
   
