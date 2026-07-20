@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
-import 'package:flutter_application/core/constants/app_images.dart';
+import 'package:flutter_application/core/services/favorite_manager.dart';
+import 'package:flutter_application/feature/home/data/model.dart';
 import 'package:flutter_svg/svg.dart';
 
-class NearPlaces extends StatelessWidget {
+class NearPlaces extends StatefulWidget {
   const NearPlaces({
-    super.key, required this.isPopular,
+    super.key, required this.isPopular, required this.properties,
   });
 final bool isPopular;
+final PropertyModel properties;
+
+  @override
+  State<NearPlaces> createState() => _NearPlacesState();
+}
+
+class _NearPlacesState extends State<NearPlaces> {
   @override
   Widget build(BuildContext context) {
+    
     return Container( padding: const EdgeInsets.only(bottom: 12),  
       decoration: BoxDecoration( border: const Border(
        bottom: BorderSide(
@@ -23,7 +32,7 @@ final bool isPopular;
        ClipRRect(
          borderRadius: BorderRadius.circular(6),
          child: Image.asset(
-           AppImages.house1,
+           widget.properties.image,
            width: 80,
            height:62,
            fit: BoxFit.scaleDown,
@@ -34,24 +43,35 @@ final bool isPopular;
          children: [Row(
            children: [
              Expanded(
-               child: Text('Maharani Villa Yogyakarta',style: TextStyle(color: AppColors.titleColor,
+               child: Text(widget.properties.name,style: TextStyle(color: AppColors.titleColor,
                  fontSize: 14,fontWeight: FontWeight.w600,fontFamily: 'Inter'),  maxLines: 1,
                      overflow: TextOverflow.ellipsis,),
              ),
-       isPopular?Transform.translate(
+       widget.isPopular?Transform.translate(
   offset: const Offset(-7, 0),  
-  child: SvgPicture.asset(
-    'assets/icons/Heart_red.svg',
-    width: 19,
-    height: 18,
+  child: InkWell(onTap: () {
+    setState(() {
+      FavoriteManager.toggle(widget.properties);
+    });},
+    child:  FavoriteManager.isFavorite(widget.properties)
+        ? 
+    SvgPicture.asset(
+      'assets/icons/Heart_red.svg',
+      width: 19,
+      height: 18,): SvgPicture.asset(
+      'assets/icons/Heart.svg',
+      width: 19,
+      height: 18,
+      colorFilter: ColorFilter.mode(Color(0xFFF97066),BlendMode.srcIn),
+      ),
   ),
 ):SizedBox(),
            ],
          ),SizedBox(height:2,),
        Row(spacing: 4,
          children: [SvgPicture.asset('assets/icons/Location2.svg',colorFilter: ColorFilter.mode(AppColors.locationColor,BlendMode.srcIn,),),
-           SizedBox(width: 110,
-             child: Text('Benhil, Jl. Bendungan Hilir Karet Tengsin, Bendungan Hilir, Tanah Abang, Central Jakarta City,',
+           SizedBox(width: 100,
+             child: Text(widget.properties.location,
               overflow: TextOverflow.ellipsis,maxLines:1,
               style: TextStyle(fontFamily:'Inter',fontSize: 10,fontWeight: FontWeight.w400,color:AppColors.locationColor),),
            ),
@@ -59,7 +79,7 @@ final bool isPopular;
        ),SizedBox(height: 4,),
        Row(
          children: [
-           Text('\$320/month',style: TextStyle(fontWeight: FontWeight.w600,
+           Text(widget.properties.price,style: TextStyle(fontWeight: FontWeight.w600,
            fontSize: 10,fontFamily:'Inter',
            color:AppColors.titleColor),),Spacer(),
            
@@ -69,7 +89,7 @@ final bool isPopular;
            decoration: BoxDecoration(borderRadius: BorderRadius.circular(8),color: Color(0xFFFFFAEB)),
            child: Row(
              mainAxisAlignment: MainAxisAlignment.center,children: [SvgPicture.asset('assets/icons/Star.svg'),
-             Text('4.5',style: TextStyle(fontSize: 10,fontWeight: FontWeight.w700,fontFamily: 'Inter'),)],),
+             Text('${widget.properties.rating}',style: TextStyle(fontSize: 10,fontWeight: FontWeight.w700,fontFamily: 'Inter'),)],),
            ),
          )
          ],

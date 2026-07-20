@@ -1,18 +1,31 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
-import 'package:flutter_application/core/constants/app_images.dart';
+import 'package:flutter_application/core/services/favorite_manager.dart';
+import 'package:flutter_application/feature/home/data/model.dart';
 import 'package:flutter_svg/svg.dart';
 
-class PlaceCard extends StatelessWidget {
+class PlaceCard extends StatefulWidget {
   const PlaceCard({
-    super.key,
+    super.key, required this.recomended,
   });
+final PropertyModel recomended;
 
   @override
+  State<PlaceCard> createState() => _PlaceCardState();
+}
+
+class _PlaceCardState extends State<PlaceCard> {
+  @override
   Widget build(BuildContext context) {
-    return Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),height: 164,width: 224,child: Stack(
-     children: [Image.asset(AppImages.house1),
+    return Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),height: 164,width: 224,child:
+    
+     Stack(
+     children: [Positioned.fill(
+       child: ClipRRect(borderRadius: BorderRadius.circular(16),
+         child: Image.asset(widget.recomended.image,
+         fit: BoxFit.fitWidth,),
+       ),
+     ),
      Container(
      width: 224,
      height: 164,
@@ -35,28 +48,52 @@ class PlaceCard extends StatelessWidget {
          child:  
            Column(crossAxisAlignment: CrossAxisAlignment.start,
              children: [
-             Text('Ayana Homestay',style: TextStyle(color:Color(0xFFFFFFFF),fontSize: 14,
-             fontWeight: FontWeight.w600,fontFamily: 'Inter' ),),
+             SizedBox(width: 168,
+               child: Text(widget.recomended.name,overflow: TextOverflow.ellipsis,maxLines: 1,
+               style: TextStyle(color:Color(0xFFFFFFFF),fontSize: 14,
+               fontWeight: FontWeight.w600,fontFamily: 'Inter' ),),
+             ),
              Row(
                children: [SvgPicture.asset('assets/icons/Location2.svg'),
                SizedBox(width: 7,),
-                 Text('Imogiri, Yogyakarta',style: TextStyle(color: Color(0xFFD2D6DB),fontSize: 12,fontWeight: FontWeight.w400,fontFamily: 'Inter'),),
+                 SizedBox(width: 120,
+                   child: Text(widget.recomended.location,
+                    maxLines: 1,
+                   overflow: TextOverflow.ellipsis,
+                   style:const TextStyle(color: Color(0xFFD2D6DB),fontSize: 12,
+                   fontWeight: FontWeight.w400,fontFamily: 'Inter', ),
+                   ),
+                 ),
                
              
            ],),
-        
-          
+                   
+                     
            
-         ],
+                    ],
                ),
        )),Positioned(top:108,right: 16,
             child: Container(width: 24,height: 24,decoration:BoxDecoration(color:Color(0xFFFFFFFF),borderRadius: BorderRadius.circular(27)),
-               child:Center(child: SvgPicture.asset('assets/icons/Heart_red.svg'))),
+               child:Center(child:
+               
+               InkWell(onTap: () {
+    setState(() {
+      FavoriteManager.toggle(widget.recomended);
+    });},
+    child:  FavoriteManager.isFavorite(widget.recomended)
+        ? 
+    SvgPicture.asset(
+      'assets/icons/Heart_red.svg',
+       ): SvgPicture.asset(
+      'assets/icons/Heart.svg',width: 12,height: 15,
+      colorFilter: ColorFilter.mode(Color(0xFFF97066),BlendMode.srcIn),
+      ),
+  ),)),
           ),
        Positioned(top: 16,right: 16,
          child:Container(  padding: EdgeInsets.symmetric(horizontal: 12, vertical:6),
         alignment: Alignment.center,decoration: BoxDecoration(color: Color(0xFFFFFFFF),borderRadius: BorderRadius.circular(8)),
-          child:  Text.rich(TextSpan(children: [TextSpan(text: '\$310',style: TextStyle(fontSize: 12,
+          child:  Text.rich(TextSpan(children: [TextSpan(text:widget.recomended.price,style: TextStyle(fontSize: 12,
           fontWeight: FontWeight.w700,
           fontFamily: 'Inter',color:AppColors.secondaryColor)),TextSpan(text:'/month',
           style: TextStyle(color: Color(0xFF9DA4AE),fontSize: 10,fontWeight:FontWeight.w400,fontFamily: 'Inter'))])),

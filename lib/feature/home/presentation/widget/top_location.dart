@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
-import 'package:flutter_application/core/constants/app_images.dart';
+ 
 // ignore: must_be_immutable
 class TopLocation extends StatelessWidget {
- const  TopLocation({
+   const TopLocation({
     super.key, required this.address,    required this.isSelected,
-    required this.onTap,
+    required this.onTap, required this.image, 
   });
 final String address;
  final bool isSelected;
   final VoidCallback onTap;
+ final String image;
   @override
   Widget build(BuildContext context) {
     return InkWell(onTap:onTap,
@@ -23,7 +24,7 @@ final String address;
           SizedBox(height: 36,width: 36,
             child: ClipRRect(borderRadius: BorderRadius.circular(8),
               child: Image.asset( 
-              AppImages.house1,
+            image,
               fit: BoxFit.cover,
                 ),
             ),
