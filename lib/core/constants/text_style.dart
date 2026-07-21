@@ -64,4 +64,15 @@ class AppTextStyle {
     fontWeight: FontWeight.w400,
     color: const Color(0xFF98A2B3),
   );
+  static TextStyle successTitleStyle = TextStyle(
+    fontSize: 24.sp,
+    fontWeight: FontWeight.w700,
+    color: const Color(0xFF101828),
+  );
+
+  static TextStyle successDescriptionStyle = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+    color: const Color(0xFF9DA4AE),
+  );
 }

@@ -1,6 +1,7 @@
 import 'package:flutter_application/feature/home/screens/home_screen.dart';
 import 'package:flutter_application/feature/reset_password/presentation/screens/create_new_password_screen.dart';
 import 'package:flutter_application/feature/reset_password/presentation/screens/reset_screen.dart';
+import 'package:flutter_application/feature/reset_password/presentation/screens/success_reset_screen.dart';
 import 'package:flutter_application/feature/reset_password/presentation/screens/verify_screen.dart';
 import 'package:go_router/go_router.dart';
 
@@ -20,6 +21,10 @@ class AppRoute {
       GoRoute(
         path: '/create-new-password',
         builder: (context, state) => const CreateNewPasswordScreen(),
+      ),
+      GoRoute(
+        path: '/success-reset',
+        builder: (context, state) => const SuccessResetScreen(),
       ),
     ],
   );

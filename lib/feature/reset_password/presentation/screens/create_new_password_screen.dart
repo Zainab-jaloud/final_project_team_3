@@ -88,7 +88,11 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                 padding: EdgeInsets.only(bottom: 16.h, top: 12.h),
                 child: AppButton(
                   text: 'Change password',
-                  onPressed: _isFormValid ? () {} : null,
+                  onPressed: _isFormValid
+                      ? () {
+                          context.go('/success-reset');
+                        }
+                      : null,
                 ),
               ),
             ],
