@@ -16,9 +16,9 @@ final String address;
     return InkWell(onTap:onTap,
      child: Container(padding: EdgeInsets.all(4),
         decoration: BoxDecoration(
-          border: Border.all(color: Color(0xFFD9D9D9)),
+          border: Border.all(color: AppColors.allBorderColor),
           borderRadius: BorderRadius.circular(10),color:isSelected
-          ?AppColors.secondaryColor: Color(0xFFF9F5FF),),
+          ?AppColors.secondaryColor:AppColors.svgBackground,),
       child: Row(spacing: 11,mainAxisSize: MainAxisSize.min,
         children: [
           SizedBox(height: 36,width: 36,
@@ -29,7 +29,8 @@ final String address;
                 ),
             ),
           ),
-          Text(address,style: TextStyle(color:isSelected?Color(0xFFF9F5FF):Color(0xFF9DA4AE),fontSize: 12,fontWeight:FontWeight.w600,fontFamily: 'Inter'),)
+          Text(address,style: TextStyle(color:isSelected?AppColors.svgBackground:AppColors.locationColor,
+          fontSize: 12,fontWeight:FontWeight.w600,fontFamily: 'Inter'),)
         ],
       )),
     );

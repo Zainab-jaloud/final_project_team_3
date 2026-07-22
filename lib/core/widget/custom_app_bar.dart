@@ -3,16 +3,17 @@ import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
+// ignore: must_be_immutable
 class CustomAppBar extends StatelessWidget   implements PreferredSizeWidget {
 
   @override
-  const CustomAppBar({
+   CustomAppBar({
     super.key,
     required this.title,
     required this.icon1,
     required this.icon2,
     required this.rightIcon1,
-    required this.rightIcon2,
+    required this.rightIcon2, this.onTap, this.onPressed,
   });
 
   final String title;
@@ -20,7 +21,8 @@ class CustomAppBar extends StatelessWidget   implements PreferredSizeWidget {
   final String icon2;
   final bool rightIcon1;
   final bool rightIcon2;
-
+  VoidCallback ?onTap;
+  VoidCallback ?onPressed;
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
@@ -28,7 +30,9 @@ class CustomAppBar extends StatelessWidget   implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar( leading: Padding(
       padding: const EdgeInsets.all(18),
-      child: InkWell(onTap: () => (context).pop(),child: SizedBox(width:24,height: 24,child: SvgPicture.asset('assets/icons/ArrowLeft.svg',width:12,height:15,))),
+      child: InkWell(onTap: () =>(context).pop(),
+      child: SizedBox(width:24,height: 24,
+      child: SvgPicture.asset('assets/icons/ArrowLeft.svg',width:12,height:15,))),
     ),
          
     title:Text(title,style: TextStyle(fontFamily:'Inter',
@@ -39,8 +43,9 @@ class CustomAppBar extends StatelessWidget   implements PreferredSizeWidget {
           padding: const EdgeInsets.only(right: 24),
           child: Row(spacing: 16,          
           children: [
-            rightIcon1?SvgPicture.asset(icon1):SizedBox(),
-          rightIcon2?SvgPicture.asset(icon2):SizedBox()],
+            rightIcon1?InkWell(onTap:onTap,child: SvgPicture.asset(icon1)):SizedBox(),
+          rightIcon2?InkWell(onTap:onPressed ,child: SvgPicture.asset(icon2,width: 24,height: 24,
+        )):SizedBox()],
           
            ),
         )] );

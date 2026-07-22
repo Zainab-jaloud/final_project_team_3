@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
+import 'package:flutter_application/core/constants/text_style.dart';
 
 class MainTitles extends StatelessWidget {
   const MainTitles({
@@ -12,14 +13,14 @@ final VoidCallback onTap;
   Widget build(BuildContext context) {
     return Row(children: [
      Text(title,
-     style: TextStyle(color:AppColors.titleColor,fontSize: 16,fontWeight: FontWeight.w600,fontFamily: 'Inter')),
+     style: AppTextStyle.titleTextStyl),
      Spacer(),
      TextButton(style: TextButton.styleFrom(
        padding: EdgeInsets.all(3),
        minimumSize: Size.zero,
        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
      ),
-       onPressed:onTap, child:Text('See all',style: TextStyle(color:AppColors.secondaryColor,
-     fontSize: 12,fontWeight: FontWeight.w500,fontFamily: 'Inter')))]);
+       onPressed:onTap, child:Text('See all',style: 
+      AppTextStyle.fasilitiesTextStyl.copyWith(color: AppColors.secondaryColor)))]);
   }
 }

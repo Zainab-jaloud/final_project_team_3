@@ -4,9 +4,14 @@ import 'package:flutter_application/feature/home/data/model.dart';
 import 'package:flutter_application/feature/home/presentation/widget/near_places.dart';
  
 
-class PopularPlaces extends StatelessWidget {
+class PopularPlaces extends StatefulWidget {
   const PopularPlaces({super.key});
 
+  @override
+  State<PopularPlaces> createState() => _PopularPlacesState();
+}
+
+class _PopularPlacesState extends State<PopularPlaces> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +23,10 @@ class PopularPlaces extends StatelessWidget {
             ListView.separated(itemCount:properties.length,shrinkWrap: true,
          physics: NeverScrollableScrollPhysics(),
               // ignore: avoid_types_as_parameter_names, non_constant_identifier_names
-              itemBuilder:(BuildContext,index){return NearPlaces(isPopular:true, properties:properties[index],);}, 
+              itemBuilder:(BuildContext,index){return NearPlaces(isPopular:true, properties:properties[index], onChange: () {
+                setState(() {
+                
+              }); },);}, 
               separatorBuilder: (BuildContext context, int index) { return SizedBox(height: 8,); },),
           ],
         ),),

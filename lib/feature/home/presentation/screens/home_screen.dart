@@ -44,10 +44,10 @@ SizedBox(height: 16,),
    child: GridView.count(crossAxisCount:2,scrollDirection: Axis.horizontal,mainAxisExtent:240,
    mainAxisSpacing: 28,crossAxisSpacing: 12,
    children: [
-    NearPlaces(isPopular: false, properties: properties[1],),
-    NearPlaces(isPopular: false, properties: properties[3],),
-    NearPlaces(isPopular: false, properties:  properties[4],),
-    NearPlaces(isPopular: false, properties:  properties[5],),
+    NearPlaces(isPopular: false, properties: properties[1], onChange: () {},),
+    NearPlaces(isPopular: false, properties: properties[3], onChange: () {  },),
+    NearPlaces(isPopular: false, properties:  properties[4], onChange: () {  },),
+    NearPlaces(isPopular: false, properties:  properties[5], onChange: () {  },),
     
  ],),
  ),
@@ -60,7 +60,8 @@ SizedBox(height: 24,),
 MainTitles(title:'Popular for you', onTap:(){(context).push('/popular');}),
  SizedBox(height: 16,),
   ListView.separated(shrinkWrap: true,
-  physics:NeverScrollableScrollPhysics(),itemBuilder: (context, index) => NearPlaces(isPopular: true, properties: properties[index],),itemCount:4,
+  physics:NeverScrollableScrollPhysics(),itemBuilder: (context, index) => 
+  NearPlaces(isPopular: true, properties: properties[index], onChange: () {  },),itemCount:4,
   separatorBuilder: (BuildContext context, int index) {  return const SizedBox(height: 8);},),
 
 

@@ -1,15 +1,19 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter_application/core/constants/app_color.dart';
+import 'package:flutter_application/core/constants/text_style.dart';
 import 'package:flutter_application/core/services/favorite_manager.dart';
 import 'package:flutter_application/feature/home/presentation/widget/near_places.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class FavoritePlaces extends StatelessWidget {
+class FavoritePlaces extends StatefulWidget {
   const FavoritePlaces({
     super.key,
   });
 
+  @override
+  State<FavoritePlaces> createState() => _FavoritePlacesState();
+}
+
+class _FavoritePlacesState extends State<FavoritePlaces> {
   @override
   Widget build(BuildContext context) {
     if(FavoriteManager.favorites.isEmpty){
@@ -21,8 +25,7 @@ class FavoritePlaces extends StatelessWidget {
             children: [
             Icon(Icons.heart_broken_outlined,size:90,),
             SizedBox(height: 20,),
-            Text('No Favorites yet',style: TextStyle(fontWeight: FontWeight.w600,fontSize: 16,fontFamily:'Inter',
-            color: AppColors.titleColor),)
+            Text('No Favorites yet',style:AppTextStyle.titleTextStyl)
           ],),
         ),
       );}
@@ -31,7 +34,9 @@ class FavoritePlaces extends StatelessWidget {
       // ignore: avoid_types_as_parameter_names, non_constant_identifier_names
       itemBuilder:(BuildContext,index){
            final property = FavoriteManager.favorites[index];
-        return NearPlaces(isPopular:true, properties:property);}, 
+        return NearPlaces(isPopular:true, properties:property, onChange: () {setState(() {
+          
+        });},);}, 
       separatorBuilder: (BuildContext context, int index) { return SizedBox(height: 8,); },);
   }
 }

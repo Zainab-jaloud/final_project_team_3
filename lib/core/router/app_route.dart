@@ -1,3 +1,5 @@
+import 'package:flutter_application/feature/home/data/model.dart';
+import 'package:flutter_application/feature/home/presentation/screens/details_screen.dart';
 import 'package:flutter_application/feature/home/presentation/screens/favorite_screen.dart';
 import 'package:flutter_application/feature/home/presentation/screens/home_screen.dart';
 import 'package:flutter_application/feature/home/presentation/screens/main_screen.dart';
@@ -26,6 +28,12 @@ class AppRoute { static final GoRouter pageRoute = GoRouter( initialLocation: '/
            
         ],
       ),
+     GoRoute(
+            path: '/details',
+            builder: (context, state) {
+              final property = state.extra as PropertyModel;
+                return DetailsScreen(property:property);
+ } ),  
     ],
   );
 }

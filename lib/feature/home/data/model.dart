@@ -42,7 +42,7 @@ List<PropertyModel> properties = [
     image: AppImages.house7,
     name: 'Takatea Homestay',
     location: 'Jl. Tentara Pelajar No.47, RW.001',
-    price: '\$120/night',
+    price: '\$120',
     rating: 4.5,
   ),
   PropertyModel(
@@ -50,7 +50,7 @@ List<PropertyModel> properties = [
     image: AppImages.house4,
     name: 'Maharani Villa Yogyakarta',
     location: 'Benhil, Jl. Bendungan Hilir Karet Tengsin, Bendungan Hilir, Tanah Abang, Central Jakarta City,',
-    price: '\$320/month',
+    price: '\$320',
     rating: 4.5,
   ),
 
@@ -59,7 +59,7 @@ List<PropertyModel> properties = [
     image:AppImages.house8,
     name: 'Batavia Apartments',
     location: 'Benhil, Jl. Bendungan Hilir Karet Tengsin, Bendungan Hilir, Tanah Abang, Central Jakarta City,',
-    price: '\$120/night',
+    price: '\$120',
     rating: 4.5,
   ),
 
@@ -68,7 +68,7 @@ List<PropertyModel> properties = [
     image: AppImages.house6,
     name: 'Apartement land house',
     location: 'Jl. Tentara Pelajar No.47, RW.001',
-    price: '\$320/night',
+    price: '\$320',
     rating: 4.7,
   ),
   PropertyModel(
@@ -76,7 +76,7 @@ List<PropertyModel> properties = [
     image:AppImages.house3,
     name: 'House of Mormon vv',
     location: 'Denpasar, Bali',
-    price: '\$120/night',
+    price: '\$120',
     rating: 4.5,
   ),
   PropertyModel(
@@ -84,7 +84,7 @@ List<PropertyModel> properties = [
     image: AppImages.house5,
     name: 'Palm Hotel',
     location: 'Jl. Seturan Yohyakarta',
-    price: '\$230/night',
+    price: '\$230',
     rating: 4.7,
   ),
 
@@ -93,7 +93,7 @@ List<PropertyModel> properties = [
     image:AppImages.house9,
     name: 'Manhattan Hotel ',
     location: 'Jl. Prof. DR. Satrio No.Kav.19-24, RT.7/RW.4, Kuningan, Karet Kuningan, Kecamatan Setiabudi, Kota Jakarta Selatan',
-    price: '\$230/night',
+    price: '\$230',
     rating: 4.5,
   ),
  
