@@ -1,8 +1,7 @@
- 
 import 'package:flutter_application/feature/home/presentation/screens/home_screen.dart';
+import 'package:flutter_application/feature/onboarding/presentation/screens/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_application/feature/onboarding/presentation/screens/onboarding_screen.dart';
-import 'package:flutter_application/feature/splash/presentation/screens/splash_screen.dart';
 import 'package:flutter_application/feature/home/data/model.dart';
 import 'package:flutter_application/feature/home/presentation/screens/details_screen.dart';
 import 'package:flutter_application/feature/home/presentation/screens/favorite_screen.dart';
