@@ -17,7 +17,7 @@ class OnboardingSkipButton extends StatelessWidget {
       child: OutlinedButton(
         onPressed: onPressed,
         style: OutlinedButton.styleFrom(
-          side: BorderSide(color: AppColor.neutralGray200, width: 1.w),
+          side: BorderSide(color: AppColors.borderColor, width: 1.w),
           padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 16.w),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(24.r),
@@ -30,7 +30,7 @@ class OnboardingSkipButton extends StatelessWidget {
             fontWeight: FontWeight.w400,
             fontSize: 12.sp,
             height: 18 / 12,
-            color: AppColor.neutralGray600,
+            color: AppColors.neutralGray600,
           ),
         ),
       ),

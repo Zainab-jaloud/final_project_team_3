@@ -145,7 +145,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.white,
+      backgroundColor: AppColors.whiteColor,
       body: SafeArea(
         child: Stack(
           children: [
@@ -184,7 +184,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               fontWeight: FontWeight.w400,
                               fontSize: 24.sp,
                               height: 32 / 24,
-                              color: AppColor.titleColor,
+                              color: AppColors.titleColor,
                             ),
                             children: [
                               TextSpan(text: page.titleBefore),
@@ -211,7 +211,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             fontWeight: FontWeight.w400,
                             fontSize: 12.sp,
                             height: 18 / 12,
-                            color: AppColor.neutralGray400,
+                            color: AppColors.locationColor,
                           ),
                         ),
                       ),
