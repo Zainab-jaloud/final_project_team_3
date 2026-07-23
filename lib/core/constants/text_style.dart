@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+ 
 import 'package:flutter_application/core/constants/app_color.dart';
+ 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTextStyle {
@@ -26,8 +28,14 @@ class AppTextStyle {
     fontWeight: FontWeight.w400,
     color: Color(0xFFD2D6DB),
   );
+   static TextStyle otpBoxTextStyle = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w600,
+    color: const Color(0xFF101828),
+  );
+ 
     static TextStyle buttonText = TextStyle(
-    fontSize: 18,
+    fontSize: 18.sp,
     fontWeight: FontWeight.w400,
     color: Colors.white,
     fontFamily: 'Inter'
@@ -49,4 +57,53 @@ class AppTextStyle {
 
   static TextStyle fasilitiesTextStyl=TextStyle(fontWeight: FontWeight.w500,fontSize: 12,
           color: AppColors.titleColor,fontFamily: 'Inter');
-  }
+  
+
+  
+ 
+
+ 
+ 
+
+   
+
+  static TextStyle resendActionStyle = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w600,
+  );
+  static TextStyle fieldLabelStyle = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+    color: const Color(0xFF344054),
+  );
+
+  static TextStyle fieldInputStyle = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Inter',
+    color: const Color(0xFF101828),
+  );
+
+  static TextStyle fieldHintStyle = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Inter', 
+    color: const Color(0xFF98A2B3),
+  );
+
+  static TextStyle fieldLabelStyleAuth = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w600,
+    fontFamily: 'Inter', 
+    color: const Color(0xFF344054),
+  );
+
+   static TextStyle topCaption = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w600,
+    fontFamily: 'Inter', 
+    color: const Color(0xFF1F2A37),
+  ); 
+
+}
+   

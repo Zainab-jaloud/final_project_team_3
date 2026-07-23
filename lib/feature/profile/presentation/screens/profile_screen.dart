@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-
 import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/feature/profile/presentation/widget/profile_app_bar.dart';
 import 'package:flutter_application/feature/profile/presentation/widget/profile_avatar.dart';
@@ -11,6 +10,7 @@ import 'package:flutter_application/feature/profile/presentation/screens/edit_pr
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
+  // ignore: unused_element
   void _goToEditProfile(BuildContext context) {
     context.push('/edit-profile');
   }

@@ -16,4 +16,7 @@ class AppColors {
   static Color allBorderColor = Color(0xFFD9D9D9);
   static Color ratingColor = Color(0xFFFFFAEB);
   static const Color neutralGray600 = Color(0xFF4D5761);
+  static Color inputBorderColor = const Color(0xFFD0D5DD);
+  static Color inputHintColor = const Color(0xFF98A2B3);
+  
 }

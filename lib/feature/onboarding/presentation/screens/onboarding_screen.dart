@@ -128,7 +128,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   void _goToLogin() {
     // TODO(leader): بتفكها لما تجهز صفحة اللوغ إن، وتحط مسارها الصح
-    context.go('/home');
+    context.go('/login');
   }
 
   void _onNextPressed() {

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
- 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
@@ -19,11 +18,13 @@ class AppButton extends StatelessWidget {
     return SizedBox(
  
       width: 327.w,
+ 
       height: 52.h,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primaryColor,
+ 
           // ignore: deprecated_member_use
           disabledBackgroundColor: AppColors.primaryColor.withOpacity(0.4),
           foregroundColor: Colors.white,
@@ -39,3 +40,4 @@ class AppButton extends StatelessWidget {
     );
   }
 }
+ 

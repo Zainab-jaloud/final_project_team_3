@@ -2,6 +2,9 @@ import 'package:flutter_application/feature/home/presentation/screens/home_scree
 import 'package:flutter_application/feature/onboarding/presentation/screens/splash_screen.dart';
 import 'package:flutter_application/feature/profile/presentation/screens/edit_profile_screen.dart';
 import 'package:flutter_application/feature/profile/presentation/screens/profile_screen.dart';
+import 'package:flutter_application/feature/auth/presentation/screens/log_in.dart';
+import 'package:flutter_application/feature/set_location/presentation/screens/maps.dart';
+import 'package:flutter_application/feature/set_location/presentation/screens/set_location_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_application/feature/onboarding/presentation/screens/onboarding_screen.dart';
 import 'package:flutter_application/feature/home/data/model.dart';
@@ -33,10 +36,7 @@ class AppRoute {
               GoRoute(
         path: '/profile',
         builder: (context, state) => const ProfileScreen(),
-      ),
-
-           
-        ],
+      ),],
       ),
 
       GoRoute(
@@ -47,11 +47,19 @@ class AppRoute {
         path: '/onboarding',
         builder: (context, state) => const OnboardingScreen(),
       ),
-      // TODO(leader):
-      // GoRoute(
-      //   path: '/login',
-      //   builder: (context, state) => const LoginScreen(),
-      // ),
+        GoRoute(
+        path: '/login',
+        builder: (context, state) => const LoginScreen(),
+      ),
+       GoRoute(
+        path: '/maps',
+        builder: (context, state) => const MapScreen(),
+      ), 
+ GoRoute(
+        path: '/setlocation',
+        builder: (context, state) => const SetLocationScreen(),
+      ),
+
         GoRoute(
             path: '/details',
             builder: (context, state) {
