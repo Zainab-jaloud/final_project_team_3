@@ -6,20 +6,20 @@ import 'package:go_router/go_router.dart';
 
 class AppRoute { static final GoRouter pageRoute = GoRouter(
  routes: [
-      //  GoRoute(
-      //   path: '/',
-      //   builder: (context, state) => const LoginScreen(),
-      // ),
+       GoRoute(
+        path: '/',
+        builder: (context, state) => const LoginScreen(),
+      ),
 
       //  GoRoute(
       //   path: '/',
       //   builder: (context, state) => const SetLocationScreen(),
       // ),
 
-            GoRoute(
-        path: '/',
-        builder: (context, state) => const MapScreen(),
-      ),
+      //       GoRoute(
+      //   path: '/',
+      //   builder: (context, state) => const MapScreen(),
+      // ),
 
 
 
@@ -28,6 +28,14 @@ class AppRoute { static final GoRouter pageRoute = GoRouter(
         path: '/home',
         builder: (context, state) => const HomeScreen(),
       ),
+
+       GoRoute(
+        path: '/setlocation',
+        builder: (context, state) => const SetLocationScreen(),
+      ),
+
+
+
 
             GoRoute(
         path: '/maps',

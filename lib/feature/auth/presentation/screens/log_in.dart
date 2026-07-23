@@ -5,6 +5,7 @@ import 'package:flutter_application/core/constants/text_style.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_application/core/widget/app_button.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 // import '../../../../core/widget/app_button.dart';
 // import '../widget/auth_text_field.dart';
 import 'package:flutter_application/feature/auth/presentation/widget/auth_text_field.dart';
@@ -37,7 +38,9 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
+     appBar: AppBar(leading: IconButton(onPressed:(){}, icon:Icon(Icons.arrow_back_outlined),), backgroundColor: Colors.transparent, elevation: 0, ),
+      body: 
+      SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(24.w),
           child: Form(
@@ -192,9 +195,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   text: isSignIn ? "Sign in" : "Sign up",
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      
+                       if (isSignIn) {
+                              context.go('/setlocation'); 
+                                      } 
 
-                        
+               else        
                if (!isSignIn && _rememberMe == false) {
        
                         ScaffoldMessenger.of(context).showSnackBar(
@@ -263,7 +268,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         onPressed: () {
                           setState(() {
-                            isSignIn = !isSignIn; // يعكس الحالة الحالية عند النقر لتبديل الواجهة
+                            isSignIn = !isSignIn; // لعكس الحالة الحالية عند النقر لتتبدل الواجهة
                           });
                         },
                         child: Text(

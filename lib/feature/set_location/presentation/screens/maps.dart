@@ -5,6 +5,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/core/widget/app_button.dart';
+import 'package:flutter_application/core/widget/custom_app_bar.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
@@ -92,12 +93,12 @@ class MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(leading: IconButton(onPressed:(){}, icon:Icon(Icons.arrow_back_outlined),), backgroundColor: Colors.transparent, elevation: 0, ),
-      body: _isLoading
-          ? Center(child: CircularProgressIndicator(color: AppColors.primaryColor))
-          : Stack(
+    
+      body:
+           Stack(
               children: [
-              
-                GoogleMap(
+           _isLoading ? Center(child: CircularProgressIndicator(color: AppColors.primaryColor))   
+              :  GoogleMap(
                   initialCameraPosition: CameraPosition(target: _initialPosition, zoom: 15.0),
                   myLocationEnabled: false, 
                   myLocationButtonEnabled: false, 
@@ -109,7 +110,7 @@ class MapScreenState extends State<MapScreen> {
     
                
                 Positioned(
-                  top: 72.h,
+                  top: 32.h,
                   left: 24.w,
                   right: 24.w,
                   child: Container(
@@ -192,7 +193,7 @@ class MapScreenState extends State<MapScreen> {
                                 CircleAvatar(
                                   radius: 22.r,
                                   backgroundColor: Color.fromARGB(100, 137, 97, 222), 
-                                    child: SvgPicture.asset("assets/Location.svg"),
+                                    child: SvgPicture.asset("assets/icons/Location.svg"),
                                 ),
                                 SizedBox(width: 12.w),
                                 
