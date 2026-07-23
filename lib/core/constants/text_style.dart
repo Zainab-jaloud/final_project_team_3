@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AppTextStyle {
   static TextStyle optionLabelStyle = TextStyle(
     fontSize: 12.sp,
+
     fontWeight: FontWeight.w400,
     color: Color(0xFF101828),
   );
@@ -21,7 +22,8 @@ class AppTextStyle {
   );
 
   static TextStyle bodyText = TextStyle(
-    fontSize: 14.sp,
+    fontFamily: 'Inter',
+    fontSize: 18.sp,
     fontWeight: FontWeight.w400,
     color: Color(0xFFD2D6DB),
   );
