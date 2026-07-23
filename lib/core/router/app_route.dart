@@ -1,5 +1,7 @@
 import 'package:flutter_application/feature/home/presentation/screens/home_screen.dart';
 import 'package:flutter_application/feature/onboarding/presentation/screens/splash_screen.dart';
+import 'package:flutter_application/feature/profile/presentation/screens/edit_profile_screen.dart';
+import 'package:flutter_application/feature/profile/presentation/screens/profile_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_application/feature/onboarding/presentation/screens/onboarding_screen.dart';
 import 'package:flutter_application/feature/home/data/model.dart';
@@ -7,7 +9,6 @@ import 'package:flutter_application/feature/home/presentation/screens/details_sc
 import 'package:flutter_application/feature/home/presentation/screens/favorite_screen.dart';
 import 'package:flutter_application/feature/home/presentation/screens/main_screen.dart';
 import 'package:flutter_application/feature/home/presentation/screens/popular_places.dart';
- 
 class AppRoute {
   static final GoRouter pageRoute = GoRouter(
     initialLocation: '/splash',
@@ -29,10 +30,15 @@ class AppRoute {
             path: '/favorite',
             builder: (context, state) => const FavoriteScreen(),
           ),
+              GoRoute(
+        path: '/profile',
+        builder: (context, state) => const ProfileScreen(),
+      ),
 
            
         ],
       ),
+
       GoRoute(
         path: '/splash',
         builder: (context, state) => const SplashScreen(),
@@ -51,7 +57,11 @@ class AppRoute {
             builder: (context, state) {
               final property = state.extra as PropertyModel;
                 return DetailsScreen(property:property);
- } ),  
+ } ), 
+  GoRoute(
+        path: '/edit-profile',
+        builder: (context, state) => const EditProfileScreen(),
+      ), 
     ],
   );
 }

@@ -49,7 +49,15 @@ class _MainScreenState extends State<MainScreen> {
 
       case 2:
         context.push('/favorite');
-        break;}
+        break;
+        
+      case 4:
+        context.push('/profile');
+        break;
+        
+        
+        
+        }
           
           }, 
       ),
