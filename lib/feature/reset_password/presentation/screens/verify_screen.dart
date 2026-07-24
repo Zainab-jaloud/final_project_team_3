@@ -57,7 +57,15 @@ class _VerifyScreenState extends State<VerifyScreen> {
                         },
                       ),
                       SizedBox(height: 25.h),
-                      ResendCodeWidget(onResend: () {}),
+                      ResendCodeWidget(
+                        onResend: () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Code resent successfully'),
+                            ),
+                          );
+                        },
+                      ),
                     ],
                   ),
                 ),
