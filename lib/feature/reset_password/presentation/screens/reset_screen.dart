@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_application/core/widget/app_button.dart';
 import '../widget/reset_header_widget.dart';
@@ -17,11 +18,11 @@ class _ResetScreenState extends State<ResetScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.pagescolor,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.pagescolor,
         elevation: 0,
-        leading: const BackButton(color: Colors.black),
+        leading: BackButton(color: AppColors.titleColor),
       ),
       body: SafeArea(
         child: Padding(

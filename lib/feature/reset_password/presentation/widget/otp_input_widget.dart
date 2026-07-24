@@ -69,11 +69,11 @@ class _OtpInputWidgetState extends State<OtpInputWidget> {
               counterText: '',
               contentPadding: EdgeInsets.zero,
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12.r),
-                borderSide: const BorderSide(color: Color(0xFFD0D5DD)),
+                borderRadius: BorderRadius.circular(8.r),
+                borderSide: BorderSide(color: AppColors.inputBorderColor),
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12.r),
+                borderRadius: BorderRadius.circular(8.r),
                 borderSide: BorderSide(
                   color: AppColors.primaryColor,
                   width: 1.5,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/feature/reset_password/presentation/widget/password_field_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_application/core/widget/app_button.dart';
@@ -36,12 +37,12 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.pagescolor,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.pagescolor,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: Icon(Icons.arrow_back, color: AppColors.titleColor),
           onPressed: () {
             context.go('/verify-email');
           },

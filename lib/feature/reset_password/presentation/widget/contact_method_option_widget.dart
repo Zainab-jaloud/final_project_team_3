@@ -32,10 +32,10 @@ class ContactMethodOptionWidget extends StatelessWidget {
           border: Border.all(
             color: isSelected
                 ? AppColors.primaryColor
-                : const Color(0xFFD0D5DD),
+                : AppColors.inputBorderColor,
             width: isSelected ? 1.5 : 1,
           ),
-          color: Colors.white,
+          color: AppColors.pagescolor,
         ),
         child: Row(
           children: [

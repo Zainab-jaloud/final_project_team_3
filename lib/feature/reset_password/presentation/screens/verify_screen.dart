@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_application/core/widget/app_button.dart';
 import 'package:go_router/go_router.dart';
@@ -21,12 +22,12 @@ class _VerifyScreenState extends State<VerifyScreen> {
     final bool isCodeComplete = otpCode.length == 4;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.pagescolor,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.pagescolor,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: Icon(Icons.arrow_back, color: AppColors.titleColor),
           onPressed: () {
             context.go('/reset-password');
           },
@@ -46,16 +47,16 @@ class _VerifyScreenState extends State<VerifyScreen> {
                       const ResetHeaderWidget(
                         title: 'Verify your Email',
                         subtitle:
-                            'Please enter 6 digit verification that have been\n sent to your email address',
+                            'Please enter 6 digit verification that have been sent to your email address',
                       ),
-                      SizedBox(height: 24.h),
+                      SizedBox(height: 150.h),
                       OtpInputWidget(
                         length: 4,
                         onCompleted: (code) {
                           setState(() => otpCode = code);
                         },
                       ),
-                      SizedBox(height: 20.h),
+                      SizedBox(height: 25.h),
                       ResendCodeWidget(onResend: () {}),
                     ],
                   ),
