@@ -31,6 +31,7 @@ class SetLocationScreen extends StatelessWidget {
                   ],
           ),
         ),
+        
       ),
     );
   }

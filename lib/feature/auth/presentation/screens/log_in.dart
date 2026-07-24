@@ -175,7 +175,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           minimumSize: Size.zero,
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         ),
-                        onPressed: () {},
+                        onPressed: () {(context).push('/reset-password');},
                         child: Text(
                           "Forgot password?", 
                           style: AppTextStyle.fieldHintStyle.copyWith(

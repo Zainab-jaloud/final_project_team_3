@@ -5,6 +5,10 @@ import 'package:flutter_application/feature/profile/presentation/screens/profile
 import 'package:flutter_application/feature/auth/presentation/screens/log_in.dart';
 import 'package:flutter_application/feature/set_location/presentation/screens/maps.dart';
 import 'package:flutter_application/feature/set_location/presentation/screens/set_location_screen.dart';
+import 'package:flutter_application/feature/reset_password/presentation/screens/create_new_password_screen.dart';
+import 'package:flutter_application/feature/reset_password/presentation/screens/reset_screen.dart';
+import 'package:flutter_application/feature/reset_password/presentation/screens/success_reset_screen.dart';
+import 'package:flutter_application/feature/reset_password/presentation/screens/verify_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_application/feature/onboarding/presentation/screens/onboarding_screen.dart';
 import 'package:flutter_application/feature/home/data/model.dart';
@@ -38,7 +42,7 @@ class AppRoute {
         builder: (context, state) => const ProfileScreen(),
       ),],
       ),
-
+ 
       GoRoute(
         path: '/splash',
         builder: (context, state) => const SplashScreen(),
@@ -69,6 +73,22 @@ class AppRoute {
   GoRoute(
         path: '/edit-profile',
         builder: (context, state) => const EditProfileScreen(),
+      ),
+      GoRoute(
+        path: '/reset-password',
+        builder: (context, state) => const ResetScreen(),
+      ),
+      GoRoute(
+        path: '/verify-email',
+        builder: (context, state) => const VerifyScreen(),
+      ),
+      GoRoute(
+        path: '/create-new-password',
+        builder: (context, state) => const CreateNewPasswordScreen(),
+      ),
+      GoRoute(
+        path: '/success-reset',
+        builder: (context, state) => const SuccessResetScreen(),
       ), 
     ],
   );
