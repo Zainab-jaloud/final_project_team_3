@@ -69,7 +69,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   fontSize: 24.sp,
                   height: 32 / 24, // line-height ÷ font-size
                   letterSpacing: 24.sp * 0.16, // 16% letter spacing
-                  color: AppColor.neutralGray800,
+                  color: AppColors.titleColor,
                 ),
               ),
             ),

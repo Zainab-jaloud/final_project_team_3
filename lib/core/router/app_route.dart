@@ -3,7 +3,6 @@ import 'package:flutter_application/feature/onboarding/presentation/screens/spla
 import 'package:flutter_application/feature/profile/presentation/screens/edit_profile_screen.dart';
 import 'package:flutter_application/feature/profile/presentation/screens/profile_screen.dart';
 import 'package:flutter_application/feature/auth/presentation/screens/log_in.dart';
-import 'package:flutter_application/feature/set_location/data/model.dart';
 import 'package:flutter_application/feature/set_location/presentation/screens/maps.dart';
 import 'package:flutter_application/feature/set_location/presentation/screens/set_location_screen.dart';
 import 'package:flutter_application/feature/reset_password/presentation/screens/create_new_password_screen.dart';
