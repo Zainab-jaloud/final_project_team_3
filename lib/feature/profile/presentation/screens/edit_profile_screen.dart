@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/core/widget/app_button.dart';
@@ -15,19 +16,31 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
-  final TextEditingController _nameController =
-      TextEditingController(text: 'Brooklyn Simmons');
-  final TextEditingController _usernameController =
-      TextEditingController(text: 'Brooklynsim');
-  final TextEditingController _emailController =
-      TextEditingController(text: 'brooklynsim@gmail.com');
-  final TextEditingController _dobController =
-      TextEditingController(text: 'November/21/1992');
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _dobController = TextEditingController();
 
   bool _nameError = false;
   bool _usernameError = false;
   bool _emailError = false;
   bool _dobError = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadSavedProfileData();
+  }
+
+  Future<void> _loadSavedProfileData() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _nameController.text = prefs.getString('saved_name') ?? '';
+      _usernameController.text = prefs.getString('saved_username') ?? '';
+      _emailController.text = prefs.getString('saved_email') ?? '';
+      _dobController.text = prefs.getString('saved_dob') ?? '';
+    });
+  }
 
   @override
   void dispose() {
@@ -45,7 +58,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     return true;
   }
 
-  void _onSaveChange() {
+  Future<void> _onSaveChange() async {
     final name = _nameController.text.trim();
     final username = _usernameController.text.trim();
     final email = _emailController.text.trim();
@@ -62,7 +75,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       return;
     }
 
-    
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('saved_name', name);
+    await prefs.setString('saved_username', username);
+    await prefs.setString('saved_email', email);
+    await prefs.setString('saved_dob', dob);
+
+    if (!mounted) return;
+    Navigator.of(context).pop();
   }
 
   Future<void> _pickDate() async {
@@ -92,7 +112,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:AppColors.whiteColor,
+      backgroundColor: AppColors.whiteColor,
       appBar: const ProfileAppBar(title: 'Edit Profile'),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 24.w),

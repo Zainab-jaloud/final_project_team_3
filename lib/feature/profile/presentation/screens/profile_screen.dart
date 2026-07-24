@@ -1,16 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/feature/profile/presentation/widget/profile_app_bar.dart';
 import 'package:flutter_application/feature/profile/presentation/widget/profile_avatar.dart';
 import 'package:flutter_application/feature/profile/presentation/widget/profile_menu_item.dart';
 import 'package:flutter_application/feature/profile/presentation/screens/edit_profile_screen.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
-  // ignore: unused_element
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  String _userName = '';
+  String _userEmail = '';
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserData();
+  }
+
+  Future<void> _loadUserData() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _userName = prefs.getString('saved_username') ?? '';
+      _userEmail = prefs.getString('saved_email') ?? '';
+    });
+  }
+
+  Future<void> _signOut() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove('remember_me');
+    await prefs.remove('saved_email');
+    await prefs.remove('saved_password');
+    await prefs.remove('saved_username');
+    await prefs.setBool('skip_onboarding', false);
+
+    if (!mounted) return;
+    context.go('/login');
+  }
+
   void _goToEditProfile(BuildContext context) {
     context.push('/edit-profile');
   }
@@ -27,17 +62,18 @@ class ProfileScreen extends StatelessWidget {
             SizedBox(height: 32.h),
             ProfileAvatar(
               imagePath: 'assets/images/user_avatar.png',
-              onCameraTap: () {
-    Navigator.of(context).push(
+              onCameraTap: () async {
+    await Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => const EditProfileScreen(), 
       ),
     );
+    _loadUserData();
   },
             ),
             SizedBox(height: 16.h),
             Text(
-              'Brooklyn Simmons',
+              _userName,
               style: TextStyle(
                 fontFamily: 'Inter',
                 fontWeight: FontWeight.w600,
@@ -48,7 +84,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             SizedBox(height: 2.h),
             Text(
-              'brooklynsim@gmail.com',
+              _userEmail,
               style: TextStyle(
                 fontFamily: 'Inter',
                 fontWeight: FontWeight.w400,
@@ -91,7 +127,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             SizedBox(height: 24.h),
             InkWell(
-              onTap: () {},
+              onTap: _signOut,
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 12.h),
                 child: Center(
