@@ -30,11 +30,10 @@ class AppRoute {
           GoRoute(
             path: '/home',
            builder: (context, state) {
-    final result = state.extra as LocationResult?;
+     
 
     return HomeScreen(
-       location: result?.location,
-  manualLocation: result?.text,
+        
     );
   },
           ),

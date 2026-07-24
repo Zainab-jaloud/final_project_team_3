@@ -6,6 +6,7 @@ import 'package:flutter_application/feature/set_location/presentation/widget/sel
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_application/core/widget/app_button.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SetLocationScreen extends StatelessWidget {
   const SetLocationScreen({super.key});
@@ -33,10 +34,22 @@ class SetLocationScreen extends StatelessWidget {
                        AppButton(text: "Use current location", onPressed: (){context.push('/maps');}),
                        SizedBox(height: 16.h,),
  
-                       SelectLocationButton(text:"Select it manually" , onPressed:(){(context).go('/home',
-                       extra: LocationResult(
-    text:'Yogyakarta, Ind',
-  ),);}),
+                       SelectLocationButton(text:"Select it manually" ,onPressed: () async {
+  final prefs = await SharedPreferences.getInstance();
+
+  await prefs.setString('locationType', 'manual');
+
+  await prefs.setString(
+    'manualLocation',
+    'Yogyakarta, Ind',
+  );
+
+  // نمسح إحداثيات الخريطة
+  await prefs.remove('latitude');
+  await prefs.remove('longitude');
+
+  context.go('/home');
+},),
  
                        SizedBox(height: 48.h,)
           

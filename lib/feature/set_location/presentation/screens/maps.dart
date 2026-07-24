@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/feature/set_location/data/model.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -7,6 +6,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/core/widget/app_button.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 class MapScreen extends StatefulWidget {
@@ -225,9 +225,26 @@ class MapScreenState extends State<MapScreen> {
                   
                       AppButton(
                         text: 'Choose Location', 
-                        onPressed: () {(context).go('/home',  extra: LocationResult(
-    location: _initialPosition,
-  ),);},
+                        onPressed:() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    await prefs.setString('locationType', 'map');
+
+    await prefs.setDouble(
+      'latitude',
+      _initialPosition.latitude,
+    );
+
+    await prefs.setDouble(
+      'longitude',
+      _initialPosition.longitude,
+    );
+
+    // نمسح الموقع اليدوي حتى ما يصير تعارض
+    await prefs.remove('manualLocation');
+
+    context.go('/home');
+  },
                       ),
                     ],
                   ),

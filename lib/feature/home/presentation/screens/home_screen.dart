@@ -11,7 +11,7 @@ import 'package:flutter_application/feature/home/presentation/widget/top_locatio
 import 'package:geocoding/geocoding.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
- 
+ import 'package:shared_preferences/shared_preferences.dart';
  
 
 class HomeScreen extends StatefulWidget {
@@ -30,36 +30,52 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     getAddress();
   }
-Future<void> getAddress() async {
+  Future<LatLng?> loadLocation() async {
+  final prefs = await SharedPreferences.getInstance();
 
-  if (widget.manualLocation != null) {
+  final lat = prefs.getDouble('latitude');
+  final lng = prefs.getDouble('longitude');
+
+  if (lat == null || lng == null) {
+    return null;
+  }
+
+  return LatLng(lat, lng);
+}
+ Future<void> getAddress() async {
+  final prefs = await SharedPreferences.getInstance();
+
+  final type = prefs.getString('locationType');
+
+  // إذا آخر اختيار كان يدوي
+  if (type == 'manual') {
     setState(() {
-      address = widget.manualLocation!;
+      address = prefs.getString('manualLocation') ?? '';
     });
     return;
   }
 
-  if (widget.location == null) {
-    return;
-  }
+  // إذا آخر اختيار كان من الخريطة
+  if (type == 'map') {
+    LatLng? location = await loadLocation();
 
-  try {
-    List<Placemark> placemarks =
-        await placemarkFromCoordinates(
-      widget.location!.latitude,
-      widget.location!.longitude,
-    );
+    if (location == null) return;
 
-    Placemark place = placemarks.first;
+    try {
+      List<Placemark> placemarks =
+          await placemarkFromCoordinates(
+        location.latitude,
+        location.longitude,
+      );
 
-    setState(() {
-      address =
-          "${place.locality}, ${place.country}";
-    });
+      Placemark place = placemarks.first;
 
-  } catch (e) {
-    // ignore: avoid_print
-    print("Error: $e");
+      setState(() {
+        address = "${place.locality}, ${place.country}";
+      });
+    } catch (e) {
+      print(e);
+    }
   }
 }
   @override
