@@ -12,7 +12,7 @@ class SelectLocationButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 52,
+      height: 50,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
@@ -23,14 +23,13 @@ class SelectLocationButton extends StatelessWidget {
           disabledForegroundColor: AppColors.primaryColor,
             // padding:const EdgeInsets.symmetric(vertical: 12.5.h),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(8.r),
             side: BorderSide(color: AppColors.primaryColor,width:1,)
           ),
         ),
         child: Padding(
-          padding:  EdgeInsets.symmetric(vertical:2.5.h ),
-          child: Text(text, style:TextStyle(color:AppColors.primaryColor,  fontSize: 18.sp,
-          fontWeight: FontWeight.w400,)),
+          padding:  EdgeInsets.symmetric(vertical:12.h ),
+          child: Text(text, style:AppTextStyle.buttonText.copyWith(color:AppColors.primaryColor) ),
         ),
       ),
     );

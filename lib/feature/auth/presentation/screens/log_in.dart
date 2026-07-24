@@ -6,6 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_application/core/widget/app_button.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 // import '../../../../core/widget/app_button.dart';
 // import '../widget/auth_text_field.dart';
 import 'package:flutter_application/feature/auth/presentation/widget/auth_text_field.dart';
@@ -26,6 +28,51 @@ class _LoginScreenState extends State<LoginScreen> {
   
   bool _rememberMe = false;
   bool isSignIn = true; 
+
+  @override
+  void initState() {
+    super.initState();
+    _loadSavedUserData(); // تقرأ البيانات تلقائياً أول ما تفتح الشاشة
+  }
+
+  Future<void> _loadSavedUserData() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      // هل يوجد بيانات محفوظة
+      bool isRemembered = prefs.getBool('remember_me') ?? false;
+      
+      // اذا كنا في التسجيل وكان الخيار تذكرني تم اختياره سابقا  اعرض البيانات المدخلة سابقا
+      if (isSignIn && isRemembered) {
+        _rememberMe = true;
+        _emailController.text = prefs.getString('saved_email') ?? '';
+        _passwordController.text = prefs.getString('saved_password') ?? '';
+      }
+    });
+  }
+
+
+  Future<void> _saveUserData({required bool saveSession}) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('remember_me', true);
+    await prefs.setString('saved_email', _emailController.text.trim());
+    await prefs.setString('saved_password', _passwordController.text.trim());
+    
+    // جعل قيمة العلام ترو من اجل ان يستمر في تخطي الاون بوردينغ عند الدخول طالما البيانات محفوظة
+    await prefs.setBool('skip_onboarding', true); 
+  }
+
+
+  Future<void> _clearUserData() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove('remember_me');
+    await prefs.remove('saved_email');
+    await prefs.remove('saved_password');
+    
+    // تغيير قيمة العلام ليمنع تخطي الاون بووردينغ
+    await prefs.setBool('skip_onboarding', false); 
+  }
+
+
 
   @override
   void dispose() {
@@ -189,36 +236,54 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
                 SizedBox(height: 32.h),
-                
-                
-                AppButton(
-                  text: isSignIn ? "Sign in" : "Sign up",
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                       if (isSignIn) {
-                              context.go('/setlocation'); 
-                                      } 
 
-               else        
-               if (!isSignIn && _rememberMe == false) {
-       
-                        ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                      content: const Text(
-                            'Please agree to the Terms and privacy policy to continue.',
-                             style: TextStyle(fontFamily: 'Inter'),
-                                  ),
-                           backgroundColor: const Color.fromARGB(255, 99, 99, 99),
-                                    behavior: SnackBarBehavior.floating, 
-                                  duration: const Duration(seconds: 3), 
-                                      ),
-                                           );
-                                            return;
- 
-                       }
-                    }
-                  },
-                ),
+  //ملاحظة متغير الريميمبر مي هو نفسه لتشيك بوكس تذكرني والموافقة على الشروط والاحكام في كلا الصفحتين
+
+                AppButton(
+                    text: isSignIn ? "Sign in" : "Sign up",
+                       onPressed: () async {
+                        // تحقق من الصحة
+                      if (_formKey.currentState!.validate()) {
+      
+                       //اذا كانت صفحة تسجيل هنا الريميمبر مي هي حقل تذكرني
+                         if (isSignIn) {
+                            if (_rememberMe == true) {
+                            //اذا كان قد اختار تذكرني سيحتفظ ببياناته
+                                 await _saveUserData(saveSession: true); 
+                                } else {
+                              // إذا لم يضغط هذا معناه امسح البيانات 
+                                 await _clearUserData(); 
+                                     }
+                     // سواء نقر على تذكرني ام لم ينقر يجب ان يتم الانتقال
+                           context.go('/home');
+                               } 
+      
+      // اذا كانت الصفحة انشاء حساب
+      else if (!isSignIn) {
+        //  هنا التشيك بوكس إجباري للموافقة على الشروط
+        //اذا لم يوافق عليه يظهر سناك بار يحثه على ذلك
+        if (_rememberMe == false) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text(
+                'Please agree to the Terms and privacy policy to continue.',
+                style: TextStyle(fontFamily: 'Inter'),
+              ),
+              backgroundColor: Color.fromARGB(255, 99, 99, 99),
+              behavior: SnackBarBehavior.floating,
+              duration: Duration(seconds: 3),
+            ),
+          );
+          return; // ولا يتم الانتقال 
+        }
+        
+        //والا اذا وافق عليه ايضا يتم الانتقال 
+        context.go('/setlocation');
+      }
+
+    }
+  },
+),
                 
                 SizedBox(height: 24.h), 
                 
