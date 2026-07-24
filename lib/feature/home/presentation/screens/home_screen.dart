@@ -58,6 +58,7 @@ Future<void> getAddress() async {
     });
 
   } catch (e) {
+    // ignore: avoid_print
     print("Error: $e");
   }
 }

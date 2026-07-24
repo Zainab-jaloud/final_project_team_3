@@ -30,7 +30,11 @@ class AppTextStyle {
     fontWeight: FontWeight.w400,
     color: Color(0xFFD2D6DB),
   );
-   static TextStyle otpBoxTextStyle = TextStyle(
+ 
+
+ 
+  static TextStyle otpBoxTextStyle = TextStyle(
+ 
     fontSize: 20.sp,
     fontWeight: FontWeight.w600,
     color: const Color(0xFF101828),

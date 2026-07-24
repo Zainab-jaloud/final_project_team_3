@@ -94,7 +94,9 @@ class MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(leading: IconButton(onPressed:(context).pop, icon:Icon(Icons.arrow_back_outlined),), backgroundColor: Colors.transparent, elevation: 0, ),
+ 
+      appBar: AppBar(leading: IconButton(onPressed:(){context.go('/setlocation');}, icon:Icon(Icons.arrow_back_outlined),), backgroundColor: Colors.transparent, elevation: 0, ),
+ 
     
       body:
            Stack(
