@@ -24,7 +24,7 @@ class SetLocationScreen extends StatelessWidget {
                        SizedBox(height: 104.h,),
                        AppButton(text: "Use current location", onPressed: (){context.push('/maps');}),
                        SizedBox(height: 16.h,),
-                       SelectLocationButton(text:"Select it manually" , onPressed:(){}),
+                       SelectLocationButton(text:"Select it manually" , onPressed:(){(context).go('/home');}),
                        SizedBox(height: 48.h,)
           
           

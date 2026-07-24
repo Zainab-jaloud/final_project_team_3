@@ -216,6 +216,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                             return;
  
                        }
+                   else{     context.go('/setlocation');} 
                     }
                   },
                 ),
