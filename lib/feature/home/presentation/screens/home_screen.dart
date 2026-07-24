@@ -8,18 +8,59 @@ import 'package:flutter_application/feature/home/presentation/widget/near_places
 import 'package:flutter_application/feature/home/presentation/widget/places_list.dart';
 import 'package:flutter_application/feature/home/presentation/widget/search_field.dart';
 import 'package:flutter_application/feature/home/presentation/widget/top_location_list.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
  
  
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
-
+  const HomeScreen({super.key, this.location, this.manualLocation,});
+  final LatLng? location;
+ final String? manualLocation;
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+   String address = "";
+
+  @override
+  void initState() {
+    super.initState();
+    getAddress();
+  }
+Future<void> getAddress() async {
+
+  if (widget.manualLocation != null) {
+    setState(() {
+      address = widget.manualLocation!;
+    });
+    return;
+  }
+
+  if (widget.location == null) {
+    return;
+  }
+
+  try {
+    List<Placemark> placemarks =
+        await placemarkFromCoordinates(
+      widget.location!.latitude,
+      widget.location!.longitude,
+    );
+
+    Placemark place = placemarks.first;
+
+    setState(() {
+      address =
+          "${place.locality}, ${place.country}";
+    });
+
+  } catch (e) {
+    print("Error: $e");
+  }
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
  
-            HomeAppBar(),
+            HomeAppBar(address:address,),
  SizedBox(height: 32,),
  SearchField(),
  SizedBox(height: 22,),

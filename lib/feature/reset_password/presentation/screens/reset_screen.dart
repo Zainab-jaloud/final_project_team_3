@@ -22,7 +22,7 @@ class _ResetScreenState extends State<ResetScreen> {
       appBar: AppBar(
         backgroundColor: AppColors.pagescolor,
         elevation: 0,
-        leading: BackButton(color: AppColors.titleColor),
+        leading: BackButton(color: AppColors.titleColor,onPressed:(){(context.pop());},),
       ),
       body: SafeArea(
         child: Padding(

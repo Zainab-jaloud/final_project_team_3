@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/feature/set_location/data/model.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -222,7 +223,9 @@ class MapScreenState extends State<MapScreen> {
                   
                       AppButton(
                         text: 'Choose Location', 
-                        onPressed: () {},
+                        onPressed: () {(context).go('/home',  extra: LocationResult(
+    location: _initialPosition,
+  ),);},
                       ),
                     ],
                   ),

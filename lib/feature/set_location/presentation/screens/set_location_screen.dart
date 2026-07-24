@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
+import 'package:flutter_application/feature/set_location/data/model.dart';
 import 'package:flutter_application/feature/set_location/presentation/widget/select_location_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_application/core/widget/app_button.dart';
@@ -24,7 +25,10 @@ class SetLocationScreen extends StatelessWidget {
                        SizedBox(height: 104.h,),
                        AppButton(text: "Use current location", onPressed: (){context.push('/maps');}),
                        SizedBox(height: 16.h,),
-                       SelectLocationButton(text:"Select it manually" , onPressed:(){(context).go('/home');}),
+                       SelectLocationButton(text:"Select it manually" , onPressed:(){(context).go('/home',
+                       extra: LocationResult(
+    text:'Yogyakarta, Ind',
+  ),);}),
                        SizedBox(height: 48.h,)
           
           

@@ -3,6 +3,7 @@ import 'package:flutter_application/feature/onboarding/presentation/screens/spla
 import 'package:flutter_application/feature/profile/presentation/screens/edit_profile_screen.dart';
 import 'package:flutter_application/feature/profile/presentation/screens/profile_screen.dart';
 import 'package:flutter_application/feature/auth/presentation/screens/log_in.dart';
+import 'package:flutter_application/feature/set_location/data/model.dart';
 import 'package:flutter_application/feature/set_location/presentation/screens/maps.dart';
 import 'package:flutter_application/feature/set_location/presentation/screens/set_location_screen.dart';
 import 'package:flutter_application/feature/reset_password/presentation/screens/create_new_password_screen.dart';
@@ -16,6 +17,7 @@ import 'package:flutter_application/feature/home/presentation/screens/details_sc
 import 'package:flutter_application/feature/home/presentation/screens/favorite_screen.dart';
 import 'package:flutter_application/feature/home/presentation/screens/main_screen.dart';
 import 'package:flutter_application/feature/home/presentation/screens/popular_places.dart';
+ 
 class AppRoute {
   static final GoRouter pageRoute = GoRouter(
     initialLocation: '/splash',
@@ -27,7 +29,14 @@ class AppRoute {
         routes: [
           GoRoute(
             path: '/home',
-            builder: (context, state) => const HomeScreen(),
+           builder: (context, state) {
+    final result = state.extra as LocationResult?;
+
+    return HomeScreen(
+       location: result?.location,
+  manualLocation: result?.text,
+    );
+  },
           ),
           GoRoute(
             path: '/popular',
