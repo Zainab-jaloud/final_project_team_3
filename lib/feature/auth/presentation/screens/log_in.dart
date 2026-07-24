@@ -32,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     super.initState();
-    _loadSavedUserData(); // تقرأ البيانات تلقائياً أول ما تفتح الشاشة
+    _loadSavedUserData(); // تقرا البيانات اول فتح الشاشة
   }
 
   Future<void> _loadSavedUserData() async {
@@ -129,6 +129,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 if (!isSignIn) ...[
                   SizedBox(height: 16.h),
                   AuthTextField(
+                   key: const ValueKey('username_field'), 
                     controller: _usernameController,
                     labelText: 'Username',
                     hintText: 'brooklynsim',
@@ -145,6 +146,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 
               
                 AuthTextField(
+                  key: const ValueKey('password_field'),
                   controller: _passwordController,
                   labelText: 'Password',
                   hintText: 'Enter your password',
