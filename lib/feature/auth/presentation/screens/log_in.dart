@@ -46,6 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
         _rememberMe = true;
         _emailController.text = prefs.getString('saved_email') ?? '';
         _passwordController.text = prefs.getString('saved_password') ?? '';
+        _usernameController.text = prefs.getString('saved_username') ?? '';
       }
     });
   }
@@ -56,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
     await prefs.setBool('remember_me', true);
     await prefs.setString('saved_email', _emailController.text.trim());
     await prefs.setString('saved_password', _passwordController.text.trim());
-    
+    await prefs.setString('saved_username', _usernameController.text.trim());
     // جعل قيمة العلام ترو من اجل ان يستمر في تخطي الاون بوردينغ عند الدخول طالما البيانات محفوظة
     await prefs.setBool('skip_onboarding', true); 
   }
@@ -67,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
     await prefs.remove('remember_me');
     await prefs.remove('saved_email');
     await prefs.remove('saved_password');
-    
+    await prefs.remove('saved_username');
     // تغيير قيمة العلام ليمنع تخطي الاون بووردينغ
     await prefs.setBool('skip_onboarding', false); 
   }
@@ -282,6 +283,7 @@ class _LoginScreenState extends State<LoginScreen> {
         }
         
         //والا اذا وافق عليه ايضا يتم الانتقال 
+        await _saveUserData(saveSession: true);
         context.go('/setlocation');
       }
 

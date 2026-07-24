@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:flutter_application/core/constants/app_color.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -15,12 +16,22 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  @override
+
+
+    @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 3), ()async  {
       if (mounted) {
+        final prefs = await SharedPreferences.getInstance();
+// التاكد ان اختار المستخدم تذكرني
+        bool skipOnboarding = prefs.getBool('skip_onboarding') ?? false;
+//يفحص قيمة المتغير اذا كانت ترو سينتقل الى الهوم واذا لا بينتقل للاون بوردينغ 
+      if (skipOnboarding) {
+          context.go('/home');}
+      else {
         context.go('/onboarding');
+      }
       }
     });
   }
