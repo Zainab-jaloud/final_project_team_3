@@ -21,12 +21,10 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
 
   String _newPassword = '';
   String _confirmPassword = '';
-
   bool get _isFormValid =>
-      _newPassword.isNotEmpty &&
+      _newPassword.length > 6 &&
       _confirmPassword.isNotEmpty &&
       _newPassword == _confirmPassword;
-
   @override
   void dispose() {
     _newPasswordController.dispose();
@@ -67,6 +65,10 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                       PasswordFieldWidget(
                         label: 'New Password',
                         hint: 'Password',
+                        errorText:
+                            _newPassword.isNotEmpty && _newPassword.length <= 6
+                            ? 'Password must be more than 6 characters'
+                            : null,
                         controller: _newPasswordController,
                         onChanged: (value) {
                           setState(() => _newPassword = value);

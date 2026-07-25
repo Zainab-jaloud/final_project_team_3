@@ -8,6 +8,7 @@ class PasswordFieldWidget extends StatefulWidget {
   final String hint;
   final TextEditingController controller;
   final ValueChanged<String>? onChanged;
+  final String? errorText;
 
   const PasswordFieldWidget({
     super.key,
@@ -15,6 +16,7 @@ class PasswordFieldWidget extends StatefulWidget {
     required this.hint,
     required this.controller,
     this.onChanged,
+    this.errorText,
   });
 
   @override
@@ -39,6 +41,7 @@ class _PasswordFieldWidgetState extends State<PasswordFieldWidget> {
           decoration: InputDecoration(
             hintText: widget.hint,
             hintStyle: AppTextStyle.fieldHintStyle,
+            errorText: widget.errorText,
             contentPadding: EdgeInsets.symmetric(
               horizontal: 14.w,
               vertical: 14.h,
