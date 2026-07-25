@@ -23,7 +23,8 @@ final String address;
          ],
        ), SizedBox(height: 4,),
        Row(children: [SvgPicture.asset('assets/icons/Location1.svg'),SizedBox(width:7.5,),
-       Text(address,style:AppTextStyle.titleTextStyl)],)
+       Text(address,style:AppTextStyle.optionValueStyle.copyWith(fontSize: 16)
+        )],)
       ],
     ),
     Spacer(),

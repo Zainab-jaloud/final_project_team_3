@@ -26,7 +26,8 @@ class ShareItem extends StatelessWidget {
         const SizedBox(height: 8),
         Text(
           title,
-          style: AppTextStyle.titleTextStyl.copyWith(fontSize: 12)
+          style: AppTextStyle.optionValueStyle.copyWith(fontSize: 12)
+        
         ),
       ],
     );

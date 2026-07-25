@@ -50,7 +50,7 @@ class _NearPlacesState extends State<NearPlaces> {
              children: [
                Expanded(
                  child: Text(widget.properties.name,style: 
-                   AppTextStyle.titleTextStyl.copyWith(fontSize: 14),  maxLines: 1,
+                   AppTextStyle.optionValueStyle,  maxLines: 1,
                        overflow: TextOverflow.ellipsis,),
                ),
          widget.isPopular?Transform.translate(
@@ -81,15 +81,17 @@ class _NearPlacesState extends State<NearPlaces> {
                child: Text(widget.properties.location,
                 overflow: TextOverflow.ellipsis,maxLines:1,
                 style:
-               AppTextStyle.locationTextStyl.copyWith(fontSize: 10)),
+               AppTextStyle.optionLabelStyle.copyWith(fontSize: 10)),
              ),
            ],
          ),SizedBox(height: 4,),
          Row(
            children: [
             Text.rich(TextSpan(children: [TextSpan(text:widget.properties.price,style:
-           AppTextStyle.titleTextStyl.copyWith(fontSize: 10)),TextSpan(text:'/night',
-            style: AppTextStyle.titleTextStyl.copyWith(fontSize: 10))])
+           AppTextStyle.optionValueStyle.copyWith(fontSize: 10)
+        ),TextSpan(text:'/night',
+            style: AppTextStyle.optionValueStyle.copyWith(fontSize: 10)
+        )])
             ), 
         Spacer(),
              
@@ -100,7 +102,7 @@ class _NearPlacesState extends State<NearPlaces> {
              child: Row(
                mainAxisAlignment: MainAxisAlignment.center,children: [SvgPicture.asset('assets/icons/Star.svg'),
                Text('${widget.properties.rating}',style:
-                AppTextStyle.priceTextStyl.copyWith(fontSize: 10,color: AppColors.titleColor))],),
+                AppTextStyle. optionLabelStyle.copyWith(fontSize: 10))],),
              ),
            )
            ],

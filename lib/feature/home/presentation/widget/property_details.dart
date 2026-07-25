@@ -13,10 +13,11 @@ final String number;
     return Column(crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(title,style: 
-          AppTextStyle.locationTextStyl.copyWith(fontSize: 12),),
+          AppTextStyle.optionLabelStyle),
         Row(spacing: 1,
           children: [icon??Text(''),Text(number,style: 
-          AppTextStyle.titleTextStyl.copyWith(fontSize: 12))],)
+          AppTextStyle.optionValueStyle.copyWith(fontSize: 12)
+        )],)
       ],
     );
   }

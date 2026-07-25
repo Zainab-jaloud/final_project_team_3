@@ -127,13 +127,14 @@ class _DetailsScreenState extends State<DetailsScreen> {
            PropertyMoreDetails() ,
            
         PropertyDescription() ,SizedBox(height:24,), 
-        Text('Agent',style:AppTextStyle.titleTextStyl
+        Text('Agent',style:AppTextStyle.optionValueStyle.copyWith(fontSize: 16)
         
           ),
           SizedBox(height: 16,),
           AgentInfo(), 
                 SizedBox(height: 24,),
-                Text('Location & Public Fasilities',style:AppTextStyle.titleTextStyl
+                Text('Location & Public Fasilities',style:AppTextStyle.optionValueStyle.copyWith(fontSize: 16)
+        
         ),  
      PublicFasilities(fasilities:fasilities),  SizedBox(height: 16,),
      MapLocation(),

@@ -17,10 +17,11 @@ class PropertyInformation extends StatelessWidget {
     return Column(spacing: 6,
       children: [Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(widget.property.name,style: AppTextStyle.titleTextStyl.copyWith(fontSize:20)),
-          Text.rich(TextSpan(children: [TextSpan(text:widget.property.price,style:AppTextStyle.priceTextStyl 
+          Text(widget.property.name,style: AppTextStyle.optionValueStyle.copyWith(fontSize:20)
+        ),
+          Text.rich(TextSpan(children: [TextSpan(text:widget.property.price,style:AppTextStyle.optionLabelStyle.copyWith(fontSize: 14,color: AppColors.secondaryColor) 
          ),TextSpan(text:'/month',
-                style:AppTextStyle.locationTextStyl.copyWith(fontSize: 12))])),
+                style:AppTextStyle.optionLabelStyle)])),
         ],
       ),Row(
       children: [SvgPicture.asset('assets/icons/Location2.svg',width: 15,height: 18,
@@ -28,7 +29,7 @@ class PropertyInformation extends StatelessWidget {
       SizedBox(width: 4,),
         SizedBox(width: 327,
       
-          child: Text(widget.property.location,style:AppTextStyle.locationTextStyl
+          child: Text(widget.property.location,style:AppTextStyle.optionLabelStyle.copyWith(fontSize: 14)
         ,maxLines: 3,),
         ),
       ],

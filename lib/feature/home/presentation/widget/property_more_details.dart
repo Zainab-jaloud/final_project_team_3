@@ -12,7 +12,8 @@ class PropertyMoreDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Property Details',style:  AppTextStyle.titleTextStyl,),
+        Text('Property Details',style:  AppTextStyle.optionValueStyle.copyWith(fontSize: 16)
+        ,),
         SizedBox(height: 16,),
         Row(mainAxisAlignment: MainAxisAlignment.start,
          children: [Column(crossAxisAlignment: CrossAxisAlignment.start,

@@ -40,7 +40,7 @@ class AppButton extends StatelessWidget {
  
         child: Padding( 
           padding:  EdgeInsets.symmetric(vertical:12.5.h),
-          child: Text(text, style: AppTextStyle.buttonText),
+          child: Text(text, style: AppTextStyle.optionLabelStyle.copyWith(color: AppColors.whiteColor,fontSize: 18)),
         ),
  
       ),

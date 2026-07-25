@@ -100,12 +100,12 @@ class _LoginScreenState extends State<LoginScreen> {
                
                 Text(
                   isSignIn ? "Welcome Back!" : "Register Account", 
-                  style: AppTextStyle.topCaption
+                  style: AppTextStyle.optionValueStyle.copyWith(fontSize: 20)
                 ),
                 SizedBox(height: 8.h),
                 Text(
                   "Sign in with your email and password or social media to continue.",
-                  style: AppTextStyle.fieldHintStyle,
+                  style: AppTextStyle.optionLabelStyle.copyWith(fontSize: 14,color: AppColors.inputHintColor),
                 ),
                 SizedBox(height: 30.h),
                 
@@ -194,11 +194,11 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: isSignIn 
                               ? Text(
                                   "Remember me", 
-                                  style: AppTextStyle.fieldHintStyle.copyWith(fontSize: 14.sp),
+                                  style: AppTextStyle.optionLabelStyle.copyWith(fontSize: 14,color: AppColors.inputHintColor),
                                 )
                               : RichText(
                                   text: TextSpan(
-                                    style: AppTextStyle.fieldInputStyle,
+                                    style: AppTextStyle.optionLabelStyle.copyWith(fontSize: 14,color:AppColors.titleColor),
                                     children: [
                                       const TextSpan(text: "Agree with "),
                                       TextSpan(
@@ -228,12 +228,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         onPressed: () {(context).push('/reset-password');},
                         child: Text(
                           "Forgot password?", 
-                          style: AppTextStyle.fieldHintStyle.copyWith(
-                            fontSize: 14.sp,   
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'Inter', 
-                            color: AppColors.secondaryColor,
-                          ),
+                          style: AppTextStyle.optionLabelStyle.copyWith(fontSize: 14,color: AppColors.secondaryColor),
                         ),
                       ),
                   ],
@@ -297,7 +292,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Center(
                   child: Text(
                     "or",
-                    style: AppTextStyle.fieldInputStyle,
+                    style: AppTextStyle.optionLabelStyle.copyWith(fontSize: 14,color:AppColors.titleColor),
                   ),
                 ),
                 
@@ -345,9 +340,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                         child: Text(
                           isSignIn ? "Sign up" : "Sign in",
-                              style: AppTextStyle.fieldHintStyle.copyWith(fontSize: 14.sp,
-                                                    color:AppColors.secondaryColor,
-                                                    fontWeight: FontWeight.bold,)
+                              style: AppTextStyle.optionLabelStyle.copyWith(fontSize: 14,color: AppColors.secondaryColor,fontWeight: FontWeight.bold)
                                                     ,)
                                                   ,)
                                                 ,]

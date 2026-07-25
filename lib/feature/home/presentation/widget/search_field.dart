@@ -15,7 +15,7 @@ class SearchField extends StatelessWidget {
       child: TextField(
        decoration: InputDecoration(contentPadding: EdgeInsets.all(14),
          hintText:'Search Property',
-      hintStyle:AppTextStyle.locationTextStyl,
+      hintStyle:AppTextStyle.optionLabelStyle.copyWith(fontSize: 14),
       prefixIcon: Padding(
         padding: const EdgeInsets.only(left: 16),
         child: SizedBox(width:24,height:24,child: Center(child:
