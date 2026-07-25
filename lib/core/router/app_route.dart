@@ -1,3 +1,4 @@
+import 'package:flutter_application/feature/booking_payement/presentation/screens/booking_pay_screen.dart';
 import 'package:flutter_application/feature/home/data/model.dart';
 import 'package:flutter_application/feature/home/presentation/screens/details_screen.dart';
 import 'package:flutter_application/feature/home/presentation/screens/favorite_screen.dart';
@@ -5,7 +6,7 @@ import 'package:flutter_application/feature/home/presentation/screens/home_scree
 import 'package:flutter_application/feature/home/presentation/screens/main_screen.dart';
 import 'package:flutter_application/feature/home/presentation/screens/popular_places.dart';
 import 'package:go_router/go_router.dart';
-class AppRoute { static final GoRouter pageRoute = GoRouter( initialLocation: '/home',
+class AppRoute { static final GoRouter pageRoute = GoRouter( initialLocation: '/booking&payout',
   routes: [
       ShellRoute(
         builder: (context, state, child) {
@@ -34,6 +35,9 @@ class AppRoute { static final GoRouter pageRoute = GoRouter( initialLocation: '/
               final property = state.extra as PropertyModel;
                 return DetailsScreen(property:property);
  } ),  
+     GoRoute(
+            path: '/booking&payout',
+            builder: (context, state)=>BookingPayOutScreen() ),  
     ],
   );
 }
