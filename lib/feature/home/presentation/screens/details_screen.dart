@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
 import  'package:flutter_application/feature/home/presentation/widget/details_widget.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:flutter_application/core/constants/app_images.dart';
 import 'package:flutter_application/core/services/favorite_manager.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,6 +8,7 @@ import 'package:flutter_application/core/widget/custom_app_bar.dart';
 import 'package:flutter_application/feature/home/data/model.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/core/widget/app_button.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class DetailsScreen extends StatefulWidget {
      DetailsScreen({super.key, required this.property});
@@ -127,13 +127,14 @@ class _DetailsScreenState extends State<DetailsScreen> {
            PropertyMoreDetails() ,
            
         PropertyDescription() ,SizedBox(height:24,), 
-        Text('Agent',style:AppTextStyle.titleTextStyl
+        Text('Agent',style:AppTextStyle.optionValueStyle.copyWith(fontSize: 16)
         
           ),
           SizedBox(height: 16,),
           AgentInfo(), 
                 SizedBox(height: 24,),
-                Text('Location & Public Fasilities',style:AppTextStyle.titleTextStyl
+                Text('Location & Public Fasilities',style:AppTextStyle.optionValueStyle.copyWith(fontSize: 16)
+        
         ),  
      PublicFasilities(fasilities:fasilities),  SizedBox(height: 16,),
      MapLocation(),

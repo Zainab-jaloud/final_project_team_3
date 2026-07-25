@@ -17,9 +17,9 @@ class AgentInfo extends StatelessWidget {
       child: ClipRRect(borderRadius: BorderRadius.circular(52),child: Image.asset(AppImages.agent,fit: BoxFit.cover,),),),
              SizedBox(width: 16,),
     Column(mainAxisAlignment: MainAxisAlignment.center,
-      children: [Text('Esther Howard',style:AppTextStyle.titleTextStyl.copyWith(fontSize: 14)),
+      children: [Text('Esther Howard',style:AppTextStyle.optionValueStyle),
     Text('Real Estate Agent',
-    style:AppTextStyle.locationTextStyl.copyWith(fontSize:12)),
+    style:AppTextStyle.optionLabelStyle),
      
      ]),
      Spacer(),

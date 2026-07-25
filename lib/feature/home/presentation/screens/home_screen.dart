@@ -1,3 +1,4 @@
+ 
 import 'package:flutter/material.dart'; 
 import 'package:flutter_application/core/constants/app_images.dart';
 import 'package:flutter_application/feature/home/data/model.dart';
@@ -7,18 +8,76 @@ import 'package:flutter_application/feature/home/presentation/widget/near_places
 import 'package:flutter_application/feature/home/presentation/widget/places_list.dart';
 import 'package:flutter_application/feature/home/presentation/widget/search_field.dart';
 import 'package:flutter_application/feature/home/presentation/widget/top_location_list.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+ import 'package:shared_preferences/shared_preferences.dart';
  
 
-
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
-
+  const HomeScreen({super.key, this.location, this.manualLocation,});
+  final LatLng? location;
+ final String? manualLocation;
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+   String address = "";
+
+  @override
+  void initState() {
+    super.initState();
+    getAddress();
+  }
+  Future<LatLng?> loadLocation() async {
+  final prefs = await SharedPreferences.getInstance();
+
+  final lat = prefs.getDouble('latitude');
+  final lng = prefs.getDouble('longitude');
+
+  if (lat == null || lng == null) {
+    return null;
+  }
+
+  return LatLng(lat, lng);
+}
+ Future<void> getAddress() async {
+  final prefs = await SharedPreferences.getInstance();
+
+  final type = prefs.getString('locationType');
+
+  // إذا آخر اختيار كان يدوي
+  if (type == 'manual') {
+    setState(() {
+      address = prefs.getString('manualLocation') ?? '';
+    });
+    return;
+  }
+
+  // إذا آخر اختيار كان من الخريطة
+  if (type == 'map') {
+    LatLng? location = await loadLocation();
+
+    if (location == null) return;
+
+    try {
+      List<Placemark> placemarks =
+          await placemarkFromCoordinates(
+        location.latitude,
+        location.longitude,
+      );
+
+      Placemark place = placemarks.first;
+
+      setState(() {
+        address = "${place.locality}, ${place.country}";
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +85,8 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Padding(padding: EdgeInsets.all(24),
         child: Column(
           children: [
-            HomeAppBar(),
+ 
+            HomeAppBar(address:address,),
  SizedBox(height: 32,),
  SearchField(),
  SizedBox(height: 22,),
@@ -77,3 +137,4 @@ MainTitles(title:'Popular for you', onTap:(){(context).push('/popular');}),
 
 
 
+ 

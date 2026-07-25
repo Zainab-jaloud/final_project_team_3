@@ -36,7 +36,8 @@ class ShareBottomSheet extends StatelessWidget {
 
            Text(
             "Share to",
-            style: AppTextStyle.titleTextStyl
+            style: AppTextStyle.optionValueStyle.copyWith(fontSize: 16)
+        
           ),
 
           const SizedBox(height: 32),

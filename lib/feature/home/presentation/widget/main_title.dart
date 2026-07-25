@@ -13,7 +13,8 @@ final VoidCallback onTap;
   Widget build(BuildContext context) {
     return Row(children: [
      Text(title,
-     style: AppTextStyle.titleTextStyl),
+     style: AppTextStyle.optionValueStyle.copyWith(fontSize: 16)
+        ),
      Spacer(),
      TextButton(style: TextButton.styleFrom(
        padding: EdgeInsets.all(3),

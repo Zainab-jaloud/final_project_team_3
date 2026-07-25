@@ -5,8 +5,9 @@ import 'package:flutter_svg/svg.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({
-    super.key,
+    super.key, required this.address,
   });
+final String address;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,8 @@ class HomeAppBar extends StatelessWidget {
          ],
        ), SizedBox(height: 4,),
        Row(children: [SvgPicture.asset('assets/icons/Location1.svg'),SizedBox(width:7.5,),
-       Text('Yogyakarta, Ind',style:AppTextStyle.titleTextStyl)],)
+       Text(address,style:AppTextStyle.optionValueStyle.copyWith(fontSize: 16)
+        )],)
       ],
     ),
     Spacer(),

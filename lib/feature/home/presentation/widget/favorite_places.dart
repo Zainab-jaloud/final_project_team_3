@@ -25,7 +25,8 @@ class _FavoritePlacesState extends State<FavoritePlaces> {
             children: [
             Icon(Icons.heart_broken_outlined,size:90,),
             SizedBox(height: 20,),
-            Text('No Favorites yet',style:AppTextStyle.titleTextStyl)
+            Text('No Favorites yet',style:AppTextStyle.optionValueStyle.copyWith(fontSize: 16)
+        )
           ],),
         ),
       );}

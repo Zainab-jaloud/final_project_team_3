@@ -37,7 +37,8 @@ class PersonsReviews extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                       Text(name,style:AppTextStyle.titleTextStyl),
+                       Text(name,style:AppTextStyle.optionValueStyle.copyWith(fontSize: 16)
+        ),
                    Spacer(),  
            Row(spacing: 1,
             children: [SvgPicture.asset('assets/icons/Star.svg'),
@@ -52,7 +53,7 @@ class PersonsReviews extends StatelessWidget {
     
                   Text(
                     comment,
-                    style:AppTextStyle.locationTextStyl.copyWith(fontSize: 12),
+                    style:AppTextStyle.optionLabelStyle,
                     maxLines: 3,
                     overflow: TextOverflow.fade,
                   ),
