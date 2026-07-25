@@ -13,11 +13,11 @@ class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: AppColor.white,
+      backgroundColor: AppColors.whiteColor,
       elevation: 0,
       centerTitle: true,
       leading: IconButton(
-        icon: Icon(Icons.arrow_back, color: AppColor.neutralGray800),
+        icon: Icon(Icons.arrow_back, color: AppColors.titleColor),
         onPressed: () => Navigator.of(context).pop(),
       ),
       title: Text(
@@ -27,7 +27,7 @@ class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
           fontWeight: FontWeight.w600,
           fontSize: 16.sp,
           height: 24 / 16,
-          color: AppColor.neutralGray800,
+          color: AppColors.titleColor,
         ),
       ),
     );

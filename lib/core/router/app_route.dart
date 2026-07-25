@@ -1,13 +1,13 @@
 import 'package:flutter_application/feature/home/screens/home_screen.dart';
 import 'package:flutter_application/feature/onboarding/presentation/screens/onboarding_screen.dart';
+import 'package:flutter_application/feature/onboarding/presentation/screens/splash_screen.dart';
 import 'package:flutter_application/feature/profile/presentation/screens/profile_screen.dart';
-import 'package:flutter_application/feature/splash/presentation/screens/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRoute {
   static final GoRouter pageRoute = GoRouter(
     // TODO: رجّعيها '/splash' بعد ما تخلصي تجربي صفحة البروفايل
-    initialLocation: '/profile',
+    initialLocation: '/splash',
     routes: [
       GoRoute(
         path: '/splash',

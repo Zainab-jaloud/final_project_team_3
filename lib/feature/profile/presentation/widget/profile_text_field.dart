@@ -38,7 +38,7 @@ class ProfileTextField extends StatelessWidget {
               fontWeight: FontWeight.w600,
               fontSize: 14.sp,
               height: 18 / 14,
-              color: AppColor.neutralGray800,
+              color: AppColors.titleColor,
             ),
           ),
         ),
@@ -48,11 +48,11 @@ class ProfileTextField extends StatelessWidget {
           height: 52.h,
           padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 16.w),
           decoration: BoxDecoration(
-            color: AppColor.white,
+            color: AppColors.whiteColor,
             borderRadius: BorderRadius.circular(12.r),
             border: Border.all(
               width: 1.w,
-              color: hasError ? AppColor.error500 : AppColor.neutralGray300,
+              color: hasError ? AppColors.redHeartColor : AppColors.dotColor,
             ),
           ),
           child: Row(
@@ -70,7 +70,7 @@ class ProfileTextField extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     fontSize: 14.sp,
                     height: 18 / 14,
-                    color: AppColor.neutralGray800,
+                    color: AppColors.titleColor,
                   ),
                   decoration: const InputDecoration(
                     isDense: true,

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/core/widget/app_button.dart';
 
 import 'package:flutter_application/feature/onboarding/presentation/widget/onboarding_image_stack.dart';
 import 'package:flutter_application/feature/onboarding/presentation/widget/onboarding_page_indicator.dart';
 import 'package:flutter_application/feature/onboarding/presentation/widget/onboarding_skip_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:flutter_application/core/constants/app_color.dart';
-import 'package:flutter_application/core/widget/app_button.dart';
+import 'package:go_router/go_router.dart';
 
 
 class _OnboardingPageData {
@@ -126,8 +126,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   void _goToLogin() {
-    // TODO(leader): بتفكها لما تجهز صفحة اللوغ إن، وتحط مسارها الصح
-    // context.go('/login');
+  /////////////////////////////////////مؤقتا للتجريب TODO
+    context.go('/profile');
   }
 
   void _onNextPressed() {
@@ -144,7 +144,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.white,
+      backgroundColor: AppColors.whiteColor,
       body: SafeArea(
         child: Stack(
           children: [
@@ -183,7 +183,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               fontWeight: FontWeight.w400,
                               fontSize: 24.sp,
                               height: 32 / 24,
-                              color: AppColor.neutralGray800,
+                              color: AppColors.titleColor,
                             ),
                             children: [
                               TextSpan(text: page.titleBefore),
@@ -210,7 +210,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             fontWeight: FontWeight.w400,
                             fontSize: 12.sp,
                             height: 18 / 12,
-                            color: AppColor.neutralGray400,
+                            color: AppColors.locationColor,
                           ),
                         ),
                       ),

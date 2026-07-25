@@ -27,8 +27,8 @@ class ProfileMenuItem extends StatelessWidget {
               iconPath,
               width: 24.w,
               height: 24.h,
-              colorFilter: const ColorFilter.mode(
-                AppColor.primary700,
+              colorFilter:  ColorFilter.mode(
+                AppColors.primaryColor,
                 BlendMode.srcIn,
               ),
             ),
@@ -41,14 +41,14 @@ class ProfileMenuItem extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                   fontSize: 12.sp,
                   height: 18 / 12,
-                  color: AppColor.neutralGray800,
+                  color: AppColors.titleColor,
                 ),
               ),
             ),
             Icon(
               Icons.chevron_right,
               size: 24.sp,
-              color: AppColor.neutralGray300,
+              color: AppColors.dotColor,
             ),
           ],
         ),
