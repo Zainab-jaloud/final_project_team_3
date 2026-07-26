@@ -80,7 +80,7 @@ class _PayProperty extends State<PayProperty> {
              padding: const EdgeInsets.only(right:8),
              child: Container(width:35,height: 18, 
              decoration: BoxDecoration(borderRadius: BorderRadius.circular(8),color:AppColors.ratingColor),
-             child: Row(
+             child: Row(spacing: 2.25,
                mainAxisAlignment: MainAxisAlignment.center,children: [SvgPicture.asset('assets/icons/Star.svg'),
                Text('${widget.properties.rating}',style:
                 AppTextStyle. heading1.copyWith(fontSize: 10))],),

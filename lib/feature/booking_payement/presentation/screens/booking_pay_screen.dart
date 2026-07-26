@@ -3,6 +3,7 @@ import 'package:flutter_application/core/widget/custom_app_bar.dart';
 import 'package:flutter_application/feature/booking_payement/presentation/widget/pay_property.dart';
 import 'package:flutter_application/feature/booking_payement/presentation/widget/payments.dart';
 import 'package:flutter_application/feature/booking_payement/presentation/widget/period.dart';
+import 'package:flutter_application/feature/booking_payement/presentation/widget/price_details.dart';
 import 'package:flutter_application/feature/home/data/model.dart';
 
 class BookingPayOutScreen extends StatelessWidget {
@@ -20,7 +21,9 @@ body: SingleChildScrollView(child: Padding(
       SizedBox(height: 24,),
 Period(),
   SizedBox(height: 24,),
-Payments()
+Payments(),
+SizedBox(height: 24,),
+PriceDetails()
     ],
   ),),),);
   }
