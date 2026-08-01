@@ -25,7 +25,16 @@ class AppButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(8.r),
           ),
         ),
-        child: Text(text, style: AppTextStyle.buttonText),
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 12.5.h),
+          child: Text(
+            text,
+            style: AppTextStyle.optionLabelStyle.copyWith(
+              color: AppColors.whiteColor,
+              fontSize: 18,
+            ),
+          ),
+        ),
       ),
     );
   }
