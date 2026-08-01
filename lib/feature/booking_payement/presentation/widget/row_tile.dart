@@ -5,11 +5,12 @@ import 'package:flutter_svg/svg.dart';
 
 class RowTile extends StatelessWidget {
   const RowTile({
-    super.key, required this.leftIcon, required this.rightIcon, required this.text,
+    super.key, required this.leftIcon, required this.rightIcon, required this.text, required this.onTap,
   });
 final String  leftIcon;
 final String  rightIcon;
 final String text;
+final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
     return Row(children: [ Container(width:36,height:36,decoration: BoxDecoration(
@@ -21,7 +22,7 @@ final String text;
      SizedBox(width: 16,),
           Text(text,style:AppTextStyle.optionLabelStyle.copyWith(fontSize: 14,color: AppColors.titleColor),) ,
      Spacer(),
-    SvgPicture.asset(rightIcon)
+    GestureDetector(onTap: onTap,child: SvgPicture.asset(rightIcon))
       ]);
   }
 }

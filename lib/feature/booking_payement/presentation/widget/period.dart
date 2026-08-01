@@ -1,12 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
+import 'package:flutter_application/feature/booking_payement/presentation/widget/tabel_calender.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
+ 
 
-class Period extends StatelessWidget {
-  const Period({super.key});
+class Period extends StatefulWidget {
+  const Period({super.key, required this.onDateSelected,});
+ 
 
+  final Function(DateTime start, DateTime end) onDateSelected;
+  @override
+  State<Period> createState() => _PeriodState();
+}
+
+class _PeriodState extends State<Period> {
+ 
+DateTime? startDate;
+DateTime? endDate;
+
+Future<void> openDatePicker() async {
+  final result = await showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+       // ignore: deprecated_member_use
+       barrierColor: Colors.black.withOpacity(0.1),
+    builder: (_) => const DatePickerBottomSheet(),
+  );
+
+ if (result != null) {
+  setState(() {
+    startDate = result['start'];
+    endDate = result['end'];
+  });
+
+  widget.onDateSelected(
+    startDate!,
+    endDate!,
+  );
+}
+}
   @override
   Widget build(BuildContext context) {
     return SizedBox(width: 327.sw,
@@ -24,9 +60,15 @@ class Period extends StatelessWidget {
           SizedBox(width: 12,),
         Column(crossAxisAlignment: CrossAxisAlignment.start,
           children: [Text('Date',style:AppTextStyle.optionLabelStyle,),
-          Text('12 Aug - 12 Sep',style:AppTextStyle.optionValueStyle,),],) ,
+         Text(
+  startDate == null
+      ? 'Set time on your calendar'
+      : '${DateFormat('dd MMM').format(startDate!)}-${DateFormat('dd MMM ').format(endDate!)}',
+  style: AppTextStyle.optionValueStyle,
+),],) ,
           Spacer(),
-         SvgPicture.asset('assets/icons/arrow_foraward.svg')
+         GestureDetector(onTap:openDatePicker
+          ,child: SvgPicture.asset('assets/icons/arrow_foraward.svg'))
            ]),
            
         ),

@@ -17,7 +17,7 @@ fontSize: 12,
           fontFamily: 'Inter');
   
   static TextStyle optionValueStyle = TextStyle(
-    fontSize: 14.sp,
+    fontSize: 14,
     fontWeight: FontWeight.w600,
     color: AppColors.titleColor,
     fontFamily: 'Inter'
