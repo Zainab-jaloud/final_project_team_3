@@ -47,6 +47,7 @@ class SetLocationScreen extends StatelessWidget {
   await prefs.remove('latitude');
   await prefs.remove('longitude');
 
+  // ignore: use_build_context_synchronously
   context.go('/home');
 },),
  

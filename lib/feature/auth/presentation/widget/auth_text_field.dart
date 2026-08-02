@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,7 +11,9 @@ class AuthTextField extends StatefulWidget {
   final bool isPassword; // لتحديد إذا كان خاص بكلمة المرور
   final String? Function(String?)? validator; 
   final ValueChanged<String>? onChanged;
-
+ 
+final List<TextInputFormatter>? inputFormatters;
+ 
   const AuthTextField({
     super.key,
     required this.controller,
@@ -20,6 +22,8 @@ class AuthTextField extends StatefulWidget {
     this.isPassword = false, 
     this.validator,
     this.onChanged,
+    this.inputFormatters,
+ 
   });
 
   @override
@@ -44,7 +48,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
       children: [
         Text(widget.labelText, style: AppTextStyle.fasilitiesTextStyl.copyWith(fontSize: 14)),
         SizedBox(height: 4.h),
-        TextFormField(
+        TextFormField(inputFormatters: widget.inputFormatters,
           controller: widget.controller,
           obscureText: _obscureText, 
           validator: widget.validator,

@@ -279,6 +279,7 @@ class _LoginScreenState extends State<LoginScreen> {
         
         //والا اذا وافق عليه ايضا يتم الانتقال 
         await _saveUserData(saveSession: true);
+        // ignore: use_build_context_synchronously
         context.go('/setlocation');
       }
 

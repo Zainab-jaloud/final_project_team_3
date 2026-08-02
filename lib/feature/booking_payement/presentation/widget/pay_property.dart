@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
-import 'package:flutter_application/core/services/favorite_manager.dart';
 import 'package:flutter_application/feature/home/data/model.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
-class NearPlaces extends StatefulWidget {
-  const NearPlaces({
-    super.key, required this.isPopular, required this.properties, required this.onChange,
+class PayProperty extends StatefulWidget {
+  const PayProperty({
+    super.key, required this.properties
   });
-final bool isPopular;
+
 final PropertyModel properties;
-final VoidCallback onChange;
   @override
-  State<NearPlaces> createState() => _NearPlacesState();
+  State<PayProperty> createState() => _PayProperty();
 }
 
-class _NearPlacesState extends State<NearPlaces> {
+class _PayProperty extends State<PayProperty> {
   @override
   Widget build(BuildContext context) {
     
@@ -25,12 +24,12 @@ class _NearPlacesState extends State<NearPlaces> {
       onTap: () {
           context.push('/details', extra: widget.properties);
       },
-      child: Container( padding: const EdgeInsets.only(bottom: 12),  
-        decoration: BoxDecoration( border:   Border(
-         bottom: BorderSide(
-           color: AppColors.borderColor,
-           width: 1,
-         ),
+      child: Container(width: 327.sw,height: 99.h,
+         padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 12),  
+        decoration: BoxDecoration( borderRadius: BorderRadius.circular(12),border:Border.all(
+        color: AppColors.borderColor,
+          //  width: 1,
+         
        )),
        
        child: Row(crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,26 +52,8 @@ class _NearPlacesState extends State<NearPlaces> {
                    AppTextStyle.optionValueStyle,  maxLines: 1,
                        overflow: TextOverflow.ellipsis,),
                ),
-         widget.isPopular?Transform.translate(
-        offset: const Offset(-7, 0),  
-        child: InkWell(onTap: () {
-      setState(() {
-        FavoriteManager.toggle(widget.properties);
-        widget.onChange();
-      });},
-      child:  FavoriteManager.isFavorite(widget.properties)
-          ? 
-      SvgPicture.asset(
-        'assets/icons/Heart_red.svg',
-        width: 19,
-        height: 18,): SvgPicture.asset(
-        'assets/icons/Heart.svg',
-        width: 19,
-        height: 18,
-        colorFilter: ColorFilter.mode(AppColors.redHeartColor,BlendMode.srcIn),
-        ),
-        ),
-      ):SizedBox(),
+    
+       
              ],
            ),SizedBox(height:2,),
          Row(spacing: 4,
@@ -89,7 +70,7 @@ class _NearPlacesState extends State<NearPlaces> {
            children: [
             Text.rich(TextSpan(children: [TextSpan(text:widget.properties.price,style:
            AppTextStyle.optionValueStyle.copyWith(fontSize: 10)
-        ),TextSpan(text:'/night',
+        ),TextSpan(text:'/month',
             style: AppTextStyle.optionValueStyle.copyWith(fontSize: 10)
         )])
             ), 
@@ -102,7 +83,7 @@ class _NearPlacesState extends State<NearPlaces> {
              child: Row(spacing: 2.25,
                mainAxisAlignment: MainAxisAlignment.center,children: [SvgPicture.asset('assets/icons/Star.svg'),
                Text('${widget.properties.rating}',style:
-                AppTextStyle. optionLabelStyle.copyWith(fontSize: 10))],),
+                AppTextStyle. heading1.copyWith(fontSize: 10))],),
              ),
            )
            ],

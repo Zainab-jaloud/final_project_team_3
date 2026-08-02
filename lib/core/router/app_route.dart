@@ -11,6 +11,9 @@ import 'package:flutter_application/feature/reset_password/presentation/screens/
 import 'package:flutter_application/feature/reset_password/presentation/screens/verify_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_application/feature/onboarding/presentation/screens/onboarding_screen.dart';
+import 'package:flutter_application/feature/booking_activity/presentation/screens/booking_screen.dart';
+import 'package:flutter_application/feature/booking_payement/presentation/screens/add_card.dart';
+import 'package:flutter_application/feature/booking_payement/presentation/screens/booking_pay_screen.dart';
 import 'package:flutter_application/feature/home/data/model.dart';
 import 'package:flutter_application/feature/home/presentation/screens/details_screen.dart';
 import 'package:flutter_application/feature/home/presentation/screens/favorite_screen.dart';
@@ -44,13 +47,24 @@ class AppRoute {
             path: '/favorite',
             builder: (context, state) => const FavoriteScreen(),
           ),
+
               GoRoute(
         path: '/profile',
         builder: (context, state) => const ProfileScreen(),
-      ),],
       ),
- 
-      GoRoute(
+        GoRoute(
+            path: '/mybooking',
+            builder: (context, state){
+           
+          return MyBooking(status: 'completed',
+      // startDate:DateTime(19,7),
+      // endDate:DateTime(22,7)
+      
+      );} ), 
+    
+      
+      ],),
+    GoRoute(
         path: '/splash',
         builder: (context, state) => const SplashScreen(),
       ),
@@ -76,6 +90,7 @@ class AppRoute {
             builder: (context, state) {
               final property = state.extra as PropertyModel;
                 return DetailsScreen(property:property);
+
  } ), 
   GoRoute(
         path: '/edit-profile',
@@ -97,15 +112,31 @@ class AppRoute {
         path: '/success-reset',
         builder: (context, state) => const SuccessResetScreen(),
       ), 
-    ],
-  );
-}
- 
+
+   
+     GoRoute(
+            path: '/booking&payout',
+            builder: (context, state) {
+   final data = state.extra as Map<String, dynamic>;
+    return BookingPayOutScreen(
+       property: data['property'] as PropertyModel,
+     cardNumber: data['cardNumber'] as String?,
+    );
+  }, ),  
+     GoRoute(
+            path: '/addCard',
+            builder: (context, state){   final data = state.extra as Map<String, dynamic>;
+          return AddCard( property: data['property'] as PropertyModel,
+          startDate: data['startDate'],
+      endDate: data['endDate'],
+          );} )]);  
+   
+
 
  
       
    
     
       
-         
+}
  

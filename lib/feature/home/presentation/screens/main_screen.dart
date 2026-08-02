@@ -29,7 +29,7 @@ class _MainScreenState extends State<MainScreen> {
       currentIndex = 2;
       break;
     
-    case '/booking':
+    case '/mybooking':
       currentIndex = 3;
       break;
     
@@ -47,9 +47,20 @@ class _MainScreenState extends State<MainScreen> {
         context.push('/home');
         break;
 
+        
+      case 1:
+        context.push('/setlocation');
+        break;
+
       case 2:
         context.push('/favorite');
         break;
+ 
+
+      case 3:
+        context.push('/mybooking');
+        break;
+ 
         
       case 4:
         context.push('/profile');

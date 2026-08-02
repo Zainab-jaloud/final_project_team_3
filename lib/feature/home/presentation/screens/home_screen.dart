@@ -74,6 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
         address = "${place.locality}, ${place.country}";
       });
     } catch (e) {
+    // ignore: avoid_print
       print(e);
     }
   }

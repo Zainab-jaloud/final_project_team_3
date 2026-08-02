@@ -29,5 +29,9 @@ class AppImages {
   static String  whatsapp= 'assets/images/whatsapp.png';
   static String  linkedIn= 'assets/images/linkedIn.png';
   static String  pinterest= 'assets/images/Pinterest.png';
+  static String  creditCard='assets/images/Credit Card.png';
+  static String logo='assets/images/Logo.png';
+  static String success='assets/images/Success.png';
+  static String opps='assets/images/Opps!.png';
 }
  

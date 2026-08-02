@@ -21,3 +21,4 @@ class AppColors {
    static Color fieldlabel=Color(0xFF344054);
     
 }
+

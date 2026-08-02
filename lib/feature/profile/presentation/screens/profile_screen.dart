@@ -46,6 +46,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     context.go('/login');
   }
 
+  // ignore: unused_element
   void _goToEditProfile(BuildContext context) {
     context.push('/edit-profile');
   }

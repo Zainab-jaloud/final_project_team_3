@@ -243,6 +243,7 @@ class MapScreenState extends State<MapScreen> {
     // نمسح الموقع اليدوي حتى ما يصير تعارض
     await prefs.remove('manualLocation');
 
+    // ignore: use_build_context_synchronously
     context.go('/home');
   },
                       ),
