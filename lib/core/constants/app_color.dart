@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 class AppColors {
   static Color pagescolor = Color(0xFFFCFCFD);
   static Color primaryColor = Color(0xFF7F56D9);
@@ -18,6 +17,9 @@ class AppColors {
   static const Color neutralGray600 = Color(0xFF4D5761);
   static Color inputBorderColor = const Color(0xFFD0D5DD);
   static Color inputHintColor = const Color(0xFF98A2B3);
+
    static Color fieldlabel=Color(0xFF344054);
     
+
+
 }
