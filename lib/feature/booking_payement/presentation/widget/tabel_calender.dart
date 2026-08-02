@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
+import 'package:flutter_application/core/constants/booking_constants.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
 import 'package:flutter_application/core/widget/app_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,15 +20,20 @@ class _DatePickerBottomSheetState extends State<DatePickerBottomSheet> {
   DateTime? _rangeStart;
   DateTime? _rangeEnd;
   PageController? _pageController;
-  final List<DateTime> bookedDays = [
-  DateTime(2022, 8, 10),
-  DateTime(2022, 8, 12),
-];
-bool isBooked(DateTime day) {
-  final start = DateTime(2022, 8, 10);
-  final end = DateTime(2022, 8, 12);
-
-  return !day.isBefore(start) && !day.isAfter(end);
+//   final List<DateTime> bookedDays = [
+//   DateTime(2022, 8, 10),
+//   DateTime(2022, 8, 12),
+// ];
+bool _isBooked(DateTime day) {
+  return !day.isBefore(BookingConstants.bookingStart) &&
+      !day.isAfter(BookingConstants.bookingEnd);
+}
+void _showBookedMessage() {
+  ScaffoldMessenger.of(context).showSnackBar(
+    const SnackBar(
+      content: Text('This day is already booked'),
+    ),
+  );
 }
   @override
   Widget build(BuildContext context) {
@@ -137,7 +143,7 @@ bool isBooked(DateTime day) {
             width: 330.w,
             child: TableCalendar(
               enabledDayPredicate: (day) {
-  return !bookedDays.any(
+  return !BookingConstants.bookedDays.any(
     (booked) => isSameDay(booked, day),
   );
 },
@@ -157,12 +163,8 @@ bool isBooked(DateTime day) {
               focusedDay: _focusedDay,
               rangeSelectionMode: RangeSelectionMode.toggledOn,
 onRangeSelected: (start, end, focusedDay) {
-  if (start != null && isBooked(start)) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('This day is already booked'),
-      ),
-    );
+  if (start != null &&_isBooked(start)) {
+    _showBookedMessage();
     return;
   }
   
@@ -176,15 +178,10 @@ onRangeSelected: (start, end, focusedDay) {
               rangeStartDay: _rangeStart,
               rangeEndDay: _rangeEnd,
     onDaySelected: (selectedDay, focusedDay) {
-
-  if (isBooked(selectedDay)) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('This day is already booked'),
-      ),
-    );
-    return;
-  }
+if (_isBooked(selectedDay)) {
+  _showBookedMessage();
+  return;
+}
 
  
 
@@ -240,7 +237,7 @@ onRangeSelected: (start, end, focusedDay) {
 
 disabledBuilder: (context, day, focusedDay) {
  
-if (bookedDays.any((d) => isSameDay(d, day))) {
+if (BookingConstants.bookedDays.any((d) => isSameDay(d, day))) {
         return Container(
           margin:EdgeInsets.zero,
           decoration: BoxDecoration(

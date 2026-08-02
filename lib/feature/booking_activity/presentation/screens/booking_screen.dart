@@ -29,8 +29,6 @@ final DateTime? endDate;
       child: Column(
         children: [
          Container(width: 327.sw, 
-        // margin: EdgeInsets.symmetric(horizontal:24,vertical:8),
-        // padding: EdgeInsets.symmetric(horizontal:0,vertical:0),
         decoration: BoxDecoration(
       color: AppColors.borderColor,
          borderRadius: BorderRadius.circular(8),
@@ -46,8 +44,6 @@ final DateTime? endDate;
       horizontal:-22,
       vertical: 7,
         ),
-      // labelColor:AppColors.whiteColor,
-      // unselectedLabelColor:AppColors.locationColor,
       dividerColor: Colors.transparent,
       labelStyle:AppTextStyle.fasilitiesTextStyl.copyWith(fontSize: 14,color: AppColors.whiteColor),
       unselectedLabelStyle:AppTextStyle.optionLabelStyle.copyWith(fontSize: 14,color: AppColors.locationColor,),
@@ -83,20 +79,5 @@ final DateTime? endDate;
     ),
   ),
 );
-    
-//     Scaffold(
-// appBar: CustomAppBar(title:'My Booking', icon1:'', icon2:'', rightIcon1:false, rightIcon2:false),
-// body: SingleChildScrollView(
-//   child: Padding(padding: EdgeInsets.all(24),
-  
-//   child: SingleChildScrollView(
-//   child: Padding(padding: EdgeInsets.all(24),
-  
-//   child: Column(
-// children: [BookingTabs()],
-
-//   ),),
-// ),
-//     );
   }
 }

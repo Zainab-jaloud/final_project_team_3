@@ -27,6 +27,26 @@ class _AddCardState extends State<AddCard> {
  final _formKey = GlobalKey<FormState>();
  DateTime? startDate;
     DateTime? endDate;
+    void _onAddCard() {
+  if (widget.startDate == null || widget.endDate == null) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Please select a booking date first'),
+      ),
+    );
+    return;
+  }
+
+  if (!_formKey.currentState!.validate()) return;
+
+  BookingManager.saveBooking(
+    property: widget.property,
+    startDate: widget.startDate!,
+    endDate: widget.endDate!,
+  );
+
+  context.pop(_cardNumber.text);
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,35 +88,7 @@ class _AddCardState extends State<AddCard> {
                 SizedBox(width:16,),
                 Expanded(child:CvvTextField(label:'Cvv', text:'3134'))],),
                const SizedBox(height: 55,),
-                AppButton(text:'Add Card', onPressed:(){   if (widget.startDate == null || widget.endDate == null) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Please select a booking date first'),
-      ),
-    );
-    return;
-  }
-                  if(_formKey.currentState!.validate()) {
- final index = BookingManager.bookings.indexWhere(
-  (b) => b.property.id == widget.property.id,
-);
-
-if (index == -1) {
-  BookingManager.bookings.add(
-    BookingModel(
-      property: widget.property,
-      status: 'Waiting payment',
-      startDate: widget.startDate,
-      endDate: widget.endDate,
-    ),
-  );
-} else {
-  BookingManager.bookings[index].startDate = widget.startDate;
-  BookingManager.bookings[index].endDate = widget.endDate;
-  BookingManager.bookings[index].status = 'Waiting payment';
-}
-context.pop(_cardNumber.text);
-    }}),
+                AppButton(text:'Add Card', onPressed:_onAddCard,),
                 
             ],
           ),

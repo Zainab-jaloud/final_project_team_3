@@ -13,4 +13,39 @@ class BookingModel {
 }
 class BookingManager {
   static List<BookingModel> bookings = [];
+
+  static void saveBooking({
+    required PropertyModel property,
+    required DateTime startDate,
+    required DateTime endDate,
+  }) {
+    final index = bookings.indexWhere(
+      (b) => b.property.id == property.id,
+    );
+
+    if (index == -1) {
+      bookings.add(
+        BookingModel(
+          property: property,
+          status: 'Waiting payment',
+          startDate: startDate,
+          endDate: endDate,
+        ),
+      );
+    } else {
+      bookings[index]
+        ..startDate = startDate
+        ..endDate = endDate
+        ..status = 'Waiting payment';
+    }
+  }
+static void confirmBooking(PropertyModel property) {
+  final index = bookings.indexWhere(
+    (b) => b.property.id == property.id,
+  );
+
+  if (index != -1) {
+    bookings[index].status = 'Checkin';
+  }
+}
 }

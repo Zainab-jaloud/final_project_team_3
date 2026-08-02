@@ -73,36 +73,39 @@ SizedBox(height: 24,),
 PriceDetails(),
 SizedBox(height: 26,),
 if(_cardNumber != null)
-AppButton(text:'Confirm', onPressed:(){ 
-  
-  if (BookingManager.bookings.isNotEmpty) {
-    
-      setState(() {
-       BookingManager.bookings.last.status = 'Checkin';
+AppButton(
+  text: 'Confirm',
+  onPressed: () {
+    setState(() {
+      BookingManager.confirmBooking(widget.property);
+    });
 
-       
-      });
-    }
-     showModalBottomSheet(
+    showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-     builder: (context) =>
-    MyBottomSheet(image:AppImages.success, title:'Yey, your booking success', 
-    text: DefaultTextStyle(
+      builder: (context) => MyBottomSheet(
+        image: AppImages.success,
+        title: 'Yey, your booking success',
+        text: DefaultTextStyle(
           style: AppTextStyle.fasilitiesTextStyl.copyWith(
             fontSize: 14,
             color: Colors.grey,
           ),
           textAlign: TextAlign.center,
-          child:  Text('you have successfully booked a property,\nenjoy your property'),  
+          child: const Text(
+            'you have successfully booked a property,\nenjoy your property',
+          ),
         ),
-    
-   
-    withButton:true,buttonText:'Explore more',onPressed: () {
-        Navigator.pop(context);
-       context.go('/home');
-    },));
-    })
+        withButton: true,
+        buttonText: 'Explore more',
+        onPressed: () {
+          Navigator.pop(context);
+          context.go('/home');
+        },
+      ),
+    );
+  },
+)
 else
  SizedBox()
 ]))));}}
