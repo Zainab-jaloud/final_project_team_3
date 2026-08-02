@@ -42,17 +42,17 @@ class _AuthTextFieldState extends State<AuthTextField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start, 
       children: [
-        Text(widget.labelText, style: AppTextStyle.fieldLabelStyle),
+        Text(widget.labelText, style: AppTextStyle.fasilitiesTextStyl.copyWith(fontSize: 14)),
         SizedBox(height: 4.h),
         TextFormField(
           controller: widget.controller,
           obscureText: _obscureText, 
           validator: widget.validator,
-          style: AppTextStyle.fieldInputStyle,
+          style: AppTextStyle.optionLabelStyle.copyWith(fontSize: 14,color:AppColors.titleColor),
           onChanged: widget.onChanged,
           decoration: InputDecoration(
             hintText: widget.hintText, 
-            hintStyle: AppTextStyle.fieldHintStyle,
+            hintStyle: AppTextStyle.optionLabelStyle.copyWith(fontSize: 14,color: AppColors.inputHintColor),
             contentPadding: EdgeInsets.symmetric(
               horizontal: 14.w,
               vertical: 14.h,
@@ -86,11 +86,11 @@ class _AuthTextFieldState extends State<AuthTextField> {
             ),
             errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12.r),
-                borderSide: BorderSide(color: AppColors.resendCode, width: 1)),
+                borderSide: BorderSide(color: AppColors.redHeartColor, width: 1)),
             focusedErrorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12.r),
-                borderSide: BorderSide(color: AppColors.resendCode, width: 1)),
-            errorStyle: TextStyle(color: AppColors.resendCode, fontSize: 12.sp),
+                borderSide: BorderSide(color: AppColors.redHeartColor, width: 1)),
+            errorStyle: TextStyle(color: AppColors.redHeartColor, fontSize: 12.sp),
           ),
         ),
       ],
