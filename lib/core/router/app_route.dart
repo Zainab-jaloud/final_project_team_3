@@ -1,8 +1,11 @@
 import 'package:flutter_application/feature/home/presentation/screens/home_screen.dart';
+import 'package:flutter_application/feature/search/data/filter_selection_model.dart';
+import 'package:flutter_application/feature/search/presentation/screens/search.dart';
 import 'package:flutter_application/feature/onboarding/presentation/screens/splash_screen.dart';
 import 'package:flutter_application/feature/profile/presentation/screens/edit_profile_screen.dart';
 import 'package:flutter_application/feature/profile/presentation/screens/profile_screen.dart';
-import 'package:flutter_application/feature/auth/presentation/screens/log_in.dart';
+import 'package:flutter_application/feature/auth/presentation/screens/log_in.dart'; 
+import 'package:flutter_application/feature/search/presentation/screens/filter_results_page.dart';
 import 'package:flutter_application/feature/set_location/presentation/screens/maps.dart';
 import 'package:flutter_application/feature/set_location/presentation/screens/set_location_screen.dart';
 import 'package:flutter_application/feature/reset_password/presentation/screens/create_new_password_screen.dart';
@@ -74,8 +77,9 @@ class AppRoute {
       ),
         GoRoute(
         path: '/login',
-        builder: (context, state) => const LoginScreen(),
+        builder: (context, state) => const AuthScreen(),
       ),
+ 
        GoRoute(
         path: '/maps',
         builder: (context, state) => const MapScreen(),
@@ -112,6 +116,17 @@ class AppRoute {
         path: '/success-reset',
         builder: (context, state) => const SuccessResetScreen(),
       ), 
+                GoRoute(
+        path: '/search',
+        builder: (context, state) => const SearchScreen(),
+      ),
+
+            GoRoute(
+        path: '/filterResults',
+        builder: (context, state) { final selectionModel = state.extra as FilterSelectionModel;
+        return FilterResultsPage(selection: selectionModel);},
+      ),
+ 
 
    
      GoRoute(

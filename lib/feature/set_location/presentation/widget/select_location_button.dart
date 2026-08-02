@@ -29,7 +29,9 @@ class SelectLocationButton extends StatelessWidget {
         ),
         child: Padding(
           padding:  EdgeInsets.symmetric(vertical:12.h ),
-          child: Text(text, style:AppTextStyle.optionLabelStyle.copyWith(color:AppColors.primaryColor,fontSize: 18)),
+ 
+          child: Text(text, style:AppTextStyle.optionLabelStyle.copyWith(color: AppColors.primaryColor,fontSize: 18) ),
+ 
         ),
       ),
     );

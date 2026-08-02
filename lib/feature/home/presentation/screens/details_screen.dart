@@ -3,6 +3,7 @@ import 'package:flutter_application/core/constants/text_style.dart';
 import  'package:flutter_application/feature/home/presentation/widget/details_widget.dart';
 import 'package:flutter_application/core/constants/app_images.dart';
 import 'package:flutter_application/core/services/favorite_manager.dart';
+import 'package:flutter_application/feature/home/presentation/widget/property_more_details.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_application/core/widget/custom_app_bar.dart';
 import 'package:flutter_application/feature/home/data/model.dart';
@@ -67,7 +68,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
       );}
         ,onPressed: () {setState(() {
       FavoriteManager.toggle(widget.property);
+ 
     });}, onPageChanged: () {context.pop();},),
+ 
 
 
 
@@ -125,9 +128,11 @@ class _DetailsScreenState extends State<DetailsScreen> {
             SizedBox(height: 24,),
             PropertyInformation(widget: widget),
             SizedBox(height: 24,),
-           PropertyMoreDetails( property: widget.property,) ,
+ 
+           PropertyMoreDetails(property: widget.property,) ,
       
         PropertyDescription(property:widget.property,) ,SizedBox(height:24,),
+ 
         Text('Agent',style:AppTextStyle.optionValueStyle.copyWith(fontSize: 16)
         
           ),
@@ -149,8 +154,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
       
     bottomNavigationBar:Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24,vertical: 44),
+ 
       child: AppButton(text: 'Rent now', onPressed: () {context.push('/booking&payout',extra:{'property':widget.property,
        'cardNumber':null,});},),
+ 
     ));
   
   }

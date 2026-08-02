@@ -33,5 +33,6 @@ class AppImages {
   static String logo='assets/images/Logo.png';
   static String success='assets/images/Success.png';
   static String opps='assets/images/Opps!.png';
+ 
 }
  

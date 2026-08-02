@@ -99,7 +99,9 @@ class _NearPlacesState extends State<NearPlaces> {
              padding: const EdgeInsets.only(right:8),
              child: Container(width:35,height: 18, 
              decoration: BoxDecoration(borderRadius: BorderRadius.circular(8),color:AppColors.ratingColor),
+ 
              child: Row(spacing: 2.25,
+ 
                mainAxisAlignment: MainAxisAlignment.center,children: [SvgPicture.asset('assets/icons/Star.svg'),
                Text('${widget.properties.rating}',style:
                 AppTextStyle. optionLabelStyle.copyWith(fontSize: 10))],),

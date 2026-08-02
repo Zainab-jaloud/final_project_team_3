@@ -29,7 +29,9 @@ List<PropertyModel> recomended = [
     name: 'Ayana Homestay',
     location: 'Imogiri, Yogyakarta',
     price: '\$310',
+
     rating: 4.7, bathub: '3', bedrooms: '3', type: 'Apartement', status: 'For Rent',
+
      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. 1500s, when an unknown printer took when an unknown printer took a type',
   ),
     PropertyModel(
@@ -38,7 +40,9 @@ List<PropertyModel> recomended = [
     name: 'Bali Komang Guest',
     location: 'Nusa Penida, Bali',
     price: '\$180',
+
     rating: 4.5, bathub: '2', bedrooms: '2', type: 'Apartement', status: 'For Sale',
+
      description:'Modern property with spacious rooms, elegant interior design, and large windows that provide plenty of natural light. Located in a peaceful neighborhood close to schools, shopping centers, and public transportation.',
   ),];
 List<PropertyModel> properties = [
@@ -60,7 +64,9 @@ List<PropertyModel> properties = [
     name: 'Takatea Homestay',
     location: 'Jl. Tentara Pelajar No.47, RW.001',
     price: '\$120',
+
     rating: 4.5, bathub: '1', bedrooms: '2', type: 'Apartement', status: 'For Sale',
+
      description:'Contemporary home offering a bright open layout, premium materials, and excellent ventilation. An ideal choice for families or professionals seeking comfort and accessibility in the city.',
   ),
   PropertyModel(
@@ -69,7 +75,9 @@ List<PropertyModel> properties = [
     name: 'Batavia Apartments',
     location: 'Benhil, Jl. Bendungan Hilir Karet Tengsin, Bendungan Hilir, Tanah Abang, Central Jakarta City,',
     price: '\$120',
+
     rating: 4.5, bathub: '1', bedrooms: '1', type: 'Apartement', status: 'For Sale', 
+
     description:'Luxury property designed with modern architecture, high-quality furnishings, and a welcoming environment. Enjoy easy access to nearby attractions, entertainment, and everyday conveniences.',
   ),
 
@@ -79,7 +87,9 @@ List<PropertyModel> properties = [
     name: 'Apartement land house',
     location: 'Jl. Tentara Pelajar No.47, RW.001',
     price: '\$320',
+
     rating: 4.7, bathub: '2', bedrooms: '3', type: 'Apartement', status: 'For Sale',
+
      description:'Charming home with thoughtfully designed interiors, spacious bedrooms, and a cozy living area. Located in a prime area that combines tranquility with quick access to the city center.',
   ),
   PropertyModel(
@@ -88,7 +98,9 @@ List<PropertyModel> properties = [
     name: 'House of Mormon vv',
     location: 'Denpasar, Bali',
     price: '\$120',
+
     rating: 4.5, bathub: '2', bedrooms: '2', type: 'Apartement', status: 'For Rent', 
+
     description:'Charming home with thoughtfully designed interiors, spacious bedrooms, and a cozy living area. Located in a prime area that combines tranquility with quick access to the city center.',
   ),
   PropertyModel(
@@ -110,5 +122,17 @@ List<PropertyModel> properties = [
     rating: 4.5, bathub: '3', bedrooms: '4', type: 'Hotel', status: 'For Rent',
      description:'Modern property with spacious rooms, elegant interior design, and large windows that provide plenty of natural light. Located in a peaceful neighborhood close to schools, shopping centers, and public transportation.',
   ),
+
+
+   PropertyModel(
+    id: 10,
+    image:AppImages.house9,
+    name: 'Manhattan Hotel ',
+    location: 'Jl. Prof. DR. Satrio No.Kav.19-24, RT.7/RW.4, Lemone Sul Garda ,Province of Breescia, Italy',
+    price: '\$1230',
+    rating: 4.5, bathub: '3', bedrooms: '4', type: 'Villa', status: 'For Rent',
+     description:'Modern property with spacious rooms, elegant interior design, and large windows that provide plenty of natural light. Located in a peaceful neighborhood close to schools, shopping centers, and public transportation.',
+  ),
+
  
 ];
