@@ -167,7 +167,9 @@ class AppRoute {
       ),
            GoRoute(
         path: '/write-review',
-        builder: (context, state) => const WriteReviewScreen(),
+          builder: (context, state) {
+    final property = state.extra as PropertyModel;
+    return WriteReviewScreen(property: property);}
       ),
      
       GoRoute(

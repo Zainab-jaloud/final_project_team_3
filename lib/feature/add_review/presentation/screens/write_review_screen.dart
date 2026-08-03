@@ -7,25 +7,32 @@ import 'package:flutter_application/core/widget/custom_app_bar.dart';
 import 'package:flutter_application/feature/add_review/data/model.dart';
 import 'package:flutter_application/feature/add_review/presentation/widget/photo_upload_box.dart';
 import 'package:flutter_application/feature/add_review/presentation/widget/review_property_card.dart';
+import 'package:flutter_application/feature/home/data/model.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 
 class WriteReviewScreen extends StatefulWidget {
-  const WriteReviewScreen({super.key});
-
+  const WriteReviewScreen({super.key, required this.property});
+final PropertyModel property;
   @override
   State<WriteReviewScreen> createState() => _WriteReviewScreenState();
 }
 
 class _WriteReviewScreenState extends State<WriteReviewScreen> {
-  final ReviewPropertyModel _property =  ReviewPropertyModel(
-    name: 'Tropis Homestay',
-    address:
-        'Benhil, Jl. Bendungan Hilir Karet Tengsin, Bendungan Hilir, Tanah Abang, Central Jakarta City,',
+  late ReviewPropertyModel _property;
+
+@override
+void initState() {
+  super.initState();
+
+  _property = ReviewPropertyModel(
+    name: widget.property.name,
+    address: widget.property.location,
     dateRange: '08 Aug - 12 Aug',
-    imageAsset: AppImages.reviewPropertyPhoto,
+    imageAsset:widget.property.image,
   );
+}
 
   final TextEditingController _reviewController = TextEditingController();
   final int _maxChars = 350;
@@ -76,7 +83,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen> {
         icon1: '',
         icon2: '',
         rightIcon1: false,
-        rightIcon2: false, onPageChanged: () { (context).push('/home'); },
+        rightIcon2: false, onPageChanged: () { (context).go('/home'); },
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 24.w).copyWith(top: 16.h),

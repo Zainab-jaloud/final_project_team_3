@@ -20,7 +20,7 @@ class _MainScreenState extends State<MainScreen> {
   switch (location) {
     case '/home':
       currentIndex = 0;
-
+        break;
       case '/explore':
       currentIndex = 1;
       break;

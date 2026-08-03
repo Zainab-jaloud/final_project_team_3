@@ -25,7 +25,7 @@ class CompletedWidget extends StatelessWidget {
         ),
         child: Row(
           children: [
-             GestureDetector(onTap: () => context.push('/write-review'),
+             GestureDetector(onTap: () => context.push('/write-review',extra:properties[1]),
              child: SvgPicture.asset('assets/icons/WriteReview.svg')),
             const SizedBox(width: 16),
             Text(
