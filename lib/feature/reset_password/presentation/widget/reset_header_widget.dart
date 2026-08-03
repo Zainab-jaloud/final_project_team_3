@@ -20,7 +20,15 @@ class ResetHeaderWidget extends StatelessWidget {
       children: [
         Text(title, style: AppTextStyle.heading1),
         SizedBox(height: 8.h),
-        Text(subtitle, style: AppTextStyle.optionLabelStyle.copyWith(color: AppColors.dotColor,fontSize: 14)),
+ 
+        Text(
+          subtitle,
+          style: AppTextStyle.optionLabelStyle.copyWith(
+            color: AppColors.dotColor,
+            fontSize: 14,
+          ),
+        ),
+ 
       ],
     );
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({
@@ -35,7 +36,9 @@ final String address;
          child: Container(width:6,height: 6,
          decoration: BoxDecoration(borderRadius: BorderRadius.circular(33),
          color:AppColors.redColor),),
-       ), Center(child:SvgPicture.asset('assets/icons/Notification.svg',))],),
+       ), Center(child:GestureDetector(onTap: () {
+         
+       },child: SvgPicture.asset('assets/icons/Notification.svg',)))],),
        
       ),
      
@@ -50,7 +53,7 @@ final String address;
      decoration: BoxDecoration(border: Border.all(color:AppColors.dotColor,width: 1),
       borderRadius: BorderRadius.circular(63),color:AppColors.whiteColor),
       
-         child:Center(child: SvgPicture.asset('assets/icons/Chat.svg')),
+         child:Center(child: GestureDetector(onTap: () => context.push('/messages'),child: SvgPicture.asset('assets/icons/Chat.svg'))),
        
       ),],)    ],);
   }

@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
 import 'package:flutter_svg/svg.dart';
-
- 
 import 'package:flutter_application/feature/search/presentation/screens/fillter_bottom_sheet.dart';
 import 'package:go_router/go_router.dart';
  

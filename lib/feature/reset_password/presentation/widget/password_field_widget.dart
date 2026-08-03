@@ -31,16 +31,20 @@ class _PasswordFieldWidgetState extends State<PasswordFieldWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+ 
         Text(widget.label, style: AppTextStyle.fasilitiesTextStyl.copyWith(fontSize: 14)),
+ 
         SizedBox(height: 6.h),
         TextField(
           controller: widget.controller,
           obscureText: _obscureText,
+ 
           style: AppTextStyle.optionLabelStyle.copyWith(fontSize: 14,color:AppColors.titleColor),
           onChanged: widget.onChanged,
           decoration: InputDecoration(
             hintText: widget.hint,
             hintStyle: AppTextStyle.optionLabelStyle.copyWith(fontSize: 14,color: AppColors.inputHintColor),
+ 
             errorText: widget.errorText,
             contentPadding: EdgeInsets.symmetric(
               horizontal: 14.w,

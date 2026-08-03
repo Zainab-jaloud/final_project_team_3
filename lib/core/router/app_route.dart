@@ -1,4 +1,5 @@
 import 'package:flutter_application/feature/home/presentation/screens/home_screen.dart';
+import 'package:flutter_application/feature/messages/presentation/screens/chat_detail_screen.dart';
 import 'package:flutter_application/feature/search/data/filter_selection_model.dart';
 import 'package:flutter_application/feature/search/presentation/screens/search.dart';
 import 'package:flutter_application/feature/onboarding/presentation/screens/splash_screen.dart';
@@ -8,6 +9,7 @@ import 'package:flutter_application/feature/auth/presentation/screens/log_in.dar
 import 'package:flutter_application/feature/search/presentation/screens/filter_results_page.dart';
 import 'package:flutter_application/feature/set_location/presentation/screens/maps.dart';
 import 'package:flutter_application/feature/set_location/presentation/screens/set_location_screen.dart';
+import 'package:flutter_application/feature/messages/presentation/screens/messages_screen.dart';
 import 'package:flutter_application/feature/reset_password/presentation/screens/create_new_password_screen.dart';
 import 'package:flutter_application/feature/reset_password/presentation/screens/reset_screen.dart';
 import 'package:flutter_application/feature/reset_password/presentation/screens/success_reset_screen.dart';
@@ -25,7 +27,9 @@ import 'package:flutter_application/feature/home/presentation/screens/popular_pl
  
 class AppRoute {
   static final GoRouter pageRoute = GoRouter(
+ 
     initialLocation: '/splash',
+ 
     routes: [
       ShellRoute(
         builder: (context, state, child) {
@@ -120,6 +124,7 @@ class AppRoute {
         path: '/search',
         builder: (context, state) => const SearchScreen(),
       ),
+ 
 
             GoRoute(
         path: '/filterResults',
@@ -144,7 +149,19 @@ class AppRoute {
           return AddCard( property: data['property'] as PropertyModel,
           startDate: data['startDate'],
       endDate: data['endDate'],
-          );} )]);  
+          );} ),
+           GoRoute(
+        path: '/messages',
+        builder: (context, state) => const MessagesScreen(),
+      ),
+          
+          
+           GoRoute(
+        path: '/chatdetails',
+        builder: (context, state) => const ChatDetailScreen(name: '', imagePath: '',),
+      ),
+          
+          ]);  
    
 
 
@@ -153,5 +170,6 @@ class AppRoute {
    
     
       
+ 
 }
  

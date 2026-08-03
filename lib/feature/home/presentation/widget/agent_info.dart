@@ -3,6 +3,7 @@ import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/core/constants/app_images.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 class AgentInfo extends StatelessWidget {
   const AgentInfo({
@@ -28,11 +29,16 @@ class AgentInfo extends StatelessWidget {
          children: [
            Container(width: 36,height: 36,
            decoration: BoxDecoration(color: AppColors.svgBackground,borderRadius: BorderRadius.circular(55)),
-           child:Center(child: SvgPicture.asset('assets/icons/call.svg')),),
+           child:Center(child: GestureDetector(onTap: () {
+             
+           },
+            child: SvgPicture.asset('assets/icons/call.svg'))),),
            Container(width: 36,height: 36,
            decoration: BoxDecoration(color: AppColors.svgBackground,borderRadius: BorderRadius.circular(55)),
-           child:Center(child: SvgPicture.asset('assets/icons/Chat.svg',colorFilter: ColorFilter.mode(AppColors.secondaryColor
-           , BlendMode.srcIn),)),),
+           child:Center(child: GestureDetector(onTap: () => context.push('/chatdetails'),
+             child: SvgPicture.asset('assets/icons/Chat.svg',colorFilter: ColorFilter.mode(AppColors.secondaryColor
+             , BlendMode.srcIn),),
+           )),),
          ],
        ),
      ) 
