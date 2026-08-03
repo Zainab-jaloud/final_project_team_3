@@ -1,6 +1,6 @@
+  
 class AppImages {
   static String panal = 'assets/images/Promo.png';
-
   static String house1 = 'assets/images/house1.png';
   static String house2 = 'assets/images/house2.png';
   static String house3 = 'assets/images/house3.png';
@@ -23,6 +23,7 @@ class AppImages {
   static String map = 'assets/images/map.png';
   static String user = 'assets/images/user.png';
   static String user1 = 'assets/images/user1.png';
+ 
   static String facebook= 'assets/images/facebook.png';
   static String  instagram= 'assets/images/instagram.png';
   static String  twitter= 'assets/images/twitter.png';
@@ -33,6 +34,15 @@ class AppImages {
   static String logo='assets/images/Logo.png';
   static String success='assets/images/Success.png';
   static String opps='assets/images/Opps!.png';
+  // Notifications feature
+  static String notificationAvatarAnggela =
+      'assets/images/notification_avatar_anggela.png';
+  static String notificationAvatarJhon =
+      'assets/images/notification_avatar_jhon.png';
+  static String notificationEmptyIllustration =
+      'assets/images/notification_empty_illustration.png';
  
+  static String reviewPropertyPhoto = 'assets/images/review_property_photo.png';
 }
+ 
  

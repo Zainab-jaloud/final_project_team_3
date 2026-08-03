@@ -37,7 +37,7 @@ final String address;
          decoration: BoxDecoration(borderRadius: BorderRadius.circular(33),
          color:AppColors.redColor),),
        ), Center(child:GestureDetector(onTap: () {
-         
+         context.push('/notifications');
        },child: SvgPicture.asset('assets/icons/Notification.svg',)))],),
        
       ),

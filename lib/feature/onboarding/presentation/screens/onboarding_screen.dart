@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_application/core/widget/app_button.dart';
 import 'package:flutter_application/feature/onboarding/presentation/widget/onboarding_image_stack.dart';
 import 'package:flutter_application/feature/onboarding/presentation/widget/onboarding_page_indicator.dart';
 import 'package:flutter_application/feature/onboarding/presentation/widget/onboarding_skip_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:flutter_application/core/constants/app_color.dart';
-import 'package:flutter_application/core/widget/app_button.dart';
+  
 import 'package:go_router/go_router.dart';
 
 
@@ -127,8 +126,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   void _goToLogin() {
-   
+ 
     context.go('/login');
+ 
   }
 
   void _onNextPressed() {

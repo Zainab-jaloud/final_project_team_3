@@ -1,5 +1,8 @@
+ 
+import 'package:flutter_application/feature/add_review/presentation/screens/write_review_screen.dart';
 import 'package:flutter_application/feature/home/presentation/screens/home_screen.dart';
 import 'package:flutter_application/feature/messages/presentation/screens/chat_detail_screen.dart';
+import 'package:flutter_application/feature/notifications/presentation/screens/notifications_screen.dart';
 import 'package:flutter_application/feature/search/data/filter_selection_model.dart';
 import 'package:flutter_application/feature/search/presentation/screens/search.dart';
 import 'package:flutter_application/feature/onboarding/presentation/screens/splash_screen.dart';
@@ -72,6 +75,7 @@ class AppRoute {
       
       ],),
     GoRoute(
+ 
         path: '/splash',
         builder: (context, state) => const SplashScreen(),
       ),
@@ -79,6 +83,7 @@ class AppRoute {
         path: '/onboarding',
         builder: (context, state) => const OnboardingScreen(),
       ),
+ 
         GoRoute(
         path: '/login',
         builder: (context, state) => const AuthScreen(),
@@ -160,8 +165,15 @@ class AppRoute {
         path: '/chatdetails',
         builder: (context, state) => const ChatDetailScreen(name: '', imagePath: '',),
       ),
-          
-          ]);  
+           GoRoute(
+        path: '/write-review',
+        builder: (context, state) => const WriteReviewScreen(),
+      ),
+     
+      GoRoute(
+        path: '/notifications',
+        builder: (context, state) => const NotificationsScreen(),
+      ),     ]);  
    
 
 
@@ -172,4 +184,5 @@ class AppRoute {
       
  
 }
+ 
  
