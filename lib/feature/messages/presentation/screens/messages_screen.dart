@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/core/constants/app_images.dart';
 import 'package:flutter_application/feature/messages/presentation/screens/chat_detail_screen.dart';
 import 'package:flutter_application/feature/messages/presentation/widget/final_delete_confirmation_dialog.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -89,12 +90,12 @@ class _MessagesScreenState extends State<MessagesScreen> {
             children: [
               SizedBox(height: 12.h),
               ChatAvatarStackWidget(
-                imagePaths: const [
-                  'assets/images/Ellipse 25.png',
-                  'assets/images/Ellipse 26.png',
-                  'assets/images/Ellipse 27.png',
-                  "assets/images/Ellipse 28.png",
-                  'assets/images/Ellipse 17.png',
+                imagePaths:  [
+               AppImages.person1,
+               AppImages.person2,
+               AppImages.person3,
+               AppImages.person4,
+               AppImages.person5
                 ],
                 onAddTap: () {},
               ),

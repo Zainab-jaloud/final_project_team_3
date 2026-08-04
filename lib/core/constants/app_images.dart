@@ -43,6 +43,18 @@ class AppImages {
       'assets/images/notification_empty_illustration.png';
  
   static String reviewPropertyPhoto = 'assets/images/review_property_photo.png';
+////////////////////////////////////////////////////////////////////////////////////
+static String person1='assets/images/chatperson1.png';
+static String person2='assets/images/chatperson2.png';
+static String person3='assets/images/chatperson3.png';
+static String person4='assets/images/chatperson4.png';
+static String person5='assets/images/chatperson5.png';
+static String person6='assets/images/person6.png';
+static String person7='assets/images/person7.png';
+static String person8='assets/images/person8.png';
+static String person9='assets/images/person9.png';
+static String person10='assets/images/person10.png';
+
 }
  
  

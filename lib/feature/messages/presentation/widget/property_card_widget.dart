@@ -9,7 +9,7 @@ class PropertyCardWidget extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(16.r),
       child: Image.asset(
-        'assets/images/card.png',
+        'assets/images/Card.png',
         width: 220.w,
         fit: BoxFit.cover,
       ),

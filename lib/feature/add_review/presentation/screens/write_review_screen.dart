@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
-import 'package:flutter_application/core/constants/app_images.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
 import 'package:flutter_application/core/widget/custom_app_bar.dart';
 import 'package:flutter_application/feature/add_review/data/model.dart';
