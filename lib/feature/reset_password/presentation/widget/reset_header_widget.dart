@@ -23,8 +23,9 @@ class ResetHeaderWidget extends StatelessWidget {
         Text(
           subtitle,
           style: AppTextStyle.optionLabelStyle.copyWith(
-            color: AppColors.dotColor,
-            fontSize: 14,
+            overflow: TextOverflow.visible,
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
           ),
         ),
       ],

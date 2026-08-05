@@ -76,7 +76,6 @@ class DeleteConfirmationDialog extends StatelessWidget {
 
           SizedBox(height: 8.h),
 
-          // النص الفرعي
           Text(
             'the message will be deleted from this\ndevice',
             textAlign: TextAlign.center,
@@ -89,21 +88,19 @@ class DeleteConfirmationDialog extends StatelessWidget {
           ),
 
           SizedBox(height: 24.h),
-
-          // أزرار Cancel و Delete بمقاسات مطابقة لـ Figma
           Row(
-            mainAxisAlignment: MainAxisAlignment.center, // لتوسيط الأزرار
+            mainAxisAlignment: MainAxisAlignment.center, 
             children: [
               // زر Cancel
               SizedBox(
-                width: 135.w, // عرض محدد بدلاً من Expanded
-                height: 50.h, // تقليل الارتفاع ليصبح ناعماً مثل التصميم
+                width: 135.w, 
+                height: 50.h, 
                 child: OutlinedButton(
                   onPressed: () => Navigator.pop(context),
                   style: OutlinedButton.styleFrom(
                     backgroundColor: AppColors.primaryColor,
                     side: BorderSide.none,
-                    padding: EdgeInsets.zero, // لإلغاء البادينغ الداخلي الزائد
+                    padding: EdgeInsets.zero, 
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.r),
                     ),
@@ -120,10 +117,10 @@ class DeleteConfirmationDialog extends StatelessWidget {
                 ),
               ),
 
-              SizedBox(width: 12.w), // المسافة بين الزرين
+              SizedBox(width: 12.w), 
               // زر Delete
               SizedBox(
-                width: 135.w, // عرض محدد مطابق لزر Cancel
+                width: 135.w, 
                 height: 50.h,
                 child: ElevatedButton(
                   onPressed: () {

@@ -29,15 +29,17 @@ class SuccessResetScreen extends StatelessWidget {
                       'Success!',
                       textAlign: TextAlign.center,
                       style: AppTextStyle.optionValueStyle.copyWith(
-                        fontSize: 24,
+                        fontSize: 22,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
-                    SizedBox(height: 8.h),
+                    SizedBox(height: 15.h),
                     Text(
                       'You password has been changed. Please \nlog in again with a new password.',
                       textAlign: TextAlign.center,
                       style: AppTextStyle.optionLabelStyle.copyWith(
-                        fontSize: 14,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                   ],

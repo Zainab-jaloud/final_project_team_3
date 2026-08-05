@@ -78,6 +78,11 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                       PasswordFieldWidget(
                         label: 'Confirm Password',
                         hint: 'Password',
+                        errorText:
+                            _confirmPassword.isNotEmpty &&
+                                _confirmPassword != _newPassword
+                            ? 'Passwords do not match'
+                            : null,
                         controller: _confirmPasswordController,
                         onChanged: (value) {
                           setState(() => _confirmPassword = value);

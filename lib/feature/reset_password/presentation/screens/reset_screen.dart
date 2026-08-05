@@ -38,7 +38,7 @@ class _ResetScreenState extends State<ResetScreen> {
                       const ResetHeaderWidget(
                         title: 'Forgot Password',
                         subtitle:
-                            'Select which contact details should we use to reset your password',
+                            'Select which contact details should we use\n to reset your password',
                       ),
                       const SizedBox(height: 24),
                       ContactMethodSelectorWidget(

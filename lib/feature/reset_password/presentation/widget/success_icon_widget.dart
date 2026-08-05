@@ -8,28 +8,64 @@ class SuccessIconWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 208.w,
-      height: 208.h,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: AppColors.primaryColor.withOpacity(0.15),
-      ),
-      child: Container(
-        width: 166.w,
-        height: 166.h,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: AppColors.pagescolor, //.withOpacity(0.6),
-        ),
-        child: Center(
-          child: SvgPicture.asset(
-            'assets/icons/iconSuccess.svg',
-            width: 170.w,
-            height: 170.w,
+    return SizedBox(
+      width: 200.w,
+      height: 200.h,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Container(
+            width: 200.w,
+            height: 200.h,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: AppColors.primaryColor.withOpacity(0.12),
+            ),
           ),
-        ),
+
+          Container(
+            width: 165.w,
+            height: 165.h,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: AppColors.pagescolor,
+            ),
+          ),
+
+          Container(
+            width: 90.w,
+            height: 90.h,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(
+                  color: AppColors.primaryColor.withOpacity(0.36),
+                  blurRadius: 20.r,
+                  spreadRadius: 2.r,
+                ),
+              ],
+            ),
+          ),
+
+          SizedBox(
+            width: 180.w,
+            height: 180.h,
+            child: FittedBox(
+              fit: BoxFit.contain,
+              alignment: Alignment.center,
+              child: Transform.translate(
+                offset: Offset(0, 18.r),
+                child: SvgPicture.asset(
+                  'assets/icons/iconSuccess.svg',
+                  colorFilter: ColorFilter.mode(
+                    AppColors.primaryColor,
+                    BlendMode.srcIn,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
