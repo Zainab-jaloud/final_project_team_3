@@ -2,6 +2,8 @@ import 'package:flutter_application/feature/booking_activity/presentation/screen
 import 'package:flutter_application/feature/booking_payement/presentation/screens/add_card.dart';
 import 'package:flutter_application/feature/booking_payement/presentation/screens/booking_pay_screen.dart';
 import 'package:flutter_application/feature/home/data/model.dart';
+import 'package:flutter_application/feature/home/data/reviews_model.dart';
+import 'package:flutter_application/feature/home/presentation/screens/all_reviews_screen.dart';
 import 'package:flutter_application/feature/home/presentation/screens/details_screen.dart';
 import 'package:flutter_application/feature/home/presentation/screens/favorite_screen.dart';
 import 'package:flutter_application/feature/home/presentation/screens/home_screen.dart';
@@ -41,9 +43,12 @@ class AppRoute { static final GoRouter pageRoute = GoRouter( initialLocation: '/
       ),
      GoRoute(
             path: '/details',
-            builder: (context, state) {
-              final property = state.extra as PropertyModel;
-                return DetailsScreen(property:property);
+              builder: (context, state) {
+            final data = state.extra as Map<String, dynamic>;
+
+    final property = data['property'] as PropertyModel;
+    final reviews = data['reviews'] as List<ReviewsModel>;
+                return DetailsScreen(property:property, reviews:reviews,);
  } ),  
      GoRoute(
             path: '/booking&payout',
@@ -61,7 +66,16 @@ class AppRoute { static final GoRouter pageRoute = GoRouter( initialLocation: '/
           startDate: data['startDate'],
       endDate: data['endDate'],
           );} ),  
-   
+   GoRoute(
+  path: '/allReviews',
+  builder: (context, state) {
+    final reviews = state.extra as List<ReviewsModel>;
+
+    return AllReviewsScreen(
+      reviews: reviews,
+    );
+  },
+),
     ],
   );
 }

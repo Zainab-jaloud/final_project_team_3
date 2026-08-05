@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
 import 'package:flutter_application/core/services/favorite_manager.dart';
+import 'package:flutter_application/core/services/review_manager.dart';
 import 'package:flutter_application/feature/home/data/model.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
@@ -23,7 +24,11 @@ class _NearPlacesState extends State<NearPlaces> {
     
     return GestureDetector(
       onTap: () {
-          context.go('/details', extra: widget.properties);
+          context.go('/details',extra: {
+    'property': widget.properties,
+    'reviews': ReviewsManager.reviews,
+  },)
+;
       },
       child: Container( padding: const EdgeInsets.only(bottom:16),  
         decoration: BoxDecoration( border:   Border(

@@ -35,7 +35,7 @@ final VoidCallback ?onPageChanged;
       child: SvgPicture.asset('assets/icons/ArrowLeft.svg',width:12,height:15,))),
     ),
          
-    title:Text(title,style: AppTextStyle.heading1.copyWith(fontSize: 17)),centerTitle: true,
+    title:Text(title,style: AppTextStyle.optionValueStyle.copyWith(fontSize: 17)),centerTitle: true,
         actions: [Padding(
           padding: const EdgeInsets.only(right: 24),
           child: Row(spacing: 16,          

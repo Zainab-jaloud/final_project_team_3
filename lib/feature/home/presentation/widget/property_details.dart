@@ -14,7 +14,7 @@ final String number;
       children: [
         Text(title,style: 
           AppTextStyle.optionLabelStyle),
-        Row(spacing: 1,
+        Row(spacing:2,
           children: [icon??Text(''),Text(number,style: 
           AppTextStyle.optionValueStyle.copyWith(fontSize: 12)
         )],)
