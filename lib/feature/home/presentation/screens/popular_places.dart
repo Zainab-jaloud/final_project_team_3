@@ -3,7 +3,7 @@ import 'package:flutter_application/core/widget/custom_app_bar.dart';
 import 'package:flutter_application/feature/home/data/model.dart';
 import 'package:flutter_application/feature/home/presentation/widget/near_places.dart';
 import 'package:go_router/go_router.dart';
- 
+
  
 
 class PopularPlaces extends StatefulWidget {
@@ -17,9 +17,7 @@ class _PopularPlacesState extends State<PopularPlaces> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
- 
-      appBar: CustomAppBar(title: 'Popular', icon1:'', icon2: '', rightIcon1:false, rightIcon2:false, onPageChanged: () {(context).pop();},),
- 
+   appBar: CustomAppBar(title: 'Popular', icon1:'', icon2: '', rightIcon1:false, rightIcon2:false, onPageChanged: () {(context).pop();},),
       body: SingleChildScrollView(
         child: Padding(padding:EdgeInsets.all(24),
         child:Column(
@@ -31,7 +29,7 @@ class _PopularPlacesState extends State<PopularPlaces> {
                 setState(() {
                 
               }); },);}, 
-              separatorBuilder: (BuildContext context, int index) { return SizedBox(height: 8,); },),
+              separatorBuilder: (BuildContext context, int index) { return SizedBox(height:15); },),
           ],
         ),),
       ),

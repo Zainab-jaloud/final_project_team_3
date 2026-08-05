@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
 import 'package:flutter_application/core/services/favorite_manager.dart';
+import 'package:flutter_application/core/services/review_manager.dart';
 import 'package:flutter_application/feature/home/data/model.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
@@ -23,9 +24,13 @@ class _NearPlacesState extends State<NearPlaces> {
     
     return GestureDetector(
       onTap: () {
-          context.push('/details', extra: widget.properties);
+          context.go('/details',extra: {
+    'property': widget.properties,
+    'reviews': ReviewsManager.reviews,
+  },)
+;
       },
-      child: Container( padding: const EdgeInsets.only(bottom: 12),  
+      child: Container( padding: const EdgeInsets.only(bottom:16),  
         decoration: BoxDecoration( border:   Border(
          bottom: BorderSide(
            color: AppColors.borderColor,
@@ -97,14 +102,15 @@ class _NearPlacesState extends State<NearPlaces> {
              
            Padding(
              padding: const EdgeInsets.only(right:8),
-             child: Container(width:35,height: 18, 
+             child: Container(width:38,height:20, 
+              // margin: EdgeInsets.all(),
              decoration: BoxDecoration(borderRadius: BorderRadius.circular(8),color:AppColors.ratingColor),
  
              child: Row(spacing: 2.25,
  
                mainAxisAlignment: MainAxisAlignment.center,children: [SvgPicture.asset('assets/icons/Star.svg'),
                Text('${widget.properties.rating}',style:
-                AppTextStyle. optionLabelStyle.copyWith(fontSize: 10))],),
+                AppTextStyle. heading1.copyWith(fontSize: 11))],),
              ),
            )
            ],

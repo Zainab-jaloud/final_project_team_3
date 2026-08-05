@@ -23,6 +23,8 @@ import 'package:flutter_application/feature/booking_activity/presentation/screen
 import 'package:flutter_application/feature/booking_payement/presentation/screens/add_card.dart';
 import 'package:flutter_application/feature/booking_payement/presentation/screens/booking_pay_screen.dart';
 import 'package:flutter_application/feature/home/data/model.dart';
+import 'package:flutter_application/feature/home/data/reviews_model.dart';
+import 'package:flutter_application/feature/home/presentation/screens/all_reviews_screen.dart';
 import 'package:flutter_application/feature/home/presentation/screens/details_screen.dart';
 import 'package:flutter_application/feature/home/presentation/screens/favorite_screen.dart';
 import 'package:flutter_application/feature/home/presentation/screens/main_screen.dart';
@@ -99,10 +101,14 @@ class AppRoute {
       ),
 
         GoRoute(
-            path: '/details',
+            path: '/details', 
             builder: (context, state) {
-              final property = state.extra as PropertyModel;
-                return DetailsScreen(property:property);
+            final data = state.extra as Map<String, dynamic>;
+
+    final property = data['property'] as PropertyModel;
+    final reviews = data['reviews'] as List<ReviewsModel>;
+                return DetailsScreen(property:property, reviews:reviews,);
+ 
 
  } ), 
   GoRoute(
@@ -139,6 +145,7 @@ class AppRoute {
  
 
    
+ 
      GoRoute(
             path: '/booking&payout',
             builder: (context, state) {
@@ -154,6 +161,7 @@ class AppRoute {
           return AddCard( property: data['property'] as PropertyModel,
           startDate: data['startDate'],
       endDate: data['endDate'],
+
           );} ),
            GoRoute(
         path: '/messages',
@@ -175,16 +183,30 @@ class AppRoute {
       GoRoute(
         path: '/notifications',
         builder: (context, state) => const NotificationsScreen(),
-      ),     ]);  
+      ),  
+      
+             
+   GoRoute(
+  path: '/allReviews',
+  builder: (context, state) {
+    final reviews = state.extra as List<ReviewsModel>;
+
+    return AllReviewsScreen(
+      reviews: reviews,
+    );
+  },
+),   ]);  
    
 
 
  
       
    
+
+    
     
       
+
+ 
  
 }
- 
- 

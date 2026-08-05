@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
 import 'package:flutter_application/core/services/favorite_manager.dart';
+import 'package:flutter_application/core/services/review_manager.dart';
 import 'package:flutter_application/feature/home/data/model.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
@@ -21,9 +22,14 @@ class _PlaceCardState extends State<PlaceCard> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-    context.push('/details', extra: widget.recomended);
+    context.go('/details', 
+      extra: {
+    'property': widget.recomended,
+    'reviews': ReviewsManager.reviews,
   },
-      child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),height: 164,width: 224,child:
+    );},
+  
+       child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),height: 164,width: 224,child:
       
        Stack(
        children: [Positioned.fill(
@@ -99,7 +105,7 @@ class _PlaceCardState extends State<PlaceCard> {
            child:Container(  padding: EdgeInsets.symmetric(horizontal: 12, vertical:6),
           alignment: Alignment.center,decoration: BoxDecoration(color:AppColors.whiteColor,borderRadius: BorderRadius.circular(8)),
             child:  Text.rich(TextSpan(children: [TextSpan(text:widget.recomended.price,style: 
-           AppTextStyle.optionLabelStyle.copyWith(fontSize: 12,color: AppColors.secondaryColor)),
+           AppTextStyle.heading1.copyWith(fontSize: 12,color: AppColors.secondaryColor)),
             TextSpan(text:'/month',
             style: AppTextStyle.optionLabelStyle.copyWith(fontSize: 10))])
             ),

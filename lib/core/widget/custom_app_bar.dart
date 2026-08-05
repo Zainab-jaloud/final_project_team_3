@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/core/constants/app_color.dart';
+import 'package:flutter_application/core/constants/text_style.dart';
 import 'package:flutter_svg/svg.dart';
  
  
@@ -42,10 +42,7 @@ final VoidCallback ?onPageChanged;
       child: SvgPicture.asset('assets/icons/ArrowLeft.svg',width:12,height:15,))),
     ),
          
-    title:Text(title,style: TextStyle(fontFamily:'Inter',
-        fontSize: 16,
-        fontWeight: FontWeight.w600,
-        color: AppColors.titleColor),),centerTitle: true,
+    title:Text(title,style: AppTextStyle.optionValueStyle.copyWith(fontSize: 17)),centerTitle: true,
         actions: [Padding(
           padding: const EdgeInsets.only(right: 24),
           child: Row(spacing: 16,          

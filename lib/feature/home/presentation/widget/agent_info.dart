@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/core/constants/app_images.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
@@ -12,7 +13,7 @@ class AgentInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(width: 327,height: 52,
+    return SizedBox(width: 327.sw,height: 52,
     child: Row(children: [
       Container(width: 52,height: 52,decoration: BoxDecoration(borderRadius: BorderRadius.circular(52)),
       child: ClipRRect(borderRadius: BorderRadius.circular(52),child: Image.asset(AppImages.agent,fit: BoxFit.cover,),),),

@@ -71,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
       Placemark place = placemarks.first;
 
       setState(() {
-        address = "${place.locality}, ${place.country}";
+        address = "${place.country}";
       });
     } catch (e) {
     // ignore: avoid_print
@@ -103,7 +103,7 @@ MainTitles(title:'Nearby', onTap: (){}),
 SizedBox(height: 16,),
  SizedBox(width: 496,height: 160,
    child: GridView.count(crossAxisCount:2,scrollDirection: Axis.horizontal,mainAxisExtent:240,
-   mainAxisSpacing: 28,crossAxisSpacing: 12,
+   mainAxisSpacing:30,
    children: [
     NearPlaces(isPopular: false, properties: properties[1], onChange: () {},),
     NearPlaces(isPopular: false, properties: properties[3], onChange: () {  },),

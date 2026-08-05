@@ -49,7 +49,9 @@ class _BookingPayOutScreenState extends State<BookingPayOutScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: CustomAppBar(title:'Booking', icon1:'', icon2:'', rightIcon1:false, rightIcon2:false, onPageChanged: () { (context).pop(); },),
+
 body: SingleChildScrollView(child: Padding(
   padding:EdgeInsets.all(24),
   child: Column(

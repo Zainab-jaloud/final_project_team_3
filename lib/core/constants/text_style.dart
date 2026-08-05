@@ -28,7 +28,72 @@ class AppTextStyle {
   static TextStyle heading1 = TextStyle(
     fontSize: 24.sp,
     fontWeight: FontWeight.w700,
-
-    color: AppColors.titleColor,
+ fontFamily: 'Inter',
+    color:AppColors.titleColor,
   );
+ static TextStyle optionValueStyle1 = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w800,
+    color: AppColors.titleColor,
+    fontFamily: 'Inter'
+ 
+  );
+
+///////////////////////// 
+ 
+ 
+
+   
+
+  // static TextStyle resendActionStyle = TextStyle(
+  //   fontSize: 14.sp,
+  //   fontWeight: FontWeight.w600,
+  // );
+  // static TextStyle fieldLabelStyle = TextStyle(
+  //   fontSize: 14.sp,
+  //   fontWeight: FontWeight.w500,
+  //   // color: const Color(0xFF344054),
+ 
+  //   color: AppColors.titleColor,
+  // );
+
+ 
+
+  // static TextStyle resendPromptStyle = TextStyle(
+  //   fontSize: 14.sp,
+  //   fontFamily: 'Inter',
+  //   fontWeight: FontWeight.w400,
+  //   color: AppColors.titleColor,
+  // );
+
+  
+/////////////////////////////////////////////////////
+  // static TextStyle fieldInputStyle = TextStyle(
+  //   fontSize: 14.sp,
+  //   fontWeight: FontWeight.w400,
+ 
+  //   fontFamily: 'Inter',
+ 
+ 
+  //   color: AppColors.titleColor,
+ 
+  // );
+
+  // static TextStyle fieldHintStyle = TextStyle(
+  //   fontSize: 14.sp,
+  //   fontWeight: FontWeight.w400,
+ 
+  //   fontFamily: 'Inter', 
+  //   color: AppColors.inputHintColor,
+  // );
+
+  // static TextStyle fieldLabelStyleAuth = TextStyle(
+  //   fontSize: 14.sp,
+  //   fontWeight: FontWeight.w600,
+  //   fontFamily: 'Inter', 
+  //   color:  AppColors.fieldlabel,
+  // );
+
+  
+
 }

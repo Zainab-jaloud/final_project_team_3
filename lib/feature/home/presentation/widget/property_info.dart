@@ -19,7 +19,7 @@ class PropertyInformation extends StatelessWidget {
         children: [
           Text(widget.property.name,style: AppTextStyle.optionValueStyle.copyWith(fontSize:20)
         ),
-          Text.rich(TextSpan(children: [TextSpan(text:widget.property.price,style:AppTextStyle.optionLabelStyle.copyWith(fontSize: 14,color: AppColors.secondaryColor) 
+          Text.rich(TextSpan(children: [TextSpan(text:widget.property.price,style:AppTextStyle.optionValueStyle1.copyWith(fontSize: 14,color: AppColors.secondaryColor) 
          ),TextSpan(text:'/month',
                 style:AppTextStyle.optionLabelStyle)])),
         ],
@@ -30,7 +30,7 @@ class PropertyInformation extends StatelessWidget {
         SizedBox(width: 327,
       
           child: Text(widget.property.location,style:AppTextStyle.optionLabelStyle.copyWith(fontSize: 14)
-        ,maxLines: 3,),
+        ,maxLines:1,overflow: TextOverflow.ellipsis,),
         ),
       ],
     )]);

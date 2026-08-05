@@ -24,7 +24,8 @@ final DateTime? endDate;
       
   length: 3,
   child: Scaffold(
-     appBar: CustomAppBar(title:'My Booking', onPageChanged:()=>(context).push('/home'),icon1:'', icon2:'', rightIcon1:false, rightIcon2:false),
+   appBar: CustomAppBar(title:'My Booking', icon1:'', icon2:'', rightIcon1:false, rightIcon2:false, onPageChanged: () {
+      context.go('/home');},),
     body: 
     Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24,vertical: 8),

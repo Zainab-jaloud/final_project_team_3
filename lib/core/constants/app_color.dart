@@ -19,18 +19,11 @@ class AppColors {
   static Color inputHintColor = const Color(0xFF98A2B3);
    static Color fieldlabel=Color(0xFF344054);
   static Color green = Color(0xFF34D399);
+  static Color emptyStar=Color(0xFFFEDF89);
   
-  // static Color unselectedBorderColor = const Color(0xFFD2D6DB);
-  // static Color unselectedTextColor = const Color(0xFF9DA4AE);
   
-
- 
-
-  // static Color unselectedTextColor2 = Color(0xFFE5E7EB);
-
-  //color: Color(0XFF9DA4AE),
-  //Color(0xFF101828),
  
 }
+ 
 
  
