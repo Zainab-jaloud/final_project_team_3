@@ -21,7 +21,7 @@ class _PlaceCardState extends State<PlaceCard> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-    context.push('/details', extra: widget.recomended);
+    context.go('/details', extra: widget.recomended);
   },
       child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),height: 164,width: 224,child:
       

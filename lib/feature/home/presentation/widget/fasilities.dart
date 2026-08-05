@@ -17,7 +17,7 @@ final String name;
       color:AppColors.svgBackground,borderRadius: BorderRadius.circular(8)
     ),
     child: Row(spacing: 4,
-      children: [SvgPicture.asset(icon),Text(name,maxLines: 1,style:AppTextStyle.fasilitiesTextStyl 
+      children: [SvgPicture.asset(icon,height: 16,),Text(name,maxLines: 1,style:AppTextStyle.fasilitiesTextStyl 
       ,
           )],),
     );

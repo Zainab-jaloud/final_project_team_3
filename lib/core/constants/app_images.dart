@@ -1,6 +1,5 @@
 class AppImages {
   static String panal = 'assets/images/Promo.png';
-
   static String house1 = 'assets/images/house1.png';
   static String house2 = 'assets/images/house2.png';
   static String house3 = 'assets/images/house3.png';

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
+import 'package:flutter_application/core/services/review_manager.dart';
 import  'package:flutter_application/feature/home/presentation/widget/details_widget.dart';
 import 'package:flutter_application/core/constants/app_images.dart';
 import 'package:flutter_application/core/services/favorite_manager.dart';
@@ -12,20 +13,9 @@ import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class DetailsScreen extends StatefulWidget {
-     DetailsScreen({super.key, required this.property});
+  const   DetailsScreen({super.key, required this.property});
   final PropertyModel property;
-final List reviews = [
-  {
-    'name': 'Theresa Webb',
-    'comment': 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. 1500s,',
-    'image': AppImages.user,
-  },
-  {
-    'name': 'Annette Black',
-     'comment': 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. 1500s,  ',
-    'image': AppImages.user1,
-  },
-];
+
   @override
   State<DetailsScreen> createState() => _DetailsScreenState();
 }
@@ -67,7 +57,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
       );}
         ,onPressed: () {setState(() {
       FavoriteManager.toggle(widget.property);
-    });},),
+    });}, onPageChanged: () { context.go('/home'); },),
 
 
 
@@ -88,11 +78,14 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         });
                       },
                       itemBuilder: (context, index) {
-                        return ClipRRect(
-                          borderRadius: BorderRadius.circular(24),
-                          child: Image.asset(
-                            images[index],
-                            fit: BoxFit.cover,
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 4),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(17),
+                            child: Image.asset(
+                              images[index],
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         );
                       },
@@ -136,13 +129,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 SizedBox(height: 24,),
                 Text('Location & Public Fasilities',style:AppTextStyle.optionValueStyle.copyWith(fontSize: 16)
         
-        ),  
+        ),   SizedBox(height: 16,),
      PublicFasilities(fasilities:fasilities),  SizedBox(height: 16,),
      MapLocation(),
      SizedBox(height: 24,),
      MainTitles(title:'Reviews 152', onTap:(){}),
      SizedBox(height:16,),
-     ReviewsList(widget: widget)
+     ReviewsList(widget: widget,  reviews: ReviewsManager.reviews,)
      ])
           ,),
         ),

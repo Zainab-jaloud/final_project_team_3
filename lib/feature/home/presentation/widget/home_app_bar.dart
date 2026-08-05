@@ -7,7 +7,7 @@ class HomeAppBar extends StatelessWidget {
   const HomeAppBar({
     super.key, required this.address,
   });
-final String address;
+final String ?address;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ final String address;
          ],
        ), SizedBox(height: 4,),
        Row(children: [SvgPicture.asset('assets/icons/Location1.svg'),SizedBox(width:7.5,),
-       Text(address,style:AppTextStyle.optionValueStyle.copyWith(fontSize: 16)
+       Text(address??'Yogyakarta, Ind',style:AppTextStyle.optionValueStyle.copyWith(fontSize: 16),maxLines:1,
         )],)
       ],
     ),

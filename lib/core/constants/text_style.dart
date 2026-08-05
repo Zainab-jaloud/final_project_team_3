@@ -27,10 +27,16 @@ fontSize: 12,
   static TextStyle heading1 = TextStyle(
     fontSize: 24.sp,
     fontWeight: FontWeight.w700,
- 
+ fontFamily: 'Inter',
     color:AppColors.titleColor,
   );
-
+ static TextStyle optionValueStyle1 = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w800,
+    color: AppColors.titleColor,
+    fontFamily: 'Inter'
+ 
+  );
 
 ///////////////////////// 
 

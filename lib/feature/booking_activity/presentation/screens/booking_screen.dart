@@ -8,6 +8,7 @@ import 'package:flutter_application/feature/booking_activity/presentation/widget
 import 'package:flutter_application/feature/booking_activity/presentation/widget/status_widget.dart';
 import 'package:flutter_application/feature/booking_payement/data/my_booking_model.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 class MyBooking extends StatelessWidget {
@@ -22,7 +23,8 @@ final DateTime? endDate;
       
   length: 3,
   child: Scaffold(
-     appBar: CustomAppBar(title:'My Booking', icon1:'', icon2:'', rightIcon1:false, rightIcon2:false),
+     appBar: CustomAppBar(title:'My Booking', icon1:'', icon2:'', rightIcon1:false, rightIcon2:false, onPageChanged: () {
+      context.go('/home');},),
     body: 
     Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24,vertical: 8),
