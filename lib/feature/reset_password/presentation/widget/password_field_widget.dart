@@ -53,7 +53,7 @@ class _PasswordFieldWidgetState extends State<PasswordFieldWidget> {
             errorText: widget.errorText,
             contentPadding: EdgeInsets.symmetric(
               horizontal: 14.w,
-              vertical: 14.h,
+              vertical: 18.h,
             ),
 
             suffixIcon: IconButton(

@@ -39,7 +39,7 @@ class SuccessIconWidget extends StatelessWidget {
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
-                  color: AppColors.primaryColor.withOpacity(0.36),
+                  color: AppColors.locationColor.withOpacity(0.60),
                   blurRadius: 20.r,
                   spreadRadius: 2.r,
                 ),
