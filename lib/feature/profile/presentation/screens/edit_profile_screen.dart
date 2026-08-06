@@ -152,7 +152,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               hasError: _dobError,
               onTap: _pickDate,
             ),
-            SizedBox(height: 32.h),
+            SizedBox(height: 64.h),
             AppButton(
               text: 'Save Change',
               onPressed: _onSaveChange,

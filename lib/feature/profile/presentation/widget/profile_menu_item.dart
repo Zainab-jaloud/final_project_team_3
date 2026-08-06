@@ -38,7 +38,7 @@ class ProfileMenuItem extends StatelessWidget {
                 label,
                 style: TextStyle(
                   fontFamily: 'Inter',
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.w600,
                   fontSize: 12.sp,
                   height: 18 / 12,
                   color: AppColors.titleColor,
@@ -47,7 +47,7 @@ class ProfileMenuItem extends StatelessWidget {
             ),
             Icon(
               Icons.chevron_right,
-              size: 24.sp,
+              size: 28.sp,
               color: AppColors.dotColor,
             ),
           ],

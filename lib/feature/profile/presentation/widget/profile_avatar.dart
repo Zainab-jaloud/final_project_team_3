@@ -16,16 +16,16 @@ class ProfileAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 100.w,
-      height: 100.h,
+      width: 100.r,
+      height: 100.r,
       child: Stack(
         clipBehavior: Clip.none,
         children: [
           ClipOval(
             child: Image.asset(
               imagePath,
-              width: 100.w,
-              height: 100.h,
+              width: 100.r,
+              height: 100.r,
               fit: BoxFit.cover,
             ),
           ),
@@ -35,8 +35,8 @@ class ProfileAvatar extends StatelessWidget {
             child: GestureDetector(
               onTap: onCameraTap,
               child: Container(
-                width: 24.w,
-                height: 24.h,
+                width: 28.r,
+                height: 28.r,
                 decoration:  BoxDecoration(
                   color: AppColors.primaryColor,
                   shape: BoxShape.circle,
@@ -44,8 +44,8 @@ class ProfileAvatar extends StatelessWidget {
                 child: Center(
                   child: SvgPicture.asset(
                     'assets/icons/ic_camera.svg',
-                    width: 16.w,
-                    height: 16.h,
+                    width: 18.r,
+                    height: 18.r,
                   ),
                 ),
               ),
