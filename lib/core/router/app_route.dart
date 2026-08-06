@@ -8,7 +8,7 @@ import 'package:go_router/go_router.dart';
 
 class AppRoute {
   static final GoRouter pageRoute = GoRouter(
-   // initialLocation: '/messages',
+    //initialLocation: '/messages',
     initialLocation: '/reset-password',
     routes: [
       GoRoute(path: '/home', builder: (context, state) => const HomeScreen()),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
+import 'package:flutter_application/core/widget/custom_app_bar.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_application/core/widget/app_button.dart';
 import '../widget/reset_header_widget.dart';
@@ -19,10 +20,13 @@ class _ResetScreenState extends State<ResetScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.pagescolor,
-      appBar: AppBar(
-        backgroundColor: AppColors.pagescolor,
-        elevation: 0,
-        leading: BackButton(color: AppColors.titleColor),
+      appBar: CustomAppBar(
+        title: '',
+        icon1: '',
+        icon2: '',
+        rightIcon1: false,
+        rightIcon2: false,
+        onPageChanged: () => Navigator.pop(context),
       ),
       body: SafeArea(
         child: Padding(

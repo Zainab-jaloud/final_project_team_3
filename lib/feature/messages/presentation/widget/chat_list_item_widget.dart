@@ -89,7 +89,7 @@ class _ChatListItemWidgetState extends State<ChatListItemWidget> {
             transform: Matrix4.translationValues(_dragExtent, 0, 0),
             color: AppColors.pagescolor,
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 10.h),
+              padding: EdgeInsets.only(top: 10.h, bottom: 18.h),
               child: Row(
                 children: [
                   CircleAvatar(
@@ -144,7 +144,7 @@ class _ChatListItemWidgetState extends State<ChatListItemWidget> {
       onTap: onTap,
       child: Container(
         width: 55.w,
-        height: 72.h,
+        height: 76.h,
         color: backgroundColor,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

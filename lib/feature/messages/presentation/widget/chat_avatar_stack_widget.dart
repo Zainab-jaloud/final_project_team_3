@@ -15,14 +15,14 @@ class ChatAvatarStackWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 56.w,
+      height: 60.w,
       child: Row(
         children: [
           GestureDetector(
             onTap: onAddTap,
             child: Container(
-              width: 54.w,
-              height: 54.h,
+              width: 57.w,
+              height: 57.h,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: AppColors.secondaryColor,
@@ -37,7 +37,7 @@ class ChatAvatarStackWidget extends StatelessWidget {
             height: 40.h,
             color: AppColors.unselectedTextColor,
           ),
-          SizedBox(width: 10.w),
+          SizedBox(width: 9),
           Expanded(
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
@@ -49,13 +49,14 @@ class ChatAvatarStackWidget extends StatelessWidget {
                     padding: EdgeInsets.all(2.w),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
+                      color: AppColors.primaryColor,
                       border: Border.all(
                         color: AppColors.primaryColor,
-                        width: 2,
+                        width: 0.5,
                       ),
                     ),
                     child: CircleAvatar(
-                      radius: 20.r,
+                      radius: 25.r,
                       backgroundImage: AssetImage(imagePaths[index]),
                     ),
                   ),

@@ -106,7 +106,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              SizedBox(height: 8.h),
+              SizedBox(height: 15),
               Expanded(
                 child: ListView.separated(
                   itemCount: chats.length,
@@ -114,7 +114,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
                     padding: EdgeInsets.only(left: 60.w),
                     child: Divider(
                       color: AppColors.unselectedBorderColor,
-                      height: 1,
+                      height: 2,
                     ),
                   ),
                   itemBuilder: (context, index) {
