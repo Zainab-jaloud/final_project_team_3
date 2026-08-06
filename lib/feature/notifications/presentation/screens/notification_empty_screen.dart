@@ -5,6 +5,7 @@ import 'package:flutter_application/core/widget/custom_app_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_application/core/constants/app_images.dart';
+import 'package:go_router/go_router.dart';
 
 class NotificationEmptyScreen extends StatelessWidget {
   const NotificationEmptyScreen({super.key});
@@ -18,7 +19,7 @@ class NotificationEmptyScreen extends StatelessWidget {
         icon1: '',
         icon2: '',
         rightIcon1: false,
-        rightIcon2: false,
+        rightIcon2: false, onPageChanged: () {context.pop();},
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.w),

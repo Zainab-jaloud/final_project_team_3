@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/core/constants/app_color.dart';
+import 'package:flutter_application/core/constants/text_style.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
+ 
+ 
+ 
 
 // ignore: must_be_immutable
 class CustomAppBar extends StatelessWidget   implements PreferredSizeWidget {
@@ -14,8 +16,11 @@ class CustomAppBar extends StatelessWidget   implements PreferredSizeWidget {
     required this.icon2,
     required this.rightIcon1,
     required this.rightIcon2, this.onTap, this.onPressed,
+ 
+    required this.onPageChanged,
   });
-
+final VoidCallback ?onPageChanged;
+ 
   final String title;
   final String icon1;
   final String icon2;
@@ -30,15 +35,14 @@ class CustomAppBar extends StatelessWidget   implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar( leading: Padding(
       padding: const EdgeInsets.all(18),
-      child: InkWell(onTap: () =>(context).pop(),
+ 
+      child: InkWell(onTap:onPageChanged,
+ 
       child: SizedBox(width:24,height: 24,
       child: SvgPicture.asset('assets/icons/ArrowLeft.svg',width:12,height:15,))),
     ),
          
-    title:Text(title,style: TextStyle(fontFamily:'Inter',
-        fontSize: 16,
-        fontWeight: FontWeight.w600,
-        color: AppColors.titleColor),),centerTitle: true,
+    title:Text(title,style: AppTextStyle.optionValueStyle.copyWith(fontSize: 17)),centerTitle: true,
         actions: [Padding(
           padding: const EdgeInsets.only(right: 24),
           child: Row(spacing: 16,          

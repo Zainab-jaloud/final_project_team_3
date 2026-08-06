@@ -20,6 +20,14 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return  MaterialApp.router(debugShowCheckedModeBanner: false,
          theme: ThemeData(
+           appBarTheme: const AppBarTheme(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      scrolledUnderElevation: 0, 
+      surfaceTintColor: Colors.transparent,
+      shadowColor: Colors.transparent,
+      // foregroundColor: Colors.black, 
+    ),
     scaffoldBackgroundColor: AppColors.pagescolor,),
          routerConfig: AppRoute.pageRoute,);});
        
