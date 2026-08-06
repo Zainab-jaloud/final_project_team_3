@@ -65,7 +65,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
         elevation: 0,
         leading: IconButton(
           icon: SvgPicture.asset(
-            'assets/icons/Arrow - Left.svg',
+            'assets/icons/ArrowLeft.svg',
             width: 24.w,
             height: 24.w,
           ),
@@ -116,8 +116,8 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
             onTap: () {},
             child: SvgPicture.asset(
               'assets/icons/phone.svg',
-              width: 36.w,
-              height: 36.w,
+              width: 38.w,
+              height: 38.h,
             ),
           ),
           SizedBox(width: 10.w),
@@ -150,7 +150,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                           style: AppTextStyle.optionValueStyle,
                         ),
                       ),
-                      SizedBox(height: 12.h),
+                      SizedBox(height: 16),
                       Align(
                         alignment: Alignment.centerRight,
                         child: PropertyCardWidget(),

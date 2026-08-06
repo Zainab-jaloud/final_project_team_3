@@ -89,18 +89,18 @@ class DeleteConfirmationDialog extends StatelessWidget {
 
           SizedBox(height: 24.h),
           Row(
-            mainAxisAlignment: MainAxisAlignment.center, 
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // زر Cancel
               SizedBox(
-                width: 135.w, 
-                height: 50.h, 
+                width: 135.w,
+                height: 50.h,
                 child: OutlinedButton(
                   onPressed: () => Navigator.pop(context),
                   style: OutlinedButton.styleFrom(
                     backgroundColor: AppColors.primaryColor,
                     side: BorderSide.none,
-                    padding: EdgeInsets.zero, 
+                    padding: EdgeInsets.zero,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.r),
                     ),
@@ -117,10 +117,10 @@ class DeleteConfirmationDialog extends StatelessWidget {
                 ),
               ),
 
-              SizedBox(width: 12.w), 
+              SizedBox(width: 12.w),
               // زر Delete
               SizedBox(
-                width: 135.w, 
+                width: 135.w,
                 height: 50.h,
                 child: ElevatedButton(
                   onPressed: () {

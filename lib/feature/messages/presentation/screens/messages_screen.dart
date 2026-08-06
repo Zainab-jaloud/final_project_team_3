@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/core/widget/custom_app_bar.dart';
 import 'package:flutter_application/feature/messages/presentation/screens/chat_detail_screen.dart';
 import 'package:flutter_application/feature/messages/presentation/widget/final_delete_confirmation_dialog.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -51,35 +52,14 @@ class _MessagesScreenState extends State<MessagesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.pagescolor,
-      appBar: AppBar(
-        backgroundColor: AppColors.pagescolor,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: AppColors.titleColor),
-          onPressed: () => Navigator.pop(context),
-        ),
-        centerTitle: true,
-        title: Text(
-          'Message',
-          style: AppTextStyle.optionValueStyle.copyWith(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        actions: [
-          Padding(
-            padding: EdgeInsets.only(right: 16.w),
-            child: SvgPicture.asset(
-              'assets/icons/Search.svg',
-              width: 22.w,
-              height: 22.w,
-              colorFilter: ColorFilter.mode(
-                AppColors.titleColor,
-                BlendMode.srcIn,
-              ),
-            ),
-          ),
-        ],
+      appBar: CustomAppBar(
+        title: 'Message',
+        icon1: 'assets/icons/Search.svg',
+        icon2: '',
+        rightIcon1: true,
+        rightIcon2: false,
+        onTap: () {},
+        onPageChanged: () => Navigator.pop(context),
       ),
       body: SafeArea(
         child: Padding(
@@ -98,7 +78,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
                 ],
                 onAddTap: () {},
               ),
-              SizedBox(height: 16.h),
+              SizedBox(height: 16),
               Text(
                 'All Message',
                 style: AppTextStyle.fasilitiesTextStyl.copyWith(
@@ -106,7 +86,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              SizedBox(height: 15),
+              SizedBox(height: 16),
               Expanded(
                 child: ListView.separated(
                   itemCount: chats.length,

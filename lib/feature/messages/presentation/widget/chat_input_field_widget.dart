@@ -58,8 +58,8 @@ class ChatInputFieldWidget extends StatelessWidget {
         GestureDetector(
           onTap: onSendTap,
           child: Container(
-            width: 44.w,
-            height: 44.w,
+            width: 50.w,
+            height: 50.w,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: AppColors.primaryColor,
@@ -67,8 +67,8 @@ class ChatInputFieldWidget extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.all(12.w),
               child: SvgPicture.asset(
-                width: 23.w,
-                height: 23.h,
+                width: 25.w,
+                height: 25.h,
                 'assets/icons/Send.svg',
                 colorFilter: const ColorFilter.mode(
                   Colors.white,
