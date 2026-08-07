@@ -4,6 +4,7 @@ import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
 import 'package:flutter_application/feature/booking_activity/presentation/widget/status_widget.dart';
 import 'package:flutter_application/feature/home/data/model.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CompletedWidget extends StatelessWidget {
@@ -24,7 +25,7 @@ class CompletedWidget extends StatelessWidget {
         ),
         child: Row(
           children: [
-             SvgPicture.asset('assets/icons/WriteReview.svg'),
+             SvgPicture.asset('assets/icons/WriteReview.svg',width:21.w,height: 21.h,),
             const SizedBox(width: 16),
             Text(
               'Write review',

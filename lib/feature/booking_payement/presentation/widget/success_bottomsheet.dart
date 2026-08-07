@@ -34,7 +34,7 @@ VoidCallback ?onPressed;
           const SizedBox(height:68),
               Image.asset(image,width: 208.w,height: 208.w,),
             const SizedBox(height: 48,),
-            Text(title,style:AppTextStyle.optionValueStyle.copyWith(fontSize: 20),),
+            Text(title,style:AppTextStyle.optionValueStyle.copyWith(fontSize: 20,color:Colors.black),),
             SizedBox(height: 16,),
             text,
             SizedBox(height: 48,),

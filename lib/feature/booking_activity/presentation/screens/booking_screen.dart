@@ -56,7 +56,7 @@ final DateTime? endDate;
       ],
         ),
       ),
-      SizedBox(height: 32,),
+      SizedBox(height: 33,),
           Expanded(
             child: TabBarView(
               children: [

@@ -48,7 +48,7 @@ Future<void> openDatePicker() async {
     return SizedBox(width: 327.sw,
       child: Column(crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-        Text('Period',style: AppTextStyle.optionValueStyle.copyWith(fontSize: 16),),
+        Text('Period',style: AppTextStyle.heading1.copyWith(fontSize: 16),),
         SizedBox(height: 16,),
         SizedBox(width: 331.w,
           child: Row(children: [ Container(width:36,height:36,decoration: BoxDecoration(
@@ -75,7 +75,7 @@ Future<void> openDatePicker() async {
         SizedBox(height: 12,),
         Divider(color: AppColors.borderColor,thickness: 0.5,
         ),
-        SizedBox(height: 12,),
+        SizedBox(height: 5,),
         Text('Make sure to check your date before making any\nsort of payments',style:AppTextStyle.optionLabelStyle,)
       ],),
     );
