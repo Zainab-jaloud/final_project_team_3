@@ -36,7 +36,7 @@ class ProfileTextField extends StatelessWidget {
             style: TextStyle(
               fontFamily: 'Inter',
               fontWeight: FontWeight.w700,
-              fontSize: 16.sp,
+              fontSize: 15.sp,
               height: 18 / 14,
               color: AppColors.titleColor,
             ),

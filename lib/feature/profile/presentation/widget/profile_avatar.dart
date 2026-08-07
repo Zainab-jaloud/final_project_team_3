@@ -24,8 +24,8 @@ class ProfileAvatar extends StatelessWidget {
           ClipOval(
             child: Image.asset(
               imagePath,
-              width: 100.r,
-              height: 100.r,
+              width: 130.r,
+              height: 130.r,
               fit: BoxFit.cover,
             ),
           ),
