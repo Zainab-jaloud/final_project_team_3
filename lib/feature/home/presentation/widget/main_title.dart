@@ -13,7 +13,7 @@ final VoidCallback onTap;
   Widget build(BuildContext context) {
     return Row(children: [
      Text(title,
-     style: AppTextStyle.heading1.copyWith(fontSize: 16) 
+     style: AppTextStyle.optionValueStyle.copyWith(fontSize: 17) 
         ),
      Spacer(),
      TextButton(style: TextButton.styleFrom(
@@ -22,6 +22,6 @@ final VoidCallback onTap;
        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
      ),
        onPressed:onTap, child:Text('See all',style: 
-      AppTextStyle.optionValueStyle.copyWith(color: AppColors.secondaryColor,fontSize: 12)))]);
+      AppTextStyle.optionLabelStyle.copyWith(color: AppColors.secondaryColor,fontSize: 12)))]);
   }
 }

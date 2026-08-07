@@ -93,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
  SizedBox(height: 22,),
  Image.asset(AppImages.panal),
  SizedBox(height: 24,),
- MainTitles(title: 'Recomended', onTap: () {},),
+ MainTitles(title: 'Recommended', onTap: () {},),
   SizedBox(height: 16,),
   SizedBox(height: 164,
     child: PlacesList(),

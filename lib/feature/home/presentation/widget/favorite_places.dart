@@ -38,6 +38,6 @@ class _FavoritePlacesState extends State<FavoritePlaces> {
         return NearPlaces(isPopular:true, properties:property, onChange: () {setState(() {
           
         });},);}, 
-      separatorBuilder: (BuildContext context, int index) { return SizedBox(height: 8,); },);
+      separatorBuilder: (BuildContext context, int index) { return SizedBox(height: 12,); },);
   }
 }
