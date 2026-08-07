@@ -43,12 +43,12 @@ final DateTime? endDate;
         
       ),
         indicatorPadding: EdgeInsets.symmetric(
-      horizontal:-22,
-      vertical: 7,
+      horizontal:-16,
+      vertical: 6,
         ),
       dividerColor: Colors.transparent,
-      labelStyle:AppTextStyle.fasilitiesTextStyl.copyWith(fontSize: 14,color: AppColors.whiteColor),
-      unselectedLabelStyle:AppTextStyle.optionLabelStyle.copyWith(fontSize: 14,color: AppColors.locationColor,),
+      labelStyle:AppTextStyle.fasilitiesTextStyl.copyWith(fontSize: 16,color: AppColors.whiteColor),
+      unselectedLabelStyle:AppTextStyle.optionLabelStyle.copyWith(fontSize: 16,color: AppColors.locationColor,),
       tabs: const [
         Tab(text: "Upcoming"),
         Tab(text: "Completed"),
