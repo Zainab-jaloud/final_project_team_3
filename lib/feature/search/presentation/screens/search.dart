@@ -87,37 +87,40 @@ class _SearchScreenState extends State<SearchScreen> {
               SizedBox(height: 24.0.h), 
 
               // search field
-CustomSearchField(
-  controller: _searchController,
-  hintText: 'Search Property', // النص المخصص لصفحة البحث
-  autofocus: true,
-  // تمرير منطق الـ X والفلتر القديم الخاص بك هنا
-  suffixIcon: _query.isNotEmpty
-      ? CancelSearchIcon(onTap: () => _searchController.clear())
-      : SizedBox(
-          width: 27.w,
-          height: 27.h,
-          child: Center(child: SvgPicture.asset('assets/icons/Filter.svg')),
-        ),
-  // تمرير كامل وظيفة البحث المعقدة الخاصة بك دون تعديل أو ضرر
-  onSubmitted: (value) {
-    if (value.trim().isEmpty) return;
-    setState(() {
-      if (suggestions.isNotEmpty) {
-        PropertySearchService.addToRecentItem(
-          keyword: value, 
-          recentList: recentSearches,
-        );
-        _searchController.text = suggestions.first.name;
-        _searchController.selection = TextSelection.collapsed(offset: suggestions.first.name.length);
-      } else {
-        PropertySearchService.addToRecentItem(
-          keyword: value, 
-          recentList: recentSearches,
-        );
-      }
-    });
-  },
+Padding(
+  padding: const EdgeInsets.symmetric(horizontal: 24),
+  child: CustomSearchField(
+    controller: _searchController,
+    hintText: 'Search Property', // النص المخصص لصفحة البحث
+    autofocus: true,
+    // تمرير منطق الـ X والفلتر القديم الخاص بك هنا
+    suffixIcon: _query.isNotEmpty
+        ? CancelSearchIcon(onTap: () => _searchController.clear())
+        : SizedBox(
+            width: 27.w,
+            height: 27.h,
+            // child: Center(child: SvgPicture.asset('assets/icons/Filter.svg')),
+          ),
+    
+    onSubmitted: (value) {
+      if (value.trim().isEmpty) return;
+      setState(() {
+        if (suggestions.isNotEmpty) {
+          PropertySearchService.addToRecentItem(
+            keyword: value, 
+            recentList: recentSearches,
+          );
+          _searchController.text = suggestions.first.name;
+          _searchController.selection = TextSelection.collapsed(offset: suggestions.first.name.length);
+        } else {
+          PropertySearchService.addToRecentItem(
+            keyword: value, 
+            recentList: recentSearches,
+          );
+        }
+      });
+    },
+  ),
 ),
 
 
@@ -219,14 +222,18 @@ CustomSearchField(
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Image.asset('assets/images/no_results.png', width: 215.w, height: 119.h),
-                                  SizedBox(height: 16.h),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 19.0),
+                                    child: SizedBox(width: 300.w, height: 119.h,
+                                      child: Image.asset('assets/images/no_results.png',width: double.infinity,)),// 
+                                  ),
+                                  SizedBox(height: 24.h),
                                   Text('Search not found', style: AppTextStyle.optionValueStyle.copyWith(fontSize: 20.sp)),
-                                  SizedBox(height: 8.h),
+                                  SizedBox(height: 16.h),
                                   Padding(
                                     padding: EdgeInsets.symmetric(horizontal: 24.w),
                                     child: Text(
-                                      'please enable your location services for more optimal result', 
+                                      'please enable your location services for\nmore optimal result', 
                                       textAlign: TextAlign.center,
                                       style: TextStyle(color: Colors.grey, fontSize: 14.sp, fontWeight: FontWeight.w500),
                                     ),

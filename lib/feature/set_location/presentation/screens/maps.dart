@@ -144,7 +144,7 @@ class MapScreenState extends State<MapScreen> {
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color.fromARGB(7, 0, 0, 0),
+                          color: const Color.fromARGB(23, 0, 0, 0),
                           blurRadius: 10,
                           offset: const Offset(0, 5),
                         ),
@@ -162,9 +162,9 @@ class MapScreenState extends State<MapScreen> {
                         Row(
                           children: [
                             CircleAvatar(
-                              radius: 30.r,
+                              radius: 28.r,
                               backgroundColor: AppColors.babyPurple, 
-                              child: SvgPicture.asset("assets/icons/Location.svg"),
+                              child: SvgPicture.asset("assets/icons/Location.svg",),
                             ),
                             SizedBox(width: 12.w),
                             Expanded(

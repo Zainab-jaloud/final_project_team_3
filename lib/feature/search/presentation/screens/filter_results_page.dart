@@ -25,8 +25,8 @@ class FilterResultsPage extends StatelessWidget {
           ? Center(child:  
           Column(children:[ 
             SizedBox(height: 104.h,),
-            Image.asset('assets/images/no_results.png',width: 215,height: 119,),
-            SizedBox(height: 20.h,),
+            Image.asset('assets/images/no_results.png',width: 215.w,height: 119.h,),
+            SizedBox(height: 24.h,),
            Text('No Results Found',style: AppTextStyle.optionValueStyle.copyWith(fontSize: 20.sp),),
                                   SizedBox(height: 15.h,),
            Text('Try broadening your filters',style:AppTextStyle.optionLabelStyle.copyWith(fontSize: 14.sp)),

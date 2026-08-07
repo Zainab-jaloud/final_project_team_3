@@ -44,7 +44,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start, 
       children: [
-        Text(widget.labelText, style: AppTextStyle.optionValueStyle.copyWith(fontSize: 14)),
+        Text(widget.labelText, style: AppTextStyle.optionValueStyle.copyWith(fontSize: 14,fontWeight: FontWeight.bold)),
         SizedBox(height: 4.h),
         TextFormField(
           controller: widget.controller,
@@ -56,8 +56,8 @@ class _AuthTextFieldState extends State<AuthTextField> {
             hintText: widget.hintText, 
             hintStyle: AppTextStyle.optionLabelStyle.copyWith(fontSize: 14,color: AppColors.inputHintColor),
             contentPadding: EdgeInsets.symmetric(
-              horizontal: 14.w,
-              vertical: 14.h,
+              horizontal: 17.w,
+              vertical: 19.h,
             ),
             
             suffixIcon: widget.isPassword
@@ -65,12 +65,12 @@ class _AuthTextFieldState extends State<AuthTextField> {
                     icon: 
                       _obscureText
                           ? Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 8),
-                            child: SvgPicture.asset('assets/icons/Hide.svg',width: 14,height: 14,),
+                            padding: const EdgeInsets.only(right: 5),
+                            child: SvgPicture.asset('assets/icons/Hide.svg',width: 19.5,height: 16.77,),
                           )
                           : Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 8),
-                            child: Icon(Icons.visibility_outlined , color: AppColors.inputHintColor,size:16,),
+                            padding: const EdgeInsets.only(right: 5),
+                            child: Icon(Icons.visibility_outlined , color: AppColors.inputHintColor,size:20,),
                           ),
                          color: AppColors.inputHintColor,
                       

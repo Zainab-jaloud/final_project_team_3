@@ -15,8 +15,8 @@ class CancelSearchIcon extends StatelessWidget {
       onTap: onTap,
       child: Container(
         margin: const EdgeInsets.all(8), 
-        width: 20,
-        height: 20,
+        width: 16,
+        height: 16,
         decoration: BoxDecoration(
           color: AppColors.secondaryColor, 
           borderRadius: BorderRadius.circular(7),
@@ -24,7 +24,7 @@ class CancelSearchIcon extends StatelessWidget {
         child: const Icon(
           Icons.clear_rounded, 
           color: Colors.white, 
-          size: 13, 
+          size: 13, weight: 10.0,
         ),
       ),
     );

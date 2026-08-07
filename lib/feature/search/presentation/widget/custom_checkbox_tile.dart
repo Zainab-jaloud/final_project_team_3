@@ -30,6 +30,10 @@ class CustomCheckboxTile extends StatelessWidget {
             
             //التشيك بوكس الويدجيت المخصص
             CustomCheckbox(
+              hei: 20,
+              wid: 20,
+              rad:5,
+              iconSize: 10,
               value: value,
               onChanged: onChanged,
             ),

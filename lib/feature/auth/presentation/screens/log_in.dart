@@ -73,8 +73,8 @@ class _AuthScreenState extends State<AuthScreen> {
                   // SizedBox(height: 14.h),
                  
                   Text(
-                    isSignIn ? "Welcome Back!" : "Register Account", 
-                    style: AppTextStyle.optionValueStyle.copyWith(fontSize: 21,fontWeight: FontWeight.w700)
+                    isSignIn ? "Welcome Back !" : "Register Account", 
+                    style: AppTextStyle.optionValueStyle.copyWith(fontSize: 21,fontWeight: FontWeight.w600,height: 1.3,letterSpacing: 0)
                   ),
                   SizedBox(height: 8.h),
                   SizedBox(width: 250,
@@ -83,7 +83,7 @@ class _AuthScreenState extends State<AuthScreen> {
                       style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: AppColors.locationColor),
                     ),
                   ),
-                  SizedBox(height: 30.h),
+                  SizedBox(height: 33.h),
                   
                   AuthTextField(
                     controller: _emailController,
@@ -100,7 +100,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     },
                   ),
                   if (!isSignIn) ...[
-                    SizedBox(height: 16.h),
+                    SizedBox(height: 17.h),
                     AuthTextField(
                       key: const ValueKey('username_field'), 
                       controller: _usernameController,
@@ -115,7 +115,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     ),
                   ],
                   
-                  SizedBox(height: 16.h),
+                  SizedBox(height: 17.h),
                   
                   AuthTextField(
                     key: const ValueKey('password_field'),
@@ -133,7 +133,7 @@ class _AuthScreenState extends State<AuthScreen> {
                       return null;
                     },
                   ),
-                  SizedBox(height: 16.h),
+                  SizedBox(height: 17.h),
                   
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -157,6 +157,10 @@ class _AuthScreenState extends State<AuthScreen> {
                               //   activeColor: AppColors.secondaryColor,    
                               // ),
                               child:  CustomCheckbox(
+                                wid:11 ,
+                                hei:11 ,
+                                rad:4,
+                                iconSize: 10,
                               value: _rememberMe,
                               onChanged: (newValue) {
                               setState(() {
@@ -170,7 +174,8 @@ class _AuthScreenState extends State<AuthScreen> {
                               child: isSignIn 
                                 ? Text(
                                     "Remember me", 
-                                    style: AppTextStyle.optionLabelStyle.copyWith(fontSize: 14,color: AppColors.titleColor),
+                                    style: AppTextStyle.optionLabelStyle.copyWith(fontSize: 14,color: AppColors.titleColor,fontWeight: FontWeight.w400
+                                    ),
                                   )
                                 : RichText(
                                     text: TextSpan(
@@ -203,7 +208,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           ),
                           onPressed: () {},
                           child: Text(
-                            "Forgot password?", 
+                            "Forgot password ?", 
                             style: AppTextStyle.optionLabelStyle.copyWith(
                               fontSize: 14,   
                               color: AppColors.primaryColor,
@@ -212,7 +217,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         ),
                     ],
                   ),
-                  SizedBox(height: 32.h),
+                  SizedBox(height: 33.h),
                   AppButton(
                     backgroundColor: AppColors.primaryColor,
                     textColor: AppColors.whiteColor,

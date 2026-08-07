@@ -11,11 +11,13 @@ class SetLocationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:AppBar(actions: [ Padding(padding:EdgeInsetsGeometry.symmetric(vertical: 7,horizontal:24 ),
-      child: ElevatedButton(onPressed:(){context.go('/home');},style:ElevatedButton.styleFrom(backgroundColor:Colors.transparent,elevation: 0,  
-       padding: EdgeInsets.zero, shadowColor: Colors.transparent,
-      shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(24),side: BorderSide(color:AppColors.dotColor ,width: 1)) ),
-       child:Text("Skip",style:AppTextStyle.optionLabelStyle.copyWith(color:Color(0XFF4D5761),fontSize: 11 ),)),)],) ,
+      appBar:AppBar(actions: [ Padding(
+        padding: EdgeInsetsGeometry.only(right: 24 ),
+        child: ElevatedButton(onPressed:(){context.go('/home');},style:ElevatedButton.styleFrom(backgroundColor:Colors.transparent,elevation: 0,  
+         shadowColor: Colors.transparent, padding: EdgeInsets.symmetric(vertical: 7,horizontal:8),
+        shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(24),side: BorderSide(color:AppColors.dotColor ,width: 1)) ),
+         child:Text("Skip",style:AppTextStyle.optionLabelStyle.copyWith(color:Color(0XFF4D5761),fontSize: 12 ),)),
+      )],) ,
       body: Padding(
         padding: const EdgeInsets.all(24.0),
         child: SingleChildScrollView(
@@ -24,13 +26,13 @@ class SetLocationScreen extends StatelessWidget {
                       SizedBox(height: 73.h,),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 14),
-                        child: Image.asset("assets/images/select_location.png",),//width: 300.w,height: 215.h,
+                        child: Image.asset("assets/images/select_location.png",width: 296.w,),//width: 300.w,height: 215.h,
                       ),
                        SizedBox(height: 46.h,),
                        Text('Hi, Nice to meet you !',style: AppTextStyle.optionValueStyle.copyWith(fontSize: 20),),
                        Padding(
                          padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 16),
-                         child: Center(child: Text('Choose your location to find property\naround you',textAlign: TextAlign.center,style:AppTextStyle.optionLabelStyle.copyWith(fontSize: 14),)),
+                         child: Center(child: Text('Choose your location to find property\naround you',textAlign: TextAlign.center,style:AppTextStyle.optionLabelStyle.copyWith(fontSize: 15),)),
                        ),
                        SizedBox(height: 95.h,),
                        AppButton(textColor:AppColors.whiteColor ,backgroundColor:AppColors.primaryColor,shadow: false ,text: "Use current location", onPressed: (){context.push('/maps');}),
