@@ -28,7 +28,7 @@ class CustomAppBar extends StatelessWidget   implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar( leading: Padding(
+    return AppBar(backgroundColor: Colors.transparent, leading: Padding(
       padding: const EdgeInsets.all(18),
       child: InkWell(onTap: () =>(context).pop(),
       child: SizedBox(width:24,height: 24,

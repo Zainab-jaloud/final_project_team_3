@@ -12,7 +12,7 @@ class AppTextStyle {
  
   );
 static TextStyle fasilitiesTextStyl=TextStyle(fontWeight: FontWeight.w500,
-fontSize: 12,
+          fontSize: 12,
           color: AppColors.titleColor,
           fontFamily: 'Inter');
   

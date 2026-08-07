@@ -11,10 +11,10 @@ import 'package:flutter_application/feature/search/presentation/screens/search.d
 import 'package:flutter_application/feature/search/presentation/screens/fillter_bottom_sheet.dart';
 class AppRoute { static final GoRouter pageRoute = GoRouter(
  routes: [
-      //  GoRoute(
-      //   path: '/',
-      //   builder: (context, state) => const LoginScreen(),
-      // ),
+       GoRoute(
+        path: '/',
+        builder: (context, state) => const AuthScreen(),
+      ),
 
       //  GoRoute(
       //   path: '/',
@@ -25,10 +25,10 @@ class AppRoute { static final GoRouter pageRoute = GoRouter(
       //   path: '/',
       //   builder: (context, state) => const MapScreen(),
       // ),
-     GoRoute(
-        path: '/',
-        builder: (context, state) => const HomeScreen(),
-      ),
+    //  GoRoute(
+    //     path: '/',
+    //     builder: (context, state) => const HomeScreen(),
+    //   ),
 
 
 

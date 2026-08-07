@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+// import 'package:lucide_icons/lucide_icons.dart';
 
 class AuthTextField extends StatefulWidget {
   final TextEditingController controller;
   final String labelText;
   final String hintText;
-  final bool isPassword; // لتحديد إذا كان خاص بكلمة المرور
+  final bool isPassword; // لتحديد اذا كان خاص بكلمة المرور
   final String? Function(String?)? validator; 
   final ValueChanged<String>? onChanged;
 
@@ -42,7 +44,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start, 
       children: [
-        Text(widget.labelText, style: AppTextStyle.fasilitiesTextStyl.copyWith(fontSize: 14)),
+        Text(widget.labelText, style: AppTextStyle.optionValueStyle.copyWith(fontSize: 14)),
         SizedBox(height: 4.h),
         TextFormField(
           controller: widget.controller,
@@ -60,13 +62,19 @@ class _AuthTextFieldState extends State<AuthTextField> {
             
             suffixIcon: widget.isPassword
                 ? IconButton(
-                    icon: Icon(
+                    icon: 
                       _obscureText
-                          ? Icons.visibility_off_outlined
-                          : Icons.visibility_outlined,
-                      color: AppColors.inputHintColor,
-                      size: 20.sp,
-                    ),
+                          ? Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 8),
+                            child: SvgPicture.asset('assets/icons/Hide.svg',width: 14,height: 14,),
+                          )
+                          : Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 8),
+                            child: Icon(Icons.visibility_outlined , color: AppColors.inputHintColor,size:16,),
+                          ),
+                         color: AppColors.inputHintColor,
+                      
+                    
                     onPressed: () {
                      
                       setState(() => _obscureText = !_obscureText);
@@ -90,7 +98,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
             focusedErrorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12.r),
                 borderSide: BorderSide(color: AppColors.redHeartColor, width: 1)),
-            errorStyle: TextStyle(color: AppColors.redHeartColor, fontSize: 12.sp),
+            errorStyle: TextStyle(color: AppColors.redHeartColor, fontSize: 12),
           ),
         ),
       ],
