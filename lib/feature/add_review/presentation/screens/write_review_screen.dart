@@ -31,7 +31,6 @@ class _WriteReviewScreenState extends State<WriteReviewScreen> {
   final int _maxChars = 350;
 
   File? _uploadedImage;
-  File? _propertyImageOverride;
 
   @override
   void dispose() {
@@ -55,10 +54,6 @@ class _WriteReviewScreenState extends State<WriteReviewScreen> {
       );
       return;
     }
-
-    setState(() {
-      _propertyImageOverride = _uploadedImage;
-    });
 
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Your review added successfully')),
@@ -85,17 +80,16 @@ class _WriteReviewScreenState extends State<WriteReviewScreen> {
           children: [
             ReviewPropertyCard(
               property: _property,
-              overrideImage: _propertyImageOverride,
             ),
             SizedBox(height: 16.h),
             Divider(height: 0.5, thickness: 0.5, color: AppColors.borderColor),
             SizedBox(height: 24.h),
             Text('Add Photo or Video', style: AppTextStyle.titleTextStyl),
-            SizedBox(height: 8.h),
+            SizedBox(height: 14.h),
             PhotoUploadBox(image: _uploadedImage, onTap: _pickImage),
             SizedBox(height: 24.h),
             Text('Write your review', style: AppTextStyle.titleTextStyl),
-            SizedBox(height: 8.h),
+            SizedBox(height: 14.h),
             DashedBorderBox(
               child: Padding(
                 padding: EdgeInsets.all(12.w),
@@ -109,7 +103,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen> {
                     border: InputBorder.none,
                     counterText: '',
                     hintText:
-                        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard',
+                        'Lorem Ipsum is simply dummy text of the printing and\ntypesetting industry. Lorem Ipsum has been the\nindustry\'s standard',
                     hintStyle: AppTextStyle.reviewHintStyle,
                   ),
                   onChanged: (_) => setState(() {}),
@@ -124,9 +118,9 @@ class _WriteReviewScreenState extends State<WriteReviewScreen> {
                 style: AppTextStyle.reviewHintStyle,
               ),
             ),
-            SizedBox(height: 24.h),
+            SizedBox(height: 57.h),
             SizedBox(
-              width: 327.w,
+              width: double.infinity,
               height: 52.h,
               child: ElevatedButton(
                 onPressed: _submitReview,
