@@ -9,10 +9,7 @@ import 'package:flutter_application/feature/profile/presentation/screens/edit_pr
 class AppRoute {
   static final GoRouter pageRoute = GoRouter(
 
-    initialLocation: '/splash',
-
-   
-
+    initialLocation: '/profile',
 
     
    
