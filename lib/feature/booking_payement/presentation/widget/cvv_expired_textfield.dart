@@ -11,7 +11,7 @@ final String text;
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start,
-      children: [Text(label,style:AppTextStyle.optionValueStyle ),
+      children: [Text(label,style:AppTextStyle.heading1.copyWith(fontSize: 14) ),
       SizedBox(height: 4,),
         SizedBox(width: 155,height: 52,
           child: TextFormField(

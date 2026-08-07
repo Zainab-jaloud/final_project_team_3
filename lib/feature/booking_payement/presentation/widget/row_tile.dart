@@ -20,7 +20,7 @@ final VoidCallback onTap;
      child: Padding(padding: EdgeInsets.all(6),
      child: SvgPicture.asset(leftIcon)),),
      SizedBox(width: 16,),
-          Text(text,style:AppTextStyle.optionLabelStyle.copyWith(fontSize: 14,color: AppColors.titleColor),) ,
+          Text(text,style:AppTextStyle.optionLabelStyle.copyWith(fontSize: 15,color: AppColors.titleColor),) ,
      Spacer(),
     GestureDetector(onTap: onTap,child: SvgPicture.asset(rightIcon))
       ]);

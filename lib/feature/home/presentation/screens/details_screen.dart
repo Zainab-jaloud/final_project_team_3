@@ -123,11 +123,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
             SizedBox(height: 24,),
             PropertyInformation(widget: widget),
             SizedBox(height: 24,),
- 
-           PropertyMoreDetails(property: widget.property,) ,
-      
-        PropertyDescription(property:widget.property,) ,SizedBox(height:24,),
- 
+           PropertyMoreDetails( property: widget.property,) ,
+           SizedBox(height:24,),
+        PropertyDescription(property:widget.property,) ,SizedBox(height:24,), 
         Text('Agent',style:AppTextStyle.optionValueStyle.copyWith(fontSize: 16)
         
           ),

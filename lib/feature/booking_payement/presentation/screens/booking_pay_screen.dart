@@ -76,7 +76,7 @@ PriceDetails(),
 SizedBox(height: 26,),
 if(_cardNumber != null)
 AppButton(
-  text: 'Confirm',
+  text: 'Confirm and Pay',
   onPressed: () {
     setState(() {
       BookingManager.confirmBooking(widget.property);
@@ -88,8 +88,9 @@ AppButton(
       builder: (context) => MyBottomSheet(
         image: AppImages.success,
         title: 'Yey, your booking success',
+        
         text: DefaultTextStyle(
-          style: AppTextStyle.fasilitiesTextStyl.copyWith(
+          style: AppTextStyle.optionLabelStyle.copyWith(
             fontSize: 14,
             color: Colors.grey,
           ),

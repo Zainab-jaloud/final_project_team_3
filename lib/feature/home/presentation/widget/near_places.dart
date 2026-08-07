@@ -93,9 +93,9 @@ class _NearPlacesState extends State<NearPlaces> {
          Row(
            children: [
             Text.rich(TextSpan(children: [TextSpan(text:widget.properties.price,style:
-           AppTextStyle.optionValueStyle.copyWith(fontSize: 10)
+           AppTextStyle.heading1.copyWith(fontSize: 10)
         ),TextSpan(text:'/night',
-            style: AppTextStyle.optionValueStyle.copyWith(fontSize: 10)
+            style: AppTextStyle.heading1.copyWith(fontSize: 10)
         )])
             ), 
         Spacer(),
@@ -110,7 +110,7 @@ class _NearPlacesState extends State<NearPlaces> {
  
                mainAxisAlignment: MainAxisAlignment.center,children: [SvgPicture.asset('assets/icons/Star.svg'),
                Text('${widget.properties.rating}',style:
-                AppTextStyle. heading1.copyWith(fontSize: 11))],),
+                AppTextStyle. heading1.copyWith(fontSize: 10))],),
              ),
            )
            ],

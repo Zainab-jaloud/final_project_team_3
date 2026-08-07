@@ -21,13 +21,13 @@ Color textColor;
 switch (status) {
   case 'Checkin':
   case 'completed':
-    containerColor = const Color(0xFFE8F5E9); // أخضر فاتح
-    textColor = Colors.green;
+    containerColor = const Color(0xFFD1FADF); // أخضر فاتح
+    textColor = const Color(0xFF027A48);
     break;
   case 'Cancelled':
   case 'Waiting payment':
-    containerColor = const Color(0xFFFFEBEE); // أحمر فاتح
-    textColor = Colors.red;
+    containerColor = const Color(0xFFFEE4E2); // أحمر فاتح
+    textColor = const Color(0xFFF97066);
     break;
 
   default: // Upcoming
@@ -78,21 +78,24 @@ switch (status) {
            ),SizedBox(height: 4,),
            Row(
              children: [
-                Text(date,style:AppTextStyle.fasilitiesTextStyl.copyWith(color: AppColors.dotColor,fontSize: 10),),
+                Text(date,style:AppTextStyle.fasilitiesTextStyl.copyWith(color: AppColors.locationColor,fontSize: 10),),
         
              const Spacer(),
                
-             Expanded(
-               child: Container(width:55,height:18,
-               decoration: BoxDecoration(borderRadius: BorderRadius.circular(8),
-               color: containerColor,),
-               child:  
-                        
-                 Center(
-                   child: Text( status,style:
-                    AppTextStyle. optionLabelStyle.copyWith(fontSize: 10,color: textColor)),
-                 )),
-             )],),
+             Container(
+             decoration: BoxDecoration(borderRadius: BorderRadius.circular(8),
+             color: containerColor,),
+             child:  
+                      
+               SizedBox(height:20 ,
+                 child: Center(
+                   child: Padding(
+                     padding: const EdgeInsets.symmetric(horizontal: 12),
+                     child: Text( status,style:
+                      AppTextStyle. optionLabelStyle.copyWith(fontSize: 11,color: textColor)),
+                   ),
+                 ),
+               ))],),
          ]),
              )
              ],
