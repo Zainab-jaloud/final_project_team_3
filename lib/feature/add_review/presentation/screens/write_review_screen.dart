@@ -8,6 +8,7 @@ import 'package:flutter_application/feature/add_review/data/model.dart';
 import 'package:flutter_application/feature/add_review/presentation/widget/photo_upload_box.dart';
 import 'package:flutter_application/feature/add_review/presentation/widget/review_property_card.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 
 class WriteReviewScreen extends StatefulWidget {
@@ -75,7 +76,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen> {
         icon1: '',
         icon2: '',
         rightIcon1: false,
-        rightIcon2: false,
+        rightIcon2: false, onPageChanged: () {context.push('/home');},
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 24.w).copyWith(top: 16.h),

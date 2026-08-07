@@ -69,6 +69,7 @@ class OnboardingImageStack extends StatelessWidget {
                 borderRadius: BorderRadius.circular(_radius.r),
                 boxShadow: [
                   BoxShadow(
+                    // ignore: deprecated_member_use
                     color: AppColors.primaryColor.withOpacity(0.3),
                     offset: Offset(0, 24.h),
                     blurRadius: 48.r,

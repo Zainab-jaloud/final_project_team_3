@@ -7,6 +7,7 @@ import 'package:flutter_application/feature/notifications/presentation/widget/me
 import 'package:flutter_application/feature/notifications/presentation/widget/notification_item.dart';
 import 'package:flutter_application/feature/notifications/presentation/widget/notification_section_header.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class NotificationsScreen extends StatelessWidget {
   const NotificationsScreen({super.key});
@@ -99,7 +100,7 @@ class NotificationsScreen extends StatelessWidget {
         icon1: '',
         icon2: '',
         rightIcon1: false,
-        rightIcon2: false,
+        rightIcon2: false, onPageChanged: () { context.pop(); },
       ),
       body: ListView(
         padding: EdgeInsets.symmetric(horizontal: 24.w).copyWith(top: 16.h),
