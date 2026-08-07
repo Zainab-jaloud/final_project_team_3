@@ -6,7 +6,7 @@ import 'package:flutter_application/feature/onboarding/presentation/widget/onboa
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:go_router/go_router.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 
 class _OnboardingPageData {
   final String photoImagePath;
@@ -124,13 +124,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     super.dispose();
   }
 
-  void _goToLogin() {
+  Future<void> _goToLogin() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('hasSeenOnboarding', true);
+    if (!mounted) return;
 
     context.go('/profile');
 
-    
     context.go('/login');
-
   }
 
   void _onNextPressed() {
@@ -236,7 +237,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
 
             Positioned(
-              top: 678.h,
+              bottom: 10.h,
               left: 24.w,
               child: AppButton(
                 text: _pages[_currentIndex].buttonText,

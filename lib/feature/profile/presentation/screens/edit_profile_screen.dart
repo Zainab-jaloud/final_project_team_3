@@ -127,13 +127,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             ),
             SizedBox(height: 24.h),
             ProfileTextField(
-              label: 'Text Form',
+              label: 'First Name',
               controller: _nameController,
               hasError: _nameError,
             ),
             SizedBox(height: 16.h),
             ProfileTextField(
-              label: 'Username',
+              label: 'Full Name',
               controller: _usernameController,
               hasError: _usernameError,
             ),
