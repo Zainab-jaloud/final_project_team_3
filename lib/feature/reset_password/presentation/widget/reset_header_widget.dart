@@ -18,7 +18,10 @@ class ResetHeaderWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(title, style: AppTextStyle.heading1),
+        Text(
+          title,
+          style: AppTextStyle.heading1.copyWith(fontWeight: FontWeight.w600),
+        ),
         SizedBox(height: 8.h),
         Text(
           subtitle,
