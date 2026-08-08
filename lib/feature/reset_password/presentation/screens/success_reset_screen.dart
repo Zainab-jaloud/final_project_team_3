@@ -24,7 +24,7 @@ class SuccessResetScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const SuccessIconWidget(),
-                    SizedBox(height: 24.h),
+                    SizedBox(height: 48),
                     Text(
                       'Success!',
                       textAlign: TextAlign.center,

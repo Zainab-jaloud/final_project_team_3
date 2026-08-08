@@ -50,14 +50,14 @@ class _VerifyScreenState extends State<VerifyScreen> {
                         subtitle:
                             'Please enter 6 digit verification that have been sent to your email address',
                       ),
-                      SizedBox(height: 135.h),
+                      SizedBox(height: 140),
                       OtpInputWidget(
                         length: 4,
                         onCompleted: (code) {
                           setState(() => otpCode = code);
                         },
                       ),
-                      SizedBox(height: 25.h),
+                      SizedBox(height: 40),
                       ResendCodeWidget(
                         onResend: () {
                           ScaffoldMessenger.of(context).showSnackBar(
