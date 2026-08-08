@@ -50,13 +50,13 @@ class ChatAvatarStackWidget extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: AppColors.primaryColor,
-                      border: Border.all(
-                        color: AppColors.primaryColor,
-                        width: 0.5,
-                      ),
+                      //border: Border.all(
+                      //color: AppColors.primaryColor,
+                      // width: 0.5,
+                      // ),
                     ),
                     child: CircleAvatar(
-                      radius: 25.r,
+                      radius: 29.r,
                       backgroundImage: AssetImage(imagePaths[index]),
                     ),
                   ),

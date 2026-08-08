@@ -83,7 +83,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
                 'All Message',
                 style: AppTextStyle.fasilitiesTextStyl.copyWith(
                   fontSize: 16,
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
               SizedBox(height: 16),

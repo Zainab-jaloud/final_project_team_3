@@ -68,7 +68,7 @@ class _ChatListItemWidgetState extends State<ChatListItemWidget> {
               ),
               _swipeActionButton(
                 label: 'Delete',
-                iconPath: 'assets/icons/Delete.svg',
+                iconPath: 'assets/icons/Delete2.svg',
                 backgroundColor: AppColors.primaryColor,
                 iconColor: AppColors.pagescolor,
                 onTap: () {
@@ -93,7 +93,7 @@ class _ChatListItemWidgetState extends State<ChatListItemWidget> {
               child: Row(
                 children: [
                   CircleAvatar(
-                    radius: 24.r,
+                    radius: 28.r,
                     backgroundImage: AssetImage(widget.chat.imagePath),
                   ),
                   SizedBox(width: 12.w),
@@ -103,7 +103,9 @@ class _ChatListItemWidgetState extends State<ChatListItemWidget> {
                       children: [
                         Text(
                           widget.chat.name,
-                          style: AppTextStyle.optionValueStyle,
+                          style: AppTextStyle.optionValueStyle.copyWith(
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
                         SizedBox(height: 4.h),
                         Text(
@@ -144,7 +146,7 @@ class _ChatListItemWidgetState extends State<ChatListItemWidget> {
       onTap: onTap,
       child: Container(
         width: 55.w,
-        height: 76.h,
+        height: 100.h,
         color: backgroundColor,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

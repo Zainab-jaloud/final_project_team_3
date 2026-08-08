@@ -43,6 +43,10 @@ class ChatInputFieldWidget extends StatelessWidget {
                 color: AppColors.titleColor,
               ),
               decoration: InputDecoration(
+                //contentPadding: EdgeInsets.symmetric(
+                //horizontal: 12.w,
+                //vertical: 12.h,
+                //),
                 hintText: 'write your message',
                 hintStyle: AppTextStyle.optionValueStyle.copyWith(
                   fontWeight: FontWeight.w400,
@@ -58,8 +62,8 @@ class ChatInputFieldWidget extends StatelessWidget {
         GestureDetector(
           onTap: onSendTap,
           child: Container(
-            width: 50.w,
-            height: 50.w,
+            width: 47.w,
+            height: 47.w,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: AppColors.primaryColor,
@@ -67,8 +71,8 @@ class ChatInputFieldWidget extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.all(12.w),
               child: SvgPicture.asset(
-                width: 25.w,
-                height: 25.h,
+                width: 30.w,
+                height: 30.h,
                 'assets/icons/Send.svg',
                 colorFilter: const ColorFilter.mode(
                   Colors.white,
