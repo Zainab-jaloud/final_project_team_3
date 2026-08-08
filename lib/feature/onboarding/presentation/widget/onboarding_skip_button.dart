@@ -13,11 +13,11 @@ class OnboardingSkipButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 32.h,
+      height: 37.h,
       child: OutlinedButton(
         onPressed: onPressed,
         style: OutlinedButton.styleFrom(
-          minimumSize: Size(0, 32.h),
+          minimumSize: Size(55.w, 37.h),
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           visualDensity: VisualDensity.compact,
