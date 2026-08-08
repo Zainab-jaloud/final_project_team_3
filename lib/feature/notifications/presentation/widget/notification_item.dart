@@ -16,14 +16,14 @@ class NotificationItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
-          width: 36.w,
-          height: 36.w,
+          width: 36.r,
+          height: 36.r,
           child: Stack(
             clipBehavior: Clip.none,
             children: [
               Container(
-                width: 36.w,
-                height: 36.w,
+                width: 36.r,
+                height: 36.r,
                 decoration: BoxDecoration(
                   color: AppColors.svgBackground,
                   shape: BoxShape.circle,
@@ -31,18 +31,18 @@ class NotificationItem extends StatelessWidget {
                 child: Center(
                   child: SvgPicture.asset(
                     'assets/icons/notification_bell.svg',
-                    width: 24.w,
-                    height: 24.w,
+                    width: 24.r,
+                    height: 24.r,
                   ),
                 ),
               ),
               if (!notification.isRead)
                 Positioned(
-                  top: 4.w,
-                  left: 23.w,
+                  top: 4.r,
+                  left: 23.r,
                   child: Container(
-                    width: 4.w,
-                    height: 4.w,
+                    width: 4.r,
+                    height: 4.r,
                     decoration: BoxDecoration(
                       color: AppColors.redColor,
                       shape: BoxShape.circle,

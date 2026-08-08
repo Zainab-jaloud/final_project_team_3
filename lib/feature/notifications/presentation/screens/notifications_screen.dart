@@ -17,8 +17,8 @@ class NotificationsScreen extends StatelessWidget {
       type: NotificationType.bell,
       section: 'Today',
       isRead: false,
-      beforeBold: 'Congratulations, your listing is now active.\n',
-      boldPart: 'click here to see your listing',
+      beforeBold: 'Congratulations, your listing is now active. ',
+      boldPart: 'click\nhere to see your listing',
       afterBold: '',
     ),
     const NotificationModel(
@@ -107,7 +107,7 @@ class NotificationsScreen extends StatelessWidget {
         children: [
           for (final entry in grouped.entries) ...[
             NotificationSectionHeader(title: entry.key),
-            SizedBox(height: 16.h),
+            SizedBox(height: 20.h),
             _buildItemsWithDividers(entry.value),
             SizedBox(height: 32.h),
           ],
@@ -121,18 +121,16 @@ class NotificationsScreen extends StatelessWidget {
       children: [
         for (int i = 0; i < items.length; i++) ...[
           _buildItem(items[i]),
-          if (i != items.length - 1) ...[
-            SizedBox(height: 12.h),
-            Padding(
-              padding: EdgeInsets.only(left: 48.w),
-              child: Divider(
-                height: 1,
-                thickness: 0.5,
-                color: AppColors.borderColor,
-              ),
+          SizedBox(height: 12.h),
+          Padding(
+            padding: EdgeInsets.only(left: 48.w),
+            child: Divider(
+              height: 1,
+              thickness: 0.5,
+              color: AppColors.borderColor,
             ),
-            SizedBox(height: 12.h),
-          ],
+          ),
+          SizedBox(height: 12.h),
         ],
       ],
     );

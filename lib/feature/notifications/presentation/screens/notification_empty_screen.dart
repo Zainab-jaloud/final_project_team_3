@@ -26,10 +26,12 @@ class NotificationEmptyScreen extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(height: 40.h),
-            SvgPicture.asset(
-              'assets/icons/notification_empty_opps_text.svg',
-              width: 98.w,
-              height: 35.h,
+            Center(
+              child: SvgPicture.asset(
+                'assets/icons/notification_empty_opps_text.svg',
+                width: 98.w,
+                height: 35.h,
+              ),
             ),
             SizedBox(height: 16.h),
             Image.asset(
@@ -40,7 +42,10 @@ class NotificationEmptyScreen extends StatelessWidget {
             SizedBox(height: 32.h),
             Text(
               'No notification yet',
-              style: AppTextStyle.notificationEmptyTitleStyle,
+              style: AppTextStyle.notificationEmptyTitleStyle.copyWith(
+                fontSize: 22.sp,
+                fontWeight: FontWeight.w700,
+              ),
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 8.h),
@@ -48,7 +53,10 @@ class NotificationEmptyScreen extends StatelessWidget {
               width: 289.w,
               child: Text(
                 'All notification we send will appear here, so you can view them easily anytime.',
-                style: AppTextStyle.successDescriptionStyle,
+                style: AppTextStyle.successDescriptionStyle.copyWith(
+                  fontSize: 15.sp,
+                  fontWeight: FontWeight.w500,
+                ),
                 textAlign: TextAlign.center,
               ),
             ),
