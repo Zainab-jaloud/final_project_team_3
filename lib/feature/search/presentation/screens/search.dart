@@ -8,6 +8,7 @@ import 'package:flutter_application/feature/search/presentation/widget/search_lo
 import 'package:flutter_application/feature/search/presentation/widget/cancel_search_icon.dart';
 import 'package:flutter_application/feature/search/data/property_search_service.dart';
 import 'package:flutter_application/feature/search/data/search_item.dart';
+import 'package:flutter_application/feature/search/presentation/widget/search_field.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -86,68 +87,109 @@ class _SearchScreenState extends State<SearchScreen> {
               SizedBox(height: 24.0.h), 
 
               // search field
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0.w, vertical: 8.0.h),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextField(
-                        controller: _searchController,
-                        autofocus: true, 
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(14.r),
-                          hintText: 'Search Property',
-                          hintStyle: AppTextStyle.optionLabelStyle.copyWith(fontSize: 14.sp),
-                          prefixIcon: Padding(
-                            padding: EdgeInsets.only(left: 16.w),
-                            child: SizedBox(
-                              width: 24.w,
-                              height: 24.h,
-                              child: Center(child: SvgPicture.asset('assets/icons/Search.svg')),
-                            ),
-                          ),
-                          suffixIcon: _query.isNotEmpty
-                              ? CancelSearchIcon(onTap: () => _searchController.clear())
-                              : SizedBox(
-                                  width: 27.w,
-                                  height: 27.h,
-                                  child: Center(child: SvgPicture.asset('assets/icons/Filter.svg')),
-                                ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12.r),
-                            borderSide: BorderSide(color: AppColors.inputBorderColor),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12.r),
-                            borderSide: BorderSide(color: AppColors.inputBorderColor),
-                          ),
-                        ),
-                        // دالة لقراءة النص العشوائي وضغط enter
-                        onSubmitted: (value) {
-                          if (value.trim().isEmpty) return;
-                          setState(() {
-                            if (suggestions.isNotEmpty) {
-                              PropertySearchService.addToRecentItem(
-                                // property: suggestions.first, 
-                                keyword: value, 
-                                recentList: recentSearches,
-                              );
-                              // اكمال النص باول نتيجة مطابقة تلقائيا عند ضغط Enter
-                              _searchController.text = suggestions.first.name;
-                              _searchController.selection = TextSelection.collapsed(offset: suggestions.first.name.length);
-                            } else {
-                              PropertySearchService.addToRecentItem(
-                                keyword: value, 
-                                recentList: recentSearches,
-                              );
-                            }
-                          });
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+Padding(
+  padding: const EdgeInsets.symmetric(horizontal: 24),
+  child: CustomSearchField(
+    controller: _searchController,
+    hintText: 'Search Property', // النص المخصص لصفحة البحث
+    autofocus: true,
+    // تمرير منطق الـ X والفلتر القديم الخاص بك هنا
+    suffixIcon: _query.isNotEmpty
+        ? CancelSearchIcon(onTap: () => _searchController.clear())
+        : SizedBox(
+            width: 27.w,
+            height: 27.h,
+            // child: Center(child: SvgPicture.asset('assets/icons/Filter.svg')),
+          ),
+    
+    onSubmitted: (value) {
+      if (value.trim().isEmpty) return;
+      setState(() {
+        if (suggestions.isNotEmpty) {
+          PropertySearchService.addToRecentItem(
+            keyword: value, 
+            recentList: recentSearches,
+          );
+          _searchController.text = suggestions.first.name;
+          _searchController.selection = TextSelection.collapsed(offset: suggestions.first.name.length);
+        } else {
+          PropertySearchService.addToRecentItem(
+            keyword: value, 
+            recentList: recentSearches,
+          );
+        }
+      });
+    },
+  ),
+),
+
+
+
+
+
+
+              // Padding(
+              //   padding: EdgeInsets.symmetric(horizontal: 16.0.w, vertical: 8.0.h),
+              //   child: Row(
+              //     children: [
+              //       Expanded(
+              //         child: TextField(
+              //           controller: _searchController,
+              //           autofocus: true, 
+              //           decoration: InputDecoration(
+              //             contentPadding: EdgeInsets.all(14.r),
+              //             hintText: 'Search Property',
+              //             hintStyle: AppTextStyle.optionLabelStyle.copyWith(fontSize: 14.sp),
+              //             prefixIcon: Padding(
+              //               padding: EdgeInsets.only(left: 16.w),
+              //               child: SizedBox(
+              //                 width: 24.w,
+              //                 height: 24.h,
+              //                 child: Center(child: SvgPicture.asset('assets/icons/Search.svg')),
+              //               ),
+              //             ),
+              //             suffixIcon: _query.isNotEmpty
+              //                 ? CancelSearchIcon(onTap: () => _searchController.clear())
+              //                 : SizedBox(
+              //                     width: 27.w,
+              //                     height: 27.h,
+              //                     child: Center(child: SvgPicture.asset('assets/icons/Filter.svg')),
+              //                   ),
+              //             enabledBorder: OutlineInputBorder(
+              //               borderRadius: BorderRadius.circular(12.r),
+              //               borderSide: BorderSide(color: AppColors.inputBorderColor),
+              //             ),
+              //             focusedBorder: OutlineInputBorder(
+              //               borderRadius: BorderRadius.circular(12.r),
+              //               borderSide: BorderSide(color: AppColors.inputBorderColor),
+              //             ),
+              //           ),
+              //           // دالة لقراءة النص العشوائي وضغط enter
+              //           onSubmitted: (value) {
+              //             if (value.trim().isEmpty) return;
+              //             setState(() {
+              //               if (suggestions.isNotEmpty) {
+              //                 PropertySearchService.addToRecentItem(
+              //                   // property: suggestions.first, 
+              //                   keyword: value, 
+              //                   recentList: recentSearches,
+              //                 );
+              //                 // اكمال النص باول نتيجة مطابقة تلقائيا عند ضغط Enter
+              //                 _searchController.text = suggestions.first.name;
+              //                 _searchController.selection = TextSelection.collapsed(offset: suggestions.first.name.length);
+              //               } else {
+              //                 PropertySearchService.addToRecentItem(
+              //                   keyword: value, 
+              //                   recentList: recentSearches,
+              //                 );
+              //               }
+              //             });
+              //           },
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
               
               Expanded(
                 child: _query.isEmpty && recentSearches.isEmpty
@@ -180,14 +222,18 @@ class _SearchScreenState extends State<SearchScreen> {
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Image.asset('assets/images/no_results.png', width: 215.w, height: 119.h),
-                                  SizedBox(height: 16.h),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 19.0),
+                                    child: SizedBox(width: 300.w, height: 119.h,
+                                      child: Image.asset('assets/images/no_results.png',width: double.infinity,)),// 
+                                  ),
+                                  SizedBox(height: 24.h),
                                   Text('Search not found', style: AppTextStyle.optionValueStyle.copyWith(fontSize: 20.sp)),
-                                  SizedBox(height: 8.h),
+                                  SizedBox(height: 16.h),
                                   Padding(
                                     padding: EdgeInsets.symmetric(horizontal: 24.w),
                                     child: Text(
-                                      'please enable your location services for more optimal result', 
+                                      'please enable your location services for\nmore optimal result', 
                                       textAlign: TextAlign.center,
                                       style: TextStyle(color: Colors.grey, fontSize: 14.sp, fontWeight: FontWeight.w500),
                                     ),

@@ -18,6 +18,7 @@ import 'package:flutter_application/feature/reset_password/presentation/screens/
 import 'package:flutter_application/feature/reset_password/presentation/screens/success_reset_screen.dart';
 import 'package:flutter_application/feature/reset_password/presentation/screens/verify_screen.dart';
 import 'package:go_router/go_router.dart';
+ 
 import 'package:flutter_application/feature/onboarding/presentation/screens/onboarding_screen.dart';
 import 'package:flutter_application/feature/booking_activity/presentation/screens/booking_screen.dart';
 import 'package:flutter_application/feature/booking_payement/presentation/screens/add_card.dart';
@@ -43,11 +44,7 @@ class AppRoute {
           GoRoute(
             path: '/home',
            builder: (context, state) {
-     
-
-    return HomeScreen(
-        
-    );
+    return HomeScreen();
   },
           ),
           GoRoute(
@@ -59,6 +56,7 @@ class AppRoute {
             builder: (context, state) => const FavoriteScreen(),
           ),
 
+ 
               GoRoute(
         path: '/profile',
         builder: (context, state) => const ProfileScreen(),
@@ -79,6 +77,7 @@ class AppRoute {
  
         path: '/splash',
         builder: (context, state) => const SplashScreen(),
+ 
       ),
       GoRoute(
         path: '/onboarding',

@@ -33,7 +33,7 @@ final VoidCallback ?onPageChanged;
 
   @override
   Widget build(BuildContext context) {
-    return AppBar( leading: Padding(
+    return AppBar(backgroundColor: Colors.transparent, leading: Padding(
       padding: const EdgeInsets.all(18),
  
       child: InkWell(onTap:onPageChanged,

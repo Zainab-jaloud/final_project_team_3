@@ -10,6 +10,7 @@ class AppTextStyle {
     color: AppColors.locationColor,
     overflow: TextOverflow.ellipsis,
   );
+ 
   static TextStyle fasilitiesTextStyl = TextStyle(
     fontWeight: FontWeight.w500,
     fontSize: 12,
@@ -17,6 +18,7 @@ class AppTextStyle {
     fontFamily: 'Inter',
   );
 
+ 
   static TextStyle optionValueStyle = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w600,

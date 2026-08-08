@@ -240,8 +240,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
             Positioned(
               bottom: 10.h,
-              left: 24.w,
-              child: AppButton(
+             left: 24.w,
+  right: 24.w,
+              child: AppButton(textColor:AppColors.whiteColor,
+              backgroundColor: AppColors.primaryColor,
                 text: _pages[_currentIndex].buttonText,
                 onPressed: _onNextPressed,
               ),

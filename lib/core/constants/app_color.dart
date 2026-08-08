@@ -20,10 +20,11 @@ class AppColors {
    static Color fieldlabel=Color(0xFF344054);
   static Color green = Color(0xFF34D399);
   static Color emptyStar=Color(0xFFFEDF89);
-  
-  
+  static Color babyPurple= Color(0xFFF4EBFF);
  
 }
  
-
+ 
+   
+    
  
