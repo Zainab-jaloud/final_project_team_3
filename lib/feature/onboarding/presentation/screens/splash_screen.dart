@@ -42,7 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
       else {
  
 
-        bool skipOnboarding = prefs.getBool('skip_onboarding') ?? false;
+        bool skipOnboarding = prefs.getBool('hasSeenOnboarding') ?? false;
 
       if (skipOnboarding) {
  
@@ -76,7 +76,6 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
           ),
 
-          // النص "HOUSELY" - Width 137, Height 32, Top 453, Left 119
           Positioned(
             left: 119.w,
             top: 453.h,
@@ -88,10 +87,11 @@ class _SplashScreenState extends State<SplashScreen> {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'Inter',
-                  fontWeight: FontWeight.w800, // ExtraBold
+                  fontWeight: FontWeight.w800,
                   fontSize: 24.sp,
-                  height: 32 / 24, // line-height ÷ font-size
-                  letterSpacing: 24.sp * 0.16, // 16% letter spacing
+ 
+                  height: 32 / 24,
+                  letterSpacing: 24.sp * 0.16,
  
                   color: AppColors.titleColor,
   

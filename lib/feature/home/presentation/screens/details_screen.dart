@@ -148,7 +148,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
     bottomNavigationBar:Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24,vertical: 44),
  
-      child: AppButton(text: 'Rent now', onPressed: () {context.push('/booking&payout',extra:{'property':widget.property,
+      child: AppButton(textColor: AppColors.whiteColor,backgroundColor: AppColors.primaryColor,
+        text: 'Rent now', onPressed: () {context.push('/booking&payout',extra:{'property':widget.property,
        'cardNumber':null,});},),
  
     ));

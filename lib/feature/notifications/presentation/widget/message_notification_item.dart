@@ -18,8 +18,8 @@ class MessageNotificationItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          width: 36.w,
-          height: 36.w,
+          width: 36,
+          height: 36,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: hasAvatar ? null : AppColors.svgBackground,
@@ -35,8 +35,8 @@ class MessageNotificationItem extends StatelessWidget {
               : Center(
                   child: SvgPicture.asset(
                     'assets/icons/person_placeholder.svg',
-                    width: 24.w,
-                    height: 24.w,
+                    width: 21,
+                    height: 21,
                   ),
                 ),
         ),

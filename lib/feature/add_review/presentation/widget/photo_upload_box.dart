@@ -21,21 +21,21 @@ class PhotoUploadBox extends StatelessWidget {
               child: Image.file(
                 image!,
                 width: double.infinity,
-                height: 139.h,
+                height: 139.sh,
                 fit: BoxFit.cover,
               ),
             )
-          : Column(
+          : Column(mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
                 SvgPicture.asset(
                   'assets/icons/upload_cloud.svg',
-                  width: 60.w,
-                  height: 60.w,
+                  width: 50.w,
+                  height: 50.h,
                 ),
                 SizedBox(height: 8.h),
                 Text('Click here to upload', style: AppTextStyle.optionLabelStyle),
-              ],
+            ],
             ),
     );
   }

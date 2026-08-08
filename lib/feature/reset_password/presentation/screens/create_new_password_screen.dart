@@ -89,7 +89,8 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
               ),
               Padding(
                 padding: EdgeInsets.only(bottom: 16.h, top: 12.h),
-                child: AppButton(
+                child: AppButton(textColor: AppColors.whiteColor,
+                backgroundColor: AppColors.primaryColor,
                   text: 'Change password',
                   onPressed: _isFormValid
                       ? () {

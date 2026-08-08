@@ -44,7 +44,9 @@ class SuccessResetScreen extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.only(bottom: 16.h, top: 12.h),
-                child: AppButton(text: 'Continue', onPressed: () {(context).push('/login');}),
+                child: AppButton(textColor: AppColors.whiteColor,
+                backgroundColor: AppColors.primaryColor,
+                  text: 'Continue', onPressed: () {(context).push('/login');}),
               ),
             ],
           ),

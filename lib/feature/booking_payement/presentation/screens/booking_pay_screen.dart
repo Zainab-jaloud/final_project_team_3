@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/core/constants/app_images.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
 import 'package:flutter_application/core/widget/app_button.dart';
@@ -75,7 +76,8 @@ SizedBox(height: 24,),
 PriceDetails(),
 SizedBox(height: 26,),
 if(_cardNumber != null)
-AppButton(
+AppButton(textColor: AppColors.whiteColor,
+backgroundColor: AppColors.primaryColor,
   text: 'Confirm and Pay',
   onPressed: () {
     setState(() {

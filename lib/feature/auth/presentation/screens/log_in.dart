@@ -12,6 +12,7 @@ import 'package:flutter_application/feature/search/presentation/widget/custom_ch
 //استدعاء ملف auth_local_service
 import 'package:flutter_application/feature/auth/data/auth_local_service.dart';
 import 'package:flutter_application/feature/auth/presentation/widget/auth_text_field.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
@@ -232,15 +233,17 @@ class _AuthScreenState extends State<AuthScreen> {
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
                         if (isSignIn) {
+                          final prefs = await SharedPreferences.getInstance();
                           if (_rememberMe == true) {
                             // استدعاء دالة الحفظ 
                             await _authLocalService.saveUserData(
-                              email: _emailController.text,
-                              
+                              email: _emailController.text,                  
                             ); 
+                             await prefs.setBool('skip_onboarding', true);
                           } else {
                            // استدعاء دالة المسح
                             await _authLocalService.clearUserData(); 
+                             await prefs.setBool('skip_onboarding', false);
                           }
        
                           context.go('/setlocation');

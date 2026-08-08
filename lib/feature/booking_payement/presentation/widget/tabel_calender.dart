@@ -330,7 +330,8 @@ if (BookingConstants.bookedDays.any((d) => isSameDay(d, day))) {
           ),
           const SizedBox(height: 68),
 
-          AppButton(
+          AppButton(textColor: AppColors.whiteColor,
+          backgroundColor: AppColors.primaryColor,
             text: 'Save',
             onPressed: () {
   Navigator.pop(

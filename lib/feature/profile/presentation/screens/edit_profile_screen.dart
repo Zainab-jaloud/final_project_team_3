@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/core/widget/app_button.dart';
-import 'package:flutter_application/feature/profile/presentation/widget/profile_app_bar.dart';
+import 'package:flutter_application/core/widget/custom_app_bar.dart';
 import 'package:flutter_application/feature/profile/presentation/widget/profile_avatar.dart';
 import 'package:flutter_application/feature/profile/presentation/widget/profile_text_field.dart';
 
@@ -114,7 +114,14 @@ Future<void> _loadSavedProfileData() async {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
-      appBar: const ProfileAppBar(title: 'Edit Profile'),
+      appBar: CustomAppBar(
+        title: 'Edit Profile',
+        icon1: '',
+        icon2: '',
+        rightIcon1: false,
+        rightIcon2: false,
+        onPageChanged: () => Navigator.of(context).pop(),
+      ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 24,),
         child: Column(
@@ -123,18 +130,18 @@ Future<void> _loadSavedProfileData() async {
             ProfileAvatar(
               imagePath: 'assets/images/user_avatar.png',
               onCameraTap: () {
-            
+
               },
             ),
             SizedBox(height: 48),
             ProfileTextField(
-              label: 'First Name',
+              label: 'Text Form',
               controller: _nameController,
               hasError: _nameError,
             ),
             SizedBox(height: 16.h),
             ProfileTextField(
-              label: 'Full Name',
+              label: 'User Name',
               controller: _usernameController,
               hasError: _usernameError,
             ),
@@ -154,7 +161,8 @@ Future<void> _loadSavedProfileData() async {
               onTap: _pickDate,
             ),
             SizedBox(height: 64.h),
-            AppButton(
+            AppButton(textColor: AppColors.whiteColor,
+            backgroundColor: AppColors.primaryColor,
               text: 'Save Change',
               onPressed: _onSaveChange,
             ),

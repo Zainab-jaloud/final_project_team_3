@@ -72,7 +72,8 @@ class _VerifyScreenState extends State<VerifyScreen> {
               ),
               Padding(
                 padding: EdgeInsets.only(bottom: 16.h, top: 12.h),
-                child: AppButton(
+                child: AppButton(textColor: AppColors.whiteColor,
+                backgroundColor: AppColors.primaryColor,
                   text: 'Verify',
                   onPressed:isCodeComplete
                       ? () {

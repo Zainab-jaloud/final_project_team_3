@@ -54,7 +54,8 @@ class _ResetScreenState extends State<ResetScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 16, top: 12),
-                child: AppButton(
+                child: AppButton(textColor: AppColors.whiteColor,
+                backgroundColor: AppColors.primaryColor,
                   text: 'Continue',
                   onPressed: selectedContactMethod == null
                       ? null

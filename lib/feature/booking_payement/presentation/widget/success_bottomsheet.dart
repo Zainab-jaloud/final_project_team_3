@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
 import 'package:flutter_application/core/widget/app_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,7 +40,7 @@ VoidCallback ?onPressed;
             text,
             SizedBox(height: 48,),
           withButton?
-          AppButton(text:buttonText??'', onPressed: onPressed):SizedBox()
+          AppButton(text:buttonText??'', onPressed: onPressed,textColor: AppColors.whiteColor,backgroundColor: AppColors.primaryColor,):SizedBox()
           ]),
         ),
       ),

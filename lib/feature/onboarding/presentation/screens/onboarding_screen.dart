@@ -131,7 +131,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     await prefs.setBool('hasSeenOnboarding', true);
     if (!mounted) return;
 
-    context.go('/profile');
+   
 
     context.go('/login');
   }

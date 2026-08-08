@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/core/constants/app_images.dart';
 import 'package:flutter_application/core/widget/app_button.dart';
 import 'package:flutter_application/core/widget/custom_app_bar.dart';
@@ -90,7 +91,7 @@ class _AddCardState extends State<AddCard> {
                 SizedBox(width:16,),
                 Expanded(child:CvvTextField(label:'Cvv', text:'3134'))],),
                const SizedBox(height: 55,),
-                AppButton(text:'Add Card', onPressed:_onAddCard,),
+                AppButton(text:'Add Card', onPressed:_onAddCard,textColor: AppColors.whiteColor,backgroundColor: AppColors.primaryColor,),
                 
             ],
           ),
