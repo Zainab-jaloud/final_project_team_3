@@ -36,13 +36,13 @@ class ProfileTextField extends StatelessWidget {
             style: TextStyle(
               fontFamily: 'Inter',
               fontWeight: FontWeight.w600,
-              fontSize: 14.sp,
+              fontSize: 15,
               height: 18 / 14,
               color: AppColors.titleColor,
             ),
           ),
         ),
-        SizedBox(height: 8.h),
+        SizedBox(height:8),
         Container(
           width: 327.w,
           height: 52.h,
@@ -68,7 +68,7 @@ class ProfileTextField extends StatelessWidget {
                   style: TextStyle(
                     fontFamily: 'Inter',
                     fontWeight: FontWeight.w400,
-                    fontSize: 14.sp,
+                    fontSize: 16.sp,
                     height: 18 / 14,
                     color: AppColors.titleColor,
                   ),

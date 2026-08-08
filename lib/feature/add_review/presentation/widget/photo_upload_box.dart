@@ -20,7 +20,7 @@ class PhotoUploadBox extends StatelessWidget {
               borderRadius: BorderRadius.circular(10.r),
               child: Image.file(
                 image!,
-                width: 327.w,
+                width: double.infinity,
                 height: 139.h,
                 fit: BoxFit.cover,
               ),
@@ -54,7 +54,7 @@ class DashedBorderBox extends StatelessWidget {
       child: CustomPaint(
         painter: _DashedBorderPainter(color: AppColors.dotColor, radius: 12.r),
         child: Container(
-          width: 327.w,
+          width: double.infinity,
           height: 139.h,
           alignment: Alignment.center,
           child: child,

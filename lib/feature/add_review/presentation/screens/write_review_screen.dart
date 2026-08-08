@@ -1,15 +1,19 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
+import 'package:flutter_application/core/constants/app_images.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
+import 'package:flutter_application/core/services/review_manager.dart';
 import 'package:flutter_application/core/widget/custom_app_bar.dart';
 import 'package:flutter_application/feature/add_review/data/model.dart';
 import 'package:flutter_application/feature/add_review/presentation/widget/photo_upload_box.dart';
 import 'package:flutter_application/feature/add_review/presentation/widget/review_property_card.dart';
 import 'package:flutter_application/feature/home/data/model.dart';
+import 'package:flutter_application/feature/home/data/reviews_model.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class WriteReviewScreen extends StatefulWidget {
   const WriteReviewScreen({super.key, required this.property});
@@ -29,7 +33,7 @@ void initState() {
     name: widget.property.name,
     address: widget.property.location,
     dateRange: '08 Aug - 12 Aug',
-    imageAsset:widget.property.image,
+    imageAsset:widget.property.image, myRating: 4,
   );
 }
 
@@ -37,7 +41,6 @@ void initState() {
   final int _maxChars = 350;
 
   File? _uploadedImage;
-  File? _propertyImageOverride;
 
   @override
   void dispose() {
@@ -53,23 +56,43 @@ void initState() {
       });
     }
   }
+  final TextEditingController reviewController = TextEditingController();
+  Future<void> submitReview() async {
+  if (_uploadedImage == null) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    const SnackBar(content: Text('No photo added')),
+  );
+  return;
+}
 
-  void _submitReview() {
-    if (_uploadedImage == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('No photo added')),
-      );
-      return;
-    }
-
-    setState(() {
-      _propertyImageOverride = _uploadedImage;
-    });
-
+ if (reviewController.text.trim().isEmpty) {
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Your review added successfully')),
+      const SnackBar(content: Text('Please write your review')),
     );
+    return;
   }
+final prefs = await SharedPreferences.getInstance();
+final userName = prefs.getString('username') ?? 'Zainab';
+
+final review = ReviewsModel(
+  name: userName,
+  description: reviewController.text.trim(),
+  photo: AppImages.user,
+  myRating: 4,
+);
+
+ReviewsManager.addReview(review);
+
+if (mounted) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    const SnackBar(content: Text('Your review added successfully')),
+  );
+
+  context.pop();
+}
+  }
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +105,9 @@ void initState() {
         icon1: '',
         icon2: '',
         rightIcon1: false,
+
         rightIcon2: false, onPageChanged: () { (context).go('/home'); },
+
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 24.w).copyWith(top: 16.h),
@@ -91,22 +116,23 @@ void initState() {
           children: [
             ReviewPropertyCard(
               property: _property,
-              overrideImage: _propertyImageOverride,
             ),
             SizedBox(height: 16.h),
             Divider(height: 0.5, thickness: 0.5, color: AppColors.borderColor),
             SizedBox(height: 24.h),
-            Text('Add Photo or Video', style: AppTextStyle.optionValueStyle.copyWith(fontSize: 16)),
-            SizedBox(height: 8.h),
+ 
+            Text('Add Photo or Video',  style: AppTextStyle.optionValueStyle.copyWith(fontSize: 16)),
+            SizedBox(height: 14.h),
             PhotoUploadBox(image: _uploadedImage, onTap: _pickImage),
             SizedBox(height: 24.h),
-            Text('Write your review', style: AppTextStyle.optionValueStyle.copyWith(fontSize: 16)),
-            SizedBox(height: 8.h),
+            Text('Write your review',  style: AppTextStyle.optionValueStyle.copyWith(fontSize: 16)),
+            SizedBox(height: 14.h),
+ 
             DashedBorderBox(
               child: Padding(
                 padding: EdgeInsets.all(12.w),
                 child: TextField(
-                  controller: _reviewController,
+                  controller: reviewController,
                   maxLength: _maxChars,
                   maxLines: null,
                   expands: true,
@@ -117,6 +143,7 @@ void initState() {
                     hintText:
                         'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard',
                     hintStyle: AppTextStyle.optionLabelStyle,
+
                   ),
                   onChanged: (_) => setState(() {}),
                 ),
@@ -130,12 +157,12 @@ void initState() {
                 style: AppTextStyle.optionLabelStyle,
               ),
             ),
-            SizedBox(height: 24.h),
+            SizedBox(height: 57.h),
             SizedBox(
-              width: 327.w,
+              width: double.infinity,
               height: 52.h,
               child: ElevatedButton(
-                onPressed: _submitReview,
+                onPressed:submitReview ,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.primaryColor,
                   shape: RoundedRectangleBorder(

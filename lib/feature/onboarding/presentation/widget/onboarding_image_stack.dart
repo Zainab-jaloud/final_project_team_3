@@ -43,7 +43,6 @@ class OnboardingImageStack extends StatelessWidget {
       height: stackHeight.h,
       child: Stack(
         children: [
-          // الشكل الموف (تحت بالـ z-order) - Opacity 45%
           Positioned(
             top: tintedTop.h,
             left: tintedLeft.w,
@@ -53,19 +52,19 @@ class OnboardingImageStack extends StatelessWidget {
                 borderRadius: BorderRadius.circular(_radius.r),
                 child: Image.asset(
                   tintedImagePath,
-                  width: tintedWidth.w,
-                  height: tintedHeight.h,
+                  width: tintedWidth.r,
+                  height: tintedHeight.r,
                   fit: BoxFit.cover,
                 ),
               ),
             ),
           ),
-
-          // الصورة الحقيقية (فوق دايمًا) - مع الظل
           Positioned(
             top: photoTop.h,
             left: photoLeft.w,
             child: Container(
+              width: photoWidth.r,
+              height: photoHeight.r,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(_radius.r),
                 boxShadow: [
@@ -82,8 +81,8 @@ class OnboardingImageStack extends StatelessWidget {
                 borderRadius: BorderRadius.circular(_radius.r),
                 child: Image.asset(
                   photoImagePath,
-                  width: photoWidth.w,
-                  height: photoHeight.h,
+                  width: photoWidth.r,
+                  height: photoHeight.r,
                   fit: BoxFit.cover,
                 ),
               ),

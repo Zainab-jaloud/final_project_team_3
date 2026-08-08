@@ -223,7 +223,6 @@ class _AuthScreenState extends State<AuthScreen> {
                           // استدعاء دالة الحفظ 
                           await _authLocalService.saveUserData(
                             email: _emailController.text,
-                            password: _passwordController.text,
                           ); 
                         } else {
                          // استدعاء دالة المسح
@@ -246,6 +245,12 @@ class _AuthScreenState extends State<AuthScreen> {
                           );
                           return; 
                         }
+
+  await _authLocalService.saveUserData(
+    email: _emailController.text,
+    username: _usernameController.text,
+  );
+                        // ignore: use_build_context_synchronously
                         context.go('/setlocation');
                       }
                     }

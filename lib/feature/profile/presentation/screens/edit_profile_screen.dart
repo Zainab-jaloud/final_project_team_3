@@ -31,17 +31,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     super.initState();
     _loadSavedProfileData();
   }
-
-  Future<void> _loadSavedProfileData() async {
-    final prefs = await SharedPreferences.getInstance();
-    setState(() {
-      _nameController.text = prefs.getString('saved_name') ?? '';
-      _usernameController.text = prefs.getString('saved_username') ?? '';
-      _emailController.text = prefs.getString('saved_email') ?? '';
-      _dobController.text = prefs.getString('saved_dob') ?? '';
-    });
-  }
-
   @override
   void dispose() {
     _nameController.dispose();
@@ -57,7 +46,20 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     if (!afterAt.contains('gmail.com')) return false;
     return true;
   }
+Future<void> _loadSavedProfileData() async {
+  final prefs = await SharedPreferences.getInstance();
 
+  final username = prefs.getString('username') ?? '';
+
+  final firstName = username.trim().split(' ').first;
+
+  setState(() {
+    _nameController.text = firstName;
+    _usernameController.text = username;
+    _emailController.text = prefs.getString('saved_email') ?? '';
+    _dobController.text = prefs.getString('saved_dob') ?? '';
+  });
+}
   Future<void> _onSaveChange() async {
     final name = _nameController.text.trim();
     final username = _usernameController.text.trim();
@@ -76,8 +78,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     }
 
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('saved_name', name);
-    await prefs.setString('saved_username', username);
+    await prefs.setString('username', name);
     await prefs.setString('saved_email', email);
     await prefs.setString('saved_dob', dob);
 
@@ -115,7 +116,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       backgroundColor: AppColors.whiteColor,
       appBar: const ProfileAppBar(title: 'Edit Profile'),
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 24.w),
+        padding: EdgeInsets.symmetric(horizontal: 24,),
         child: Column(
           children: [
             SizedBox(height: 32.h),
@@ -125,15 +126,15 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             
               },
             ),
-            SizedBox(height: 24.h),
+            SizedBox(height: 48),
             ProfileTextField(
-              label: 'Text Form',
+              label: 'First Name',
               controller: _nameController,
               hasError: _nameError,
             ),
             SizedBox(height: 16.h),
             ProfileTextField(
-              label: 'Username',
+              label: 'Full Name',
               controller: _usernameController,
               hasError: _usernameError,
             ),
@@ -152,7 +153,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               hasError: _dobError,
               onTap: _pickDate,
             ),
-            SizedBox(height: 32.h),
+            SizedBox(height: 64.h),
             AppButton(
               text: 'Save Change',
               onPressed: _onSaveChange,

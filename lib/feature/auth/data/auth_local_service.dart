@@ -10,19 +10,19 @@ class AuthLocalService {
     if (isSignIn && isRemembered) {
       return {
         'email': prefs.getString('saved_email') ?? '',
-        'password': prefs.getString('saved_password') ?? '',
+        'username': prefs.getString('username') ?? '',
       };
     }
     return null;
   }
 
   // دالة حفظ بيانات المستخدم عند تفعيل خيار تذكرني
-  Future<void> saveUserData({required String email, required String password}) async {
+  Future<void> saveUserData({required String email,String? username,}) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool('remember_me', true);
     await prefs.setString('saved_email', email.trim());
-    await prefs.setString('saved_password', password.trim());
     await prefs.setBool('skip_onboarding', true); 
+    if (username != null && username.trim().isNotEmpty) { await prefs.setString( 'username', username.trim(), ); }
   }
 
   // دالة حذف البيانات
@@ -31,6 +31,7 @@ class AuthLocalService {
     await prefs.remove('remember_me');
     await prefs.remove('saved_email');
     await prefs.remove('saved_password');
+    await prefs.remove('username');
     await prefs.setBool('skip_onboarding', false); 
   }
 }

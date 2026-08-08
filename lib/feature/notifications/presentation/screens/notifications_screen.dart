@@ -101,6 +101,7 @@ class NotificationsScreen extends StatelessWidget {
         icon2: '',
         rightIcon1: false,
         rightIcon2: false, onPageChanged: () {context.pop();},
+
       ),
       body: ListView(
         padding: EdgeInsets.symmetric(horizontal: 24.w).copyWith(top: 16.h),

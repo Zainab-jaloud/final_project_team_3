@@ -20,6 +20,7 @@ class NotificationEmptyScreen extends StatelessWidget {
         icon2: '',
         rightIcon1: false,
         rightIcon2: false, onPageChanged: () { context.pop(); },
+
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.w),

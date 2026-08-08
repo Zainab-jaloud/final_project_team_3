@@ -20,9 +20,12 @@ class AllReviewsScreen extends StatelessWidget {
             ListView.separated(itemCount:reviews.length,shrinkWrap: true,
          physics: NeverScrollableScrollPhysics(),
               // ignore: avoid_types_as_parameter_names, non_constant_identifier_names
-              itemBuilder:(BuildContext,index){return  PersonsReviews(name:reviews[index].name, comment:reviews[index].description,
-               image:reviews[index].photo);
-                 }, 
+                itemBuilder: (context, index) {
+              return PersonsReviews(
+                name: reviews[index].name,
+                comment: reviews[index].description,
+                image: reviews[index].photo,
+                );},
               separatorBuilder: (BuildContext context, int index) { return SizedBox(height:15); },),
           ],
         ),),
