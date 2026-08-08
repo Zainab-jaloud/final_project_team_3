@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
+import 'package:flutter_application/core/widget/custom_app_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_application/core/widget/app_button.dart';
 import 'package:go_router/go_router.dart';
@@ -23,15 +24,15 @@ class _VerifyScreenState extends State<VerifyScreen> {
 
     return Scaffold(
       backgroundColor: AppColors.pagescolor,
-      appBar: AppBar(
-        backgroundColor: AppColors.pagescolor,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: AppColors.titleColor),
-          onPressed: () {
-            context.go('/reset-password');
-          },
-        ),
+      appBar: CustomAppBar(
+        title: '',
+        icon1: '',
+        icon2: '',
+        rightIcon1: false,
+        rightIcon2: false,
+        onPageChanged: () {
+          context.go('/reset-password');
+        },
       ),
       body: SafeArea(
         child: Padding(
@@ -49,14 +50,14 @@ class _VerifyScreenState extends State<VerifyScreen> {
                         subtitle:
                             'Please enter 6 digit verification that have been sent to your email address',
                       ),
-                      SizedBox(height: 150.h),
+                      SizedBox(height: 140),
                       OtpInputWidget(
                         length: 4,
                         onCompleted: (code) {
                           setState(() => otpCode = code);
                         },
                       ),
-                      SizedBox(height: 25.h),
+                      SizedBox(height: 40),
                       ResendCodeWidget(
                         onResend: () {
                           ScaffoldMessenger.of(context).showSnackBar(

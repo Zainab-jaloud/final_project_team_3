@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+ 
 class AppTextStyle {
   static TextStyle optionLabelStyle = TextStyle(
     fontSize: 12,
@@ -13,7 +12,9 @@ class AppTextStyle {
  
   static TextStyle fasilitiesTextStyl = TextStyle(
     fontWeight: FontWeight.w500,
-    fontSize: 12,
+ 
+    fontSize: 14,
+ 
     color: AppColors.titleColor,
     fontFamily: 'Inter',
   );
@@ -28,7 +29,7 @@ class AppTextStyle {
   );
 
   static TextStyle heading1 = TextStyle(
-    fontSize: 24.sp,
+    fontSize: 24,
     fontWeight: FontWeight.w700,
  fontFamily: 'Inter',
     color:AppColors.titleColor,

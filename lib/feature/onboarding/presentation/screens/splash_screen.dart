@@ -28,37 +28,35 @@ class _SplashScreenState extends State<SplashScreen> {
 
 
     @override
-  void initState() {
-    super.initState();
-    Timer(const Duration(seconds: 3), ()async  {
-      if (mounted) {
-        final prefs = await SharedPreferences.getInstance();
- 
-// التاكد ان اختار المستخدم تذكرني
-        bool skipOnboarding = prefs.getBool('skip_onboarding') ?? false;
-//يفحص قيمة المتغير اذا كانت ترو سينتقل الى الهوم واذا لا بينتقل للاون بوردينغ 
-      if (skipOnboarding) {
-          context.go('/home');}
-      else {
+ @override
+void initState() {
+  super.initState();
+
+  Timer(const Duration(seconds: 3), () async {
+    if (!mounted) return;
+
+    final prefs = await SharedPreferences.getInstance();
+
+final rememberMe =
+    prefs.getBool('skip_onboarding') ?? false;
+
+final hasSeenOnboarding =
+    prefs.getBool('hasSeenOnboarding') ?? false;
+
  
 
-        bool skipOnboarding = prefs.getBool('hasSeenOnboarding') ?? false;
-
-      if (skipOnboarding) {
- 
-          context.go('/home');}
-      
-     
-      else {
-
-       
- 
-        context.go('/onboarding');
-      }
-      }
-    }});
-  }
-
+if (rememberMe) {
+  
+  context.go('/home');
+} else if (!hasSeenOnboarding) {
+  
+  context.go('/onboarding');
+} else {
+  
+  context.go('/login');
+}
+  });
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(

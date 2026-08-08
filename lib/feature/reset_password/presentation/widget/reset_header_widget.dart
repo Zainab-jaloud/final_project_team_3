@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,14 +17,18 @@ class ResetHeaderWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(title, style: AppTextStyle.heading1),
+        Text(
+          title,
+          style: AppTextStyle.heading1.copyWith(fontWeight: FontWeight.w600),
+        ),
         SizedBox(height: 8.h),
  
         Text(
           subtitle,
           style: AppTextStyle.optionLabelStyle.copyWith(
-            color: AppColors.dotColor,
-            fontSize: 14,
+            overflow: TextOverflow.visible,
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
           ),
         ),
  

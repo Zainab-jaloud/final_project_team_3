@@ -52,33 +52,36 @@ class _ChatListItemWidgetState extends State<ChatListItemWidget> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Positioned.fill(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              _swipeActionButton(
-                label: 'More',
-                iconPath: 'assets/icons/More Square.svg',
-                backgroundColor: AppColors.dotColor,
-                iconColor: AppColors.pagescolor,
-                onTap: () {
-                  _closeSwipe();
-                  widget.onMore();
-                },
-              ),
-              _swipeActionButton(
-                label: 'Delete',
-                iconPath: 'assets/icons/Delete.svg',
-                backgroundColor: AppColors.primaryColor,
-                iconColor: AppColors.pagescolor,
-                onTap: () {
-                  _closeSwipe();
-                  widget.onDelete();
-                },
-              ),
-            ],
+ 
+        if (_dragExtent < 0)
+          Positioned.fill(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                _swipeActionButton(
+                  label: 'More',
+                  iconPath: 'assets/icons/More Square.svg',
+                  backgroundColor: AppColors.dotColor,
+                  iconColor: AppColors.pagescolor,
+                  onTap: () {
+                    _closeSwipe();
+                    widget.onMore();
+                  },
+                ),
+                _swipeActionButton(
+                  label: 'Delete',
+                  iconPath: 'assets/icons/Delete2.svg',
+                  backgroundColor: AppColors.primaryColor,
+                  iconColor: AppColors.pagescolor,
+                  onTap: () {
+                    _closeSwipe();
+                    widget.onDelete();
+                  },
+                ),
+              ],
+            ),
+ 
           ),
-        ),
 
         GestureDetector(
           onHorizontalDragUpdate: _onDragUpdate,
@@ -89,11 +92,11 @@ class _ChatListItemWidgetState extends State<ChatListItemWidget> {
             transform: Matrix4.translationValues(_dragExtent, 0, 0),
             color: AppColors.pagescolor,
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 10.h),
+              padding: EdgeInsets.only(top: 10.h, bottom: 18.h),
               child: Row(
                 children: [
                   CircleAvatar(
-                    radius: 24.r,
+                    radius: 28.r,
                     backgroundImage: AssetImage(widget.chat.imagePath),
                   ),
                   SizedBox(width: 12.w),
@@ -103,7 +106,9 @@ class _ChatListItemWidgetState extends State<ChatListItemWidget> {
                       children: [
                         Text(
                           widget.chat.name,
-                          style: AppTextStyle.optionValueStyle,
+                          style: AppTextStyle.optionValueStyle.copyWith(
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
                         SizedBox(height: 4.h),
                         Text(
@@ -144,7 +149,7 @@ class _ChatListItemWidgetState extends State<ChatListItemWidget> {
       onTap: onTap,
       child: Container(
         width: 55.w,
-        height: 72.h,
+        height: 100.h,
         color: backgroundColor,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

@@ -33,7 +33,9 @@ import 'package:flutter_application/feature/home/presentation/screens/popular_pl
  
 class AppRoute {
   static final GoRouter pageRoute = GoRouter(
+ 
     initialLocation: '/splash',
+ 
  
     routes: [
       ShellRoute(

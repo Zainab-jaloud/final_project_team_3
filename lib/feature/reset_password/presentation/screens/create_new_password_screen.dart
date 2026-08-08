@@ -3,8 +3,10 @@ import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/feature/reset_password/presentation/widget/password_field_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_application/core/widget/app_button.dart';
+import 'package:flutter_svg/svg.dart' as Left;
 import 'package:go_router/go_router.dart';
 import '../widget/reset_header_widget.dart';
+import 'package:flutter_application/core/widget/custom_app_bar.dart';
 
 class CreateNewPasswordScreen extends StatefulWidget {
   const CreateNewPasswordScreen({super.key});
@@ -36,15 +38,15 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.pagescolor,
-      appBar: AppBar(
-        backgroundColor: AppColors.pagescolor,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: AppColors.titleColor),
-          onPressed: () {
-            context.go('/verify-email');
-          },
-        ),
+      appBar: CustomAppBar(
+        title: '',
+        icon1: '',
+        icon2: '',
+        rightIcon1: false,
+        rightIcon2: false,
+        onPageChanged: () {
+          context.go('/verify-email');
+        },
       ),
       body: SafeArea(
         child: Padding(
@@ -78,6 +80,11 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                       PasswordFieldWidget(
                         label: 'Confirm Password',
                         hint: 'Password',
+                        errorText:
+                            _confirmPassword.isNotEmpty &&
+                                _confirmPassword != _newPassword
+                            ? 'Passwords do not match'
+                            : null,
                         controller: _confirmPasswordController,
                         onChanged: (value) {
                           setState(() => _confirmPassword = value);

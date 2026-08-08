@@ -4,6 +4,7 @@ import 'package:flutter_application/core/constants/text_style.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_application/core/widget/app_button.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SetLocationScreen extends StatelessWidget {
   const SetLocationScreen({super.key});
@@ -41,7 +42,24 @@ class SetLocationScreen extends StatelessWidget {
                        SizedBox(height: 95.h,),
                        AppButton(textColor:AppColors.whiteColor ,backgroundColor:AppColors.primaryColor,shadow: false ,text: "Use current location", onPressed: (){context.push('/maps');}),
                        SizedBox(height: 16.h,),
-                       AppButton(textColor:AppColors.primaryColor ,backgroundColor:AppColors.whiteColor,shadow: true ,text:"Select it manually" , onPressed:(){ context.go('/home');}),
+                       AppButton(textColor:AppColors.primaryColor ,backgroundColor:AppColors.whiteColor,shadow: true ,text:"Select it manually" ,
+                         onPressed: () async {
+    final prefs = await SharedPreferences.getInstance();
+
+    await prefs.setString('locationType', 'manual');
+
+    await prefs.setString(
+      'manualLocation',
+      'Yogyakarta, Ind',
+    );
+
+    if (!context.mounted) return;
+
+    context.go('/home');
+  },
+                        
+                        
+                        ),
  
                        SizedBox(height: 48.h,)
           

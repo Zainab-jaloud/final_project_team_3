@@ -24,19 +24,24 @@ class SuccessResetScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const SuccessIconWidget(),
-                    SizedBox(height: 24.h),
+                    SizedBox(height: 48),
                     Text(
                       'Success!',
                       textAlign: TextAlign.center,
-                    style: AppTextStyle.optionValueStyle.copyWith(fontSize: 24),
+ 
+                    style: AppTextStyle.heading1.copyWith(fontSize: 22),
+ 
  
                     ),
-                    SizedBox(height: 8.h),
+                    SizedBox(height: 15.h),
                     Text(
                       'You password has been changed. Please \nlog in again with a new password.',
                       textAlign: TextAlign.center,
  
-                      style: AppTextStyle.optionLabelStyle.copyWith(fontSize: 14),
+ 
+                      style: AppTextStyle.fasilitiesTextStyl.copyWith(fontSize: 15,color: AppColors.locationColor,),
+ 
+ 
  
                     ),
                   ],

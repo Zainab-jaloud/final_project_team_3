@@ -20,6 +20,7 @@ class ResendCodeWidget extends StatelessWidget {
             child: Text(
               'Resend code',
  
+ 
               style: AppTextStyle.optionValueStyle.copyWith(color: AppColors.redHeartColor)
  
             ),

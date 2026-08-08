@@ -213,7 +213,7 @@ class _AuthScreenState extends State<AuthScreen> {
                             minimumSize: Size.zero,
                             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                           ),
-                          onPressed: () {},
+                          onPressed: () {context.push( '/reset-password');},
                           child: Text(
                             "Forgot password ?", 
                             style: AppTextStyle.optionLabelStyle.copyWith(

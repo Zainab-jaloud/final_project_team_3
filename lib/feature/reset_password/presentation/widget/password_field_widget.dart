@@ -32,7 +32,9 @@ class _PasswordFieldWidgetState extends State<PasswordFieldWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
  
-        Text(widget.label, style: AppTextStyle.fasilitiesTextStyl.copyWith(fontSize: 14)),
+ 
+        Text(widget.label, style: AppTextStyle.optionValueStyle.copyWith(fontSize: 14)),
+ 
  
         SizedBox(height: 6.h),
         TextField(
@@ -48,7 +50,7 @@ class _PasswordFieldWidgetState extends State<PasswordFieldWidget> {
             errorText: widget.errorText,
             contentPadding: EdgeInsets.symmetric(
               horizontal: 14.w,
-              vertical: 14.h,
+              vertical: 18.h,
             ),
 
             suffixIcon: IconButton(

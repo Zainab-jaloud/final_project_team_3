@@ -14,7 +14,8 @@ import 'package:flutter_application/core/widget/custom_app_bar.dart';
 import 'package:flutter_application/feature/search/presentation/widget/search_field.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/foundation.dart'; 
-import 'package:flutter_application/feature/set_location/data/location_service.dart'; 
+import 'package:flutter_application/feature/set_location/data/location_service.dart';
+import 'package:shared_preferences/shared_preferences.dart'; 
  
 
 class MapScreen extends StatefulWidget {
@@ -200,8 +201,30 @@ class MapScreenState extends State<MapScreen> {
                   textColor: AppColors.whiteColor,
                   shadow: false,
                   text: 'Choose Location', 
-                  onPressed: () {},
- 
+              onPressed: () async {
+  final prefs = await SharedPreferences.getInstance();
+
+  await prefs.setString('locationType', 'map');
+
+  await prefs.setDouble(
+    'latitude',
+    _initialPosition.latitude,
+  );
+
+  await prefs.setDouble(
+    'longitude',
+    _initialPosition.longitude,
+  );
+
+  await prefs.setString(
+    'manualLocation',
+    _currentAddress,
+  );
+
+  if (!context.mounted) return;
+
+  context.go('/home');
+},
                 ),
                 SizedBox(height: 38.h), 
               ],
