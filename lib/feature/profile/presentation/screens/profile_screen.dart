@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:flutter_application/core/constants/app_color.dart';
-import 'package:flutter_application/feature/profile/presentation/widget/profile_app_bar.dart';
+import 'package:flutter_application/core/widget/custom_app_bar.dart';
 import 'package:flutter_application/feature/profile/presentation/widget/profile_avatar.dart';
 import 'package:flutter_application/feature/profile/presentation/widget/profile_menu_item.dart';
 import 'package:flutter_application/feature/profile/presentation/screens/edit_profile_screen.dart';
@@ -55,7 +55,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
-      appBar: const ProfileAppBar(title: 'Profile'),
+      appBar: CustomAppBar(
+        title: 'Profile',
+        icon1: '',
+        icon2: '',
+        rightIcon1: false,
+        rightIcon2: false,
+        onPageChanged: () => Navigator.of(context).pop(),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: 24.w),
