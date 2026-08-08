@@ -13,7 +13,7 @@ class DeleteConfirmationDialog extends StatelessWidget {
     return Container(
       width: double.infinity,
       //height: double.infinity,
-      padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h),
+      padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
       decoration: BoxDecoration(
         color: AppColors.pagescolor,
         borderRadius: BorderRadius.only(
@@ -28,13 +28,13 @@ class DeleteConfirmationDialog extends StatelessWidget {
             width: 40.w,
             height: 4.h,
             //margin: EdgeInsets.only(bottom: 24.h),
-            margin: EdgeInsets.only(bottom: 16.h),
+            margin: EdgeInsets.only(bottom: 77.h),
             decoration: BoxDecoration(
               color: AppColors.unselectedBorderColor,
               borderRadius: BorderRadius.circular(4.r),
             ),
           ),
-          SizedBox(height: 11),
+          //SizedBox(height: 11),
           Container(
             width: 120.w,
             height: 120.h,
@@ -64,20 +64,20 @@ class DeleteConfirmationDialog extends StatelessWidget {
             ),
           ),
 
-          SizedBox(height: 24),
+          SizedBox(height: 22),
 
           Text(
             'Are you sure you want to\ndelete this message ?',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontFamily: 'Inter',
-              fontSize: 20.sp,
+              fontSize: 20,
               fontWeight: FontWeight.w600,
               color: AppColors.titleColor,
             ),
           ),
 
-          SizedBox(height: 15),
+          SizedBox(height: 14),
 
           Text(
             'the message will be deleted from this\ndevice',
@@ -96,7 +96,7 @@ class DeleteConfirmationDialog extends StatelessWidget {
             children: [
               SizedBox(
                 width: 125.w,
-                height: 60.h,
+                height: 57.h,
                 child: OutlinedButton(
                   onPressed: () => Navigator.pop(context),
                   style: OutlinedButton.styleFrom(
@@ -120,10 +120,10 @@ class DeleteConfirmationDialog extends StatelessWidget {
               ),
 
               SizedBox(width: 12.w),
-              // زر Delete
+
               SizedBox(
                 width: 125.w,
-                height: 60.h,
+                height: 57.h,
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.pop(context);
@@ -150,7 +150,7 @@ class DeleteConfirmationDialog extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 16.h),
+          SizedBox(height: 8),
         ],
       ),
     );

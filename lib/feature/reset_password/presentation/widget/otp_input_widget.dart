@@ -55,8 +55,8 @@ class _OtpInputWidgetState extends State<OtpInputWidget> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: List.generate(widget.length, (index) {
         return SizedBox(
-          width: 65.r,
-          height: 65.r,
+          width: 57.w,
+          height: 60.h,
           child: TextField(
             controller: _controllers[index],
             focusNode: _focusNodes[index],
@@ -67,8 +67,9 @@ class _OtpInputWidgetState extends State<OtpInputWidget> {
             inputFormatters: [FilteringTextInputFormatter.digitsOnly],
             decoration: InputDecoration(
               counterText: '',
-
-              contentPadding: EdgeInsets.zero,
+              isDense: true,
+              contentPadding: EdgeInsets.symmetric(vertical: 16),
+              //  contentPadding: EdgeInsets.zero,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(7.r),
                 borderSide: BorderSide(color: AppColors.inputBorderColor),

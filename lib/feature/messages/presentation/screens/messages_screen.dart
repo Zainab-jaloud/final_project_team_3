@@ -30,6 +30,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
   void _confirmDelete(ChatModel chat) {
     showModalBottomSheet(
       context: context,
+      isScrollControlled: true,
       backgroundColor: Colors.transparent,
       builder: (_) => DeleteConfirmationDialog(
         onConfirm: () {
@@ -54,7 +55,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
       backgroundColor: AppColors.pagescolor,
       appBar: CustomAppBar(
         title: 'Message',
-        icon1: 'assets/icons/Search.svg',
+        icon1: 'assets/icons/Search2.svg',
         icon2: '',
         rightIcon1: true,
         rightIcon2: false,

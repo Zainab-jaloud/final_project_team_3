@@ -52,33 +52,34 @@ class _ChatListItemWidgetState extends State<ChatListItemWidget> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Positioned.fill(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              _swipeActionButton(
-                label: 'More',
-                iconPath: 'assets/icons/More Square.svg',
-                backgroundColor: AppColors.unselectedBorderColor,
-                iconColor: AppColors.pagescolor,
-                onTap: () {
-                  _closeSwipe();
-                  widget.onMore();
-                },
-              ),
-              _swipeActionButton(
-                label: 'Delete',
-                iconPath: 'assets/icons/Delete2.svg',
-                backgroundColor: AppColors.primaryColor,
-                iconColor: AppColors.pagescolor,
-                onTap: () {
-                  _closeSwipe();
-                  widget.onDelete();
-                },
-              ),
-            ],
+        if (_dragExtent < 0)
+          Positioned.fill(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                _swipeActionButton(
+                  label: 'More',
+                  iconPath: 'assets/icons/More Square.svg',
+                  backgroundColor: AppColors.unselectedBorderColor,
+                  iconColor: AppColors.pagescolor,
+                  onTap: () {
+                    _closeSwipe();
+                    widget.onMore();
+                  },
+                ),
+                _swipeActionButton(
+                  label: 'Delete',
+                  iconPath: 'assets/icons/Delete2.svg',
+                  backgroundColor: AppColors.primaryColor,
+                  iconColor: AppColors.pagescolor,
+                  onTap: () {
+                    _closeSwipe();
+                    widget.onDelete();
+                  },
+                ),
+              ],
+            ),
           ),
-        ),
 
         GestureDetector(
           onHorizontalDragUpdate: _onDragUpdate,
