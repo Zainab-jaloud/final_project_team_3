@@ -31,7 +31,7 @@ class CustomSearchField extends StatelessWidget {
               autofocus: autofocus,
               decoration: InputDecoration(
                 filled: true,
-                fillColor: AppColors.whiteColor,
+                fillColor: Colors.white,
                 contentPadding: EdgeInsets.all(14.r),
                 hintText: hintText, 
                 hintStyle: AppTextStyle.optionLabelStyle.copyWith(fontSize: 14),

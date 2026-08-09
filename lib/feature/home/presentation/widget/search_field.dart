@@ -18,7 +18,7 @@ class SearchField extends StatelessWidget {
       child: TextField(
          readOnly: true,
          onTap: () {
-           context.go('/search'); 
+           context.push('/search'); 
           },
        decoration: InputDecoration(contentPadding: EdgeInsets.all(14),
          hintText:'Search Property',
