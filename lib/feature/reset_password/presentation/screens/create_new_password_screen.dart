@@ -3,7 +3,6 @@ import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/feature/reset_password/presentation/widget/password_field_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_application/core/widget/app_button.dart';
-import 'package:flutter_svg/svg.dart' as Left;
 import 'package:go_router/go_router.dart';
 import '../widget/reset_header_widget.dart';
 import 'package:flutter_application/core/widget/custom_app_bar.dart';
@@ -107,6 +106,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
           const Duration(milliseconds: 150),
         );
                if (!mounted) return;
+               // ignore: use_build_context_synchronously
                context.go('/success-reset');
                         }
                       : null,

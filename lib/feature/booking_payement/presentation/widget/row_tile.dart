@@ -22,7 +22,7 @@ final VoidCallback onTap;
      SizedBox(width: 16,),
           Text(text,style:AppTextStyle.optionLabelStyle.copyWith(fontSize: 15,color: AppColors.titleColor),) ,
      Spacer(),
-    GestureDetector(onTap: onTap,child: SvgPicture.asset(rightIcon))
+    GestureDetector(onTap: onTap,child: SizedBox(width:20,height:20,child: SvgPicture.asset(rightIcon)))
       ]);
   }
 }

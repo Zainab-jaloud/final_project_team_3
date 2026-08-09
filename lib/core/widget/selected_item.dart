@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SelectedItem extends StatelessWidget {
@@ -18,23 +19,27 @@ final int currentIndex;
   @override
   Widget build(BuildContext context) {
      bool selected = currentIndex == index;
-    return InkWell( onTap: () => onTap(index),child: Column(  mainAxisAlignment: MainAxisAlignment.center,
-      children: [ Container(
-          width: 28,
-          height: 3,
+    return InkWell( onTap: () => onTap(index),child: Column(  mainAxisAlignment: MainAxisAlignment.start,
+      children: [ Container( 
+          width: 28.w,
+          height: 3.7.h,
           decoration: BoxDecoration(
             color:   selected ? AppColors.secondaryColor  : Colors.transparent,
             
           ),
-        ),  const SizedBox(height: 8),
+        ),  
+        SizedBox(height:20.h),
         SvgPicture.asset( selected ? selectedIcon: icon,
         colorFilter:  selected ? ColorFilter.mode(
    AppColors.secondaryColor, 
     BlendMode.srcIn,
   ):null,), 
-         const SizedBox(height: 8),Text(  text,
-            style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'Inter',fontSize: 10,
+         
+          SizedBox(height:6.h),
+         Text(  text,
+            style: TextStyle(fontWeight: FontWeight.w600,fontFamily: 'Inter',fontSize: 10.sp,
               color: selected ?AppColors.secondaryColor :AppColors.locationColor,
-            ),)],));
+            ),)
+            ,SizedBox(height: 4.h,)],));
   }
 }

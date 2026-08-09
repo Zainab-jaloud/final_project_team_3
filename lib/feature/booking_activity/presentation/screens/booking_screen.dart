@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
+import 'package:flutter_application/core/services/booking_manager.dart';
 import 'package:flutter_application/core/widget/custom_app_bar.dart';
 import 'package:flutter_application/feature/booking_activity/presentation/widget/cancelled_widget.dart';
 import 'package:flutter_application/feature/booking_activity/presentation/widget/completed_widget.dart';
 import 'package:flutter_application/feature/booking_activity/presentation/widget/no_booking.dart';
 import 'package:flutter_application/feature/booking_activity/presentation/widget/status_widget.dart';
-import 'package:flutter_application/feature/booking_payement/data/my_booking_model.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
@@ -67,10 +67,19 @@ final DateTime? endDate;
           :ListView.builder(  itemCount:BookingManager.bookings.length,
                 itemBuilder:(context,index){
                   final booking = BookingManager.bookings[index];
-      return  PropertyStatus(properties: booking.property,status: booking.status,date: 
-      booking.startDate != null && booking.endDate != null
-          ? '${DateFormat('dd MMM').format(booking.startDate!)} - ${DateFormat('dd MMM').format(booking.endDate!)}'
-          : 'No date',);
+      return  GestureDetector(
+  onTap: () {
+    context.push(
+     '/booking&payout',
+      extra: booking,
+    );
+  },
+        child: PropertyStatus(properties: booking.property,status: booking.status, 
+       date:
+        '${DateFormat('dd MMM').format(booking.startDate)} - '
+        '${DateFormat('dd MMM').format(booking.endDate)}',
+              ),
+      );
               }),
                 CompletedWidget(),
              CancelledWidget()

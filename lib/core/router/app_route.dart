@@ -21,6 +21,7 @@ import 'package:go_router/go_router.dart';
  
 import 'package:flutter_application/feature/onboarding/presentation/screens/onboarding_screen.dart';
 import 'package:flutter_application/feature/booking_activity/presentation/screens/booking_screen.dart';
+import 'package:flutter_application/feature/booking_payement/data/my_booking_model.dart';
 import 'package:flutter_application/feature/booking_payement/presentation/screens/add_card.dart';
 import 'package:flutter_application/feature/booking_payement/presentation/screens/booking_pay_screen.dart';
 import 'package:flutter_application/feature/home/data/model.dart';
@@ -147,21 +148,42 @@ class AppRoute {
    
  
      GoRoute(
-            path: '/booking&payout',
-            builder: (context, state) {
-   final data = state.extra as Map<String, dynamic>;
-    return BookingPayOutScreen(
-       property: data['property'] as PropertyModel,
-     cardNumber: data['cardNumber'] as String?,
-    );
-  }, ),  
+  path: '/booking&payout',
+  builder: (context, state) {
+    final extra = state.extra;
+
+    // أول مرة: المستخدم جاي من تفاصيل العقار
+    if (extra is Map<String, PropertyModel?>) {
+      final property = extra['property'];
+
+      return BookingPayOutScreen(
+        property: property!,
+      );
+    }
+
+    // المستخدم جاي من MyBooking
+    if (extra is BookingModel) {
+      return BookingPayOutScreen(
+        property: extra.property,
+        cardNumber: extra.cardNumber,
+          booking: extra,
+          initialStartDate: extra.startDate,
+    initialEndDate: extra.endDate,
+      );
+    }
+
+    throw Exception('Invalid data for BookingPayOutScreen');
+  },
+),  
      GoRoute(
             path: '/addCard',
             builder: (context, state){   final data = state.extra as Map<String, dynamic>;
           return AddCard( property: data['property'] as PropertyModel,
           startDate: data['startDate'],
       endDate: data['endDate'],
-
+       cardNumber: data['cardNumber'] as String?,
+      userCard: data['userCard'] as String?,
+             
           );} ),
            GoRoute(
         path: '/messages',
@@ -186,6 +208,8 @@ class AppRoute {
       ),  
       
              
+ 
+ 
    GoRoute(
   path: '/allReviews',
   builder: (context, state) {
