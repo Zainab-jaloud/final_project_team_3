@@ -9,8 +9,9 @@ import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class DatePickerBottomSheet extends StatefulWidget {
-  const DatePickerBottomSheet({super.key}) ;
-
+  const DatePickerBottomSheet({super.key, this.initialStartDate, this.initialEndDate}) ;
+  final DateTime? initialStartDate;
+  final DateTime? initialEndDate;
   @override
   State<DatePickerBottomSheet> createState() => _DatePickerBottomSheetState();
 }
@@ -24,6 +25,13 @@ class _DatePickerBottomSheetState extends State<DatePickerBottomSheet> {
 //   DateTime(2022, 8, 10),
 //   DateTime(2022, 8, 12),
 // ];
+@override
+void initState() {
+  super.initState();
+
+  _rangeStart = widget.initialStartDate;
+  _rangeEnd = widget.initialEndDate;
+}
 bool _isBooked(DateTime day) {
   return !day.isBefore(BookingConstants.bookingStart) &&
       !day.isAfter(BookingConstants.bookingEnd);

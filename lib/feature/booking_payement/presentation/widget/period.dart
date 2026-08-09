@@ -8,9 +8,9 @@ import 'package:intl/intl.dart';
  
 
 class Period extends StatefulWidget {
-  const Period({super.key, required this.onDateSelected,});
- 
-
+  const Period({super.key, required this.onDateSelected, this.initialStartDate, this.initialEndDate,});
+   final DateTime? initialStartDate;
+  final DateTime? initialEndDate;
   final Function(DateTime start, DateTime end) onDateSelected;
   @override
   State<Period> createState() => _PeriodState();
@@ -20,7 +20,13 @@ class _PeriodState extends State<Period> {
  
 DateTime? startDate;
 DateTime? endDate;
+  @override
+  void initState() {
+    super.initState();
 
+    startDate =  widget.initialStartDate;
+    endDate = widget.initialEndDate;
+  }
 Future<void> openDatePicker() async {
   final result = await showModalBottomSheet(
     context: context,
@@ -28,7 +34,8 @@ Future<void> openDatePicker() async {
       backgroundColor: Colors.transparent,
        // ignore: deprecated_member_use
        barrierColor: Colors.black.withOpacity(0.1),
-    builder: (_) => const DatePickerBottomSheet(),
+    builder: (_) =>   DatePickerBottomSheet( initialStartDate: startDate,
+        initialEndDate: endDate,),
   );
 
  if (result != null) {

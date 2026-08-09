@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/core/constants/app_images.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
+import 'package:flutter_application/core/services/booking_manager.dart';
 import 'package:flutter_application/core/widget/app_button.dart';
 import 'package:flutter_application/core/widget/custom_app_bar.dart';
 import 'package:flutter_application/feature/booking_payement/data/my_booking_model.dart';
@@ -13,10 +14,12 @@ import 'package:flutter_application/feature/home/data/model.dart';
 import 'package:go_router/go_router.dart';
 
 class BookingPayOutScreen extends StatefulWidget {
-  const BookingPayOutScreen({super.key,this.cardNumber, required this.property,});
+  const BookingPayOutScreen({super.key,this.cardNumber, required this.property, this.initialStartDate, this.initialEndDate, this.booking,});
  final String ?cardNumber;
   final PropertyModel property;
- 
+  final DateTime? initialStartDate;
+  final DateTime? initialEndDate;
+    final BookingModel? booking;
   @override
   State<BookingPayOutScreen> createState() => _BookingPayOutScreenState();
 }
@@ -25,26 +28,46 @@ class _BookingPayOutScreenState extends State<BookingPayOutScreen> {
     String? _cardNumber;
      DateTime? startDate;
     DateTime? endDate;
+    PaymentMethod selectedPaymentMethod = PaymentMethod.card;
   @override
   void initState() {
     super.initState();
     _cardNumber = widget.cardNumber;
+      startDate = widget.initialStartDate;
+  endDate = widget.initialEndDate;
   }
-  Future<void> _openAddCard() async {
-  final cardNumber = await context.push<String>(
-  '/addCard',
-    extra: {
-    'property': widget.property,
-    'startDate':   startDate,
-    'endDate':   endDate,
-  },
-);
+ Future<void> _openAddCard() async {
+  if (startDate == null || endDate == null) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Please select a booking date first'),
+      ),
+    );
+    return;
+  }
 
-  if (cardNumber != null) {
-    setState(() {
-      _cardNumber = cardNumber;
-    });
-  }
+  final booking = BookingManager.getBookingByProperty(
+    widget.property,
+  );
+
+  final cardNumber = await context.push(
+    '/addCard',
+    extra: {
+      'property': widget.property,
+      'startDate': startDate!,
+      'endDate': endDate!,
+      'cardNumber': booking?.cardNumber,
+      'userCard': booking?.userCard,
+    },
+  );
+
+if (cardNumber != null) {
+  final data = cardNumber as Map<String, dynamic>;
+
+  setState(() {
+    _cardNumber = data['cardNumber'] as String?;
+  });
+}
 }
   @override
   Widget build(BuildContext context) {
@@ -56,15 +79,34 @@ body: SingleChildScrollView(child: Padding(
     children: [
       PayProperty(properties:widget.property,),
       SizedBox(height: 24,),
-Period(onDateSelected:(start, end) {
+Period(
+  initialStartDate: startDate,
+  initialEndDate: endDate,
+  onDateSelected: (start, end) {
     setState(() {
-     startDate = start;
+      startDate = start;
       endDate = end;
     });
-  },),
+
+    if (widget.booking != null) {
+      BookingManager.updateBookingDate(
+        booking: widget.booking!,
+        startDate: start,
+        endDate: end,
+      );
+    }
+  },
+),
   SizedBox(height: 24,),
   
-Payments(cardNumber: _cardNumber,onAddCard: _openAddCard
+Payments(cardNumber: _cardNumber,onAddCard: _openAddCard,
+ onPaymentMethodChanged: (PaymentMethod method) {
+    setState(() {
+      selectedPaymentMethod = method;
+    });
+  }, 
+
+selectedMethod:selectedPaymentMethod,
 ),    
      
     
