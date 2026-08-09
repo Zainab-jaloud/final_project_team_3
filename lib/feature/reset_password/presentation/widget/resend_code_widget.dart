@@ -19,13 +19,14 @@ class ResendCodeWidget extends StatelessWidget {
               fontSize: 14,
             ),
           ),
+
           GestureDetector(
             onTap: onResend,
             child: Text(
               'Resend code',
+
               style: AppTextStyle.optionValueStyle.copyWith(
                 color: AppColors.redHeartColor,
-                fontSize: 14,
               ),
             ),
           ),

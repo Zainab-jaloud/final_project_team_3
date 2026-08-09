@@ -23,12 +23,12 @@ class ResetHeaderWidget extends StatelessWidget {
           style: AppTextStyle.heading1.copyWith(fontWeight: FontWeight.w600),
         ),
         SizedBox(height: 8.h),
+
         Text(
           subtitle,
           style: AppTextStyle.optionLabelStyle.copyWith(
             overflow: TextOverflow.visible,
             fontSize: 16,
-            fontWeight: FontWeight.w600,
           ),
         ),
       ],

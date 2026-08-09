@@ -33,15 +33,14 @@ class _PasswordFieldWidgetState extends State<PasswordFieldWidget> {
       children: [
         Text(
           widget.label,
-          style: AppTextStyle.fasilitiesTextStyl.copyWith(
-            fontSize: 14,
-            fontWeight: FontWeight.w600,
-          ),
+          style: AppTextStyle.optionValueStyle.copyWith(fontSize: 14),
         ),
+
         SizedBox(height: 6.h),
         TextField(
           controller: widget.controller,
           obscureText: _obscureText,
+
           style: AppTextStyle.optionLabelStyle.copyWith(
             fontSize: 14,
             color: AppColors.titleColor,
@@ -53,6 +52,7 @@ class _PasswordFieldWidgetState extends State<PasswordFieldWidget> {
               fontSize: 14,
               color: AppColors.inputHintColor,
             ),
+
             errorText: widget.errorText,
             contentPadding: EdgeInsets.symmetric(
               horizontal: 14.w,

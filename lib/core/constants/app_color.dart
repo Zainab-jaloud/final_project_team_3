@@ -18,7 +18,7 @@ class AppColors {
   static Color locationColor = Color(0xFF9DA4AE);
   static Color green = Color(0xFF34D399);
   static Color unselectedTextColor2 = Color(0xFFE5E7EB);
-
+  static Color divederMessage = Color(0xFFE5E7EB);
   //color: Color(0XFF9DA4AE),
   //Color(0xFF101828),
 }

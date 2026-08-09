@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/feature/reset_password/presentation/widget/success_icon_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:flutter_application/core/widget/app_button.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
+import 'package:go_router/go_router.dart';
 
 class SuccessResetScreen extends StatelessWidget {
   const SuccessResetScreen({super.key});
@@ -28,18 +28,17 @@ class SuccessResetScreen extends StatelessWidget {
                     Text(
                       'Success!',
                       textAlign: TextAlign.center,
-                      style: AppTextStyle.optionValueStyle.copyWith(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w700,
-                      ),
+
+                      style: AppTextStyle.heading1.copyWith(fontSize: 22),
                     ),
                     SizedBox(height: 15.h),
                     Text(
                       'You password has been changed. Please \nlog in again with a new password.',
                       textAlign: TextAlign.center,
-                      style: AppTextStyle.optionLabelStyle.copyWith(
+
+                      style: AppTextStyle.fasilitiesTextStyl.copyWith(
                         fontSize: 15,
-                        fontWeight: FontWeight.w500,
+                        color: AppColors.locationColor,
                       ),
                     ),
                   ],
@@ -47,7 +46,14 @@ class SuccessResetScreen extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.only(bottom: 16.h, top: 12.h),
-                child: AppButton(text: 'Continue', onPressed: () {}),
+                child: AppButton(
+                  textColor: AppColors.whiteColor,
+                  backgroundColor: AppColors.primaryColor,
+                  text: 'Continue',
+                  onPressed: () {
+                    (context).push('/login');
+                  },
+                ),
               ),
             ],
           ),

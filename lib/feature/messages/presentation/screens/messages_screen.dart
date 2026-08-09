@@ -94,7 +94,8 @@ class _MessagesScreenState extends State<MessagesScreen> {
                   separatorBuilder: (_, __) => Padding(
                     padding: EdgeInsets.only(left: 60.w),
                     child: Divider(
-                      color: AppColors.unselectedBorderColor,
+                      thickness: 0.5,
+                      color: AppColors.divederMessage,
                       height: 2,
                     ),
                   ),

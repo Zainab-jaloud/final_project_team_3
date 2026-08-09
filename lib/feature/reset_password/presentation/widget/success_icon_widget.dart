@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -48,13 +50,13 @@ class SuccessIconWidget extends StatelessWidget {
           ),
 
           SizedBox(
-            width: 180.w,
-            height: 180.h,
+            width: 200.w,
+            height: 200.h,
             child: FittedBox(
               fit: BoxFit.contain,
               alignment: Alignment.center,
               child: Transform.translate(
-                offset: Offset(0, 18.r),
+                offset: Offset(0, 16),
                 child: SvgPicture.asset(
                   'assets/icons/iconSuccess.svg',
                   colorFilter: ColorFilter.mode(

@@ -6,7 +6,6 @@ import 'package:flutter_application/core/widget/app_button.dart';
 import 'package:flutter_svg/svg.dart' as Left;
 import 'package:go_router/go_router.dart';
 import '../widget/reset_header_widget.dart';
-import 'package:go_router/go_router.dart';
 import 'package:flutter_application/core/widget/custom_app_bar.dart';
 
 class CreateNewPasswordScreen extends StatefulWidget {
@@ -51,7 +50,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
       ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
+          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -64,7 +63,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                         title: 'Create New Password',
                         subtitle: 'Please enter a new password\n to change',
                       ),
-                      SizedBox(height: 24.h),
+                      SizedBox(height: 32),
                       PasswordFieldWidget(
                         label: 'New Password',
                         hint: 'Password',
@@ -96,11 +95,19 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(bottom: 16.h, top: 12.h),
+                padding: EdgeInsets.only(bottom: 16.h, top: 46),
                 child: AppButton(
+                  textColor: AppColors.whiteColor,
+                  backgroundColor: AppColors.primaryColor,
                   text: 'Change password',
                   onPressed: _isFormValid
-                      ? () {
+                      ? () async {
+                          FocusScope.of(context).unfocus();
+
+                          await Future.delayed(
+                            const Duration(milliseconds: 150),
+                          );
+                          if (!mounted) return;
                           context.go('/success-reset');
                         }
                       : null,
