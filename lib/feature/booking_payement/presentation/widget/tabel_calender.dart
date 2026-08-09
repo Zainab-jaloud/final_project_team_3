@@ -29,11 +29,45 @@ bool _isBooked(DateTime day) {
       !day.isAfter(BookingConstants.bookingEnd);
 }
 void _showBookedMessage() {
-  ScaffoldMessenger.of(context).showSnackBar(
-    const SnackBar(
-      content: Text('This day is already booked'),
-    ),
+  final overlay = Overlay.of(context);
+
+  late OverlayEntry entry;
+
+  entry = OverlayEntry(
+    builder: (context) {
+      return Positioned(
+        left: 20,
+        right: 20,
+        bottom: 400,
+        child: Material(
+          color: Colors.transparent,
+          child: Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 14,
+            ),
+            decoration: BoxDecoration(
+              color: Colors.black87,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: const Text(
+              'This day is already booked',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 14,
+              ),
+            ),
+          ),
+        ),
+      );
+    },
   );
+
+  overlay.insert(entry);
+
+  Future.delayed(const Duration(seconds: 2), () {
+    entry.remove();
+  });
 }
   @override
   Widget build(BuildContext context) {
@@ -163,7 +197,7 @@ void _showBookedMessage() {
               focusedDay: _focusedDay,
               rangeSelectionMode: RangeSelectionMode.toggledOn,
 onRangeSelected: (start, end, focusedDay) {
-  if (start != null &&_isBooked(start)) {
+ if (start != null && _isBooked(start)) {
     _showBookedMessage();
     return;
   }
@@ -178,10 +212,10 @@ onRangeSelected: (start, end, focusedDay) {
               rangeStartDay: _rangeStart,
               rangeEndDay: _rangeEnd,
     onDaySelected: (selectedDay, focusedDay) {
-if (_isBooked(selectedDay)) {
-  _showBookedMessage();
-  return;
-}
+ if (_isBooked(selectedDay)) {
+    _showBookedMessage();
+    return;
+  }
 
  
 
@@ -333,6 +367,9 @@ if (BookingConstants.bookedDays.any((d) => isSameDay(d, day))) {
           AppButton(
             text: 'Save',
             onPressed: () {
+              if (_rangeStart == null) {
+      return;
+    }
   Navigator.pop(
     context,
     {
