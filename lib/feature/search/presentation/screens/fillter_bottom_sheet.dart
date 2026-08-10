@@ -185,6 +185,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                   _currentPriceRange = const RangeValues(0, 1000);
                   _facilities.updateAll((key, value) => false);
                 });
+                Navigator.pop(context);
               },
               onApplyPressed: () {
                 List<String> selectedTypes = _propertyTypes.entries

@@ -85,17 +85,17 @@ Padding(
       if (value.trim().isEmpty) return;
       setState(() {
         if (suggestions.isNotEmpty) {
-          PropertySearchService.addToRecentItem(
-            keyword: value, 
-            recentList: recentSearches,
-          );
+        PropertySearchService.addToRecentItem(
+         property: suggestions.first, 
+         recentList: recentSearches,
+      );
           _searchController.text = suggestions.first.name;
           _searchController.selection = TextSelection.collapsed(offset: suggestions.first.name.length);
         } else {
-          PropertySearchService.addToRecentItem(
-            keyword: value, 
-            recentList: recentSearches,
-          );
+          // PropertySearchService.addToRecentItem(
+          //   keyword: value, 
+          //   recentList: recentSearches,
+          // );
         }
       });
     },
