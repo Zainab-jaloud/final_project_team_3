@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
-import 'package:flutter_application/core/constants/booking_constants.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
 import 'package:flutter_application/core/widget/app_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,10 +20,11 @@ class _DatePickerBottomSheetState extends State<DatePickerBottomSheet> {
   DateTime? _rangeStart;
   DateTime? _rangeEnd;
   PageController? _pageController;
-//   final List<DateTime> bookedDays = [
-//   DateTime(2022, 8, 10),
-//   DateTime(2022, 8, 12),
-// ];
+final bookedDays = [
+  DateTime(2022, 8, 10),
+  DateTime(2022, 8, 11),
+  DateTime(2022, 8, 12),
+];
 @override
 void initState() {
   super.initState();
@@ -33,8 +33,22 @@ void initState() {
   _rangeEnd = widget.initialEndDate;
 }
 bool _isBooked(DateTime day) {
-  return !day.isBefore(BookingConstants.bookingStart) &&
-      !day.isAfter(BookingConstants.bookingEnd);
+  return bookedDays.any(
+    (booked) => isSameDay(booked, day),
+  );
+}
+bool _rangeContainsBookedDay(DateTime start, DateTime end) {
+  DateTime current = start;
+
+  while (!current.isAfter(end)) {
+    if (_isBooked(current)) {
+      return true;
+    }
+
+    current = current.add(const Duration(days: 1));
+  }
+
+  return false;
 }
 void _showBookedMessage() {
   final overlay = Overlay.of(context);
@@ -184,11 +198,6 @@ void _showBookedMessage() {
           SizedBox(
             width: 330.w,
             child: TableCalendar(
-              enabledDayPredicate: (day) {
-  return !BookingConstants.bookedDays.any(
-    (booked) => isSameDay(booked, day),
-  );
-},
        headerVisible: false,
               rowHeight: 40,
               daysOfWeekHeight: 46,
@@ -205,47 +214,26 @@ void _showBookedMessage() {
               focusedDay: _focusedDay,
               rangeSelectionMode: RangeSelectionMode.toggledOn,
 onRangeSelected: (start, end, focusedDay) {
- if (start != null && _isBooked(start)) {
+  if (start != null && end != null) {
+    if (_rangeContainsBookedDay(start, end)) {
+      _showBookedMessage();
+      return;
+    }
+  }
+
+  if (start != null && _isBooked(start)) {
     _showBookedMessage();
     return;
   }
-  
+
   setState(() {
     _focusedDay = focusedDay;
     _rangeStart = start;
     _rangeEnd = end;
   });
-},        // تحديد نطاق التواريخ (Start & End)
-             
+},           
               rangeStartDay: _rangeStart,
               rangeEndDay: _rangeEnd,
-    onDaySelected: (selectedDay, focusedDay) {
- if (_isBooked(selectedDay)) {
-    _showBookedMessage();
-    return;
-  }
-
- 
-
-
-  setState(() {
-    _focusedDay = focusedDay;
-
-    if (_rangeStart == null || _rangeEnd != null) {
-      _rangeStart = selectedDay;
-      _rangeEnd = selectedDay; // نفس اليوم
-    } else {
-      if (selectedDay.isBefore(_rangeStart!)) {
-        _rangeEnd = _rangeStart;
-        _rangeStart = selectedDay;
-      } else {
-        _rangeEnd = selectedDay;
-      }
-    }
-  });
-},
-
-              // تخصيص أيام الأسبوع (Sun, Mon, ...)
               daysOfWeekStyle: DaysOfWeekStyle(
                 weekdayStyle: AppTextStyle.fasilitiesTextStyl.copyWith(
                   fontSize: 16,
@@ -256,48 +244,27 @@ onRangeSelected: (start, end, focusedDay) {
               ),
 
              calendarBuilders: CalendarBuilders(
-    defaultBuilder: (context, day, focusedDay) {
-        final start = DateTime(2022, 8, 10);
-  final end = DateTime(2022, 8, 12);
-      
-    if (day.isAfter(start) && day.isBefore(end)) {
-      return Container(
-        decoration: const BoxDecoration(
-          color: Color(0xFFEADBFF),
-          shape: BoxShape.circle,
+defaultBuilder: (context, day, focusedDay) {
+  if (_isBooked(day)) {
+    return Container(
+      margin: EdgeInsets.zero,
+      decoration: BoxDecoration(
+        color: AppColors.secondaryColor,
+        shape: BoxShape.circle,
+      ),
+      alignment: Alignment.center,
+      child: Text(
+        '${day.day}',
+        style: AppTextStyle.optionLabelStyle.copyWith(
+          fontSize: 16,
+          color: AppColors.whiteColor,
         ),
-        alignment: Alignment.center,
-        child: Text(
-          '${day.day}',
-          style: const TextStyle(color: Colors.black),
-        ),
-      );
-    }
-      return null;
-    },
- 
-
-disabledBuilder: (context, day, focusedDay) {
- 
-if (BookingConstants.bookedDays.any((d) => isSameDay(d, day))) {
-        return Container(
-          margin:EdgeInsets.zero,
-          decoration: BoxDecoration(
-            color:AppColors.secondaryColor,
-            shape: BoxShape.circle,
-          ),
-          alignment: Alignment.center,
-          child: Text(
-            '${day.day}',
-            style:AppTextStyle.optionLabelStyle.copyWith(fontSize: 16,color: AppColors.whiteColor)   
-          ),
-        );
-      }
-   
+      ),
+    );
+  }
 
   return null;
 },
-
                 dowBuilder: (context, day) {
                   final text = DateFormat.E().format(day);
 
@@ -323,7 +290,6 @@ if (BookingConstants.bookedDays.any((d) => isSameDay(d, day))) {
                   );
                 },
               ),
-              // تخصيص ألوان وتصميم الأيام والنطاق المكتمل
               calendarStyle: CalendarStyle(
                 outsideDaysVisible: true,
                 defaultTextStyle: AppTextStyle.optionLabelStyle.copyWith(
