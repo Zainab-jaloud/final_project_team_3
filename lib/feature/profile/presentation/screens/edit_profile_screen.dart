@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:flutter_application/core/constants/app_color.dart';
@@ -26,6 +29,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   bool _emailError = false;
   bool _dobError = false;
 
+  File? _pickedImage;
+
   @override
   void initState() {
     super.initState();
@@ -40,6 +45,15 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       _emailController.text = prefs.getString('saved_email') ?? '';
       _dobController.text = prefs.getString('saved_dob') ?? '';
     });
+  }
+
+  Future<void> _pickImage() async {
+    final picked = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (picked != null) {
+      setState(() {
+        _pickedImage = File(picked.path);
+      });
+    }
   }
 
   @override
@@ -80,6 +94,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     await prefs.setString('saved_username', username);
     await prefs.setString('saved_email', email);
     await prefs.setString('saved_dob', dob);
+    if (_pickedImage != null) {
+      await prefs.setString('saved_avatar_path', _pickedImage!.path);
+    }
 
     if (!mounted) return;
     Navigator.of(context).pop();
@@ -128,9 +145,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             SizedBox(height: 32.h),
             ProfileAvatar(
               imagePath: 'assets/images/user_avatar.png',
-              onCameraTap: () {
-
-              },
+              imageFile: _pickedImage,
+              onCameraTap: _pickImage,
             ),
             SizedBox(height: 24.h),
             ProfileTextField(

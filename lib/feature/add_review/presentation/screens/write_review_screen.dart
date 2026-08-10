@@ -48,9 +48,9 @@ class _WriteReviewScreenState extends State<WriteReviewScreen> {
   }
 
   void _submitReview() {
-    if (_uploadedImage == null) {
+    if (_reviewController.text.trim().isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('No photo added')),
+        const SnackBar(content: Text('Please write a review')),
       );
       return;
     }

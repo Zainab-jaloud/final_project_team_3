@@ -15,14 +15,14 @@ class PhotoUploadBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return DashedBorderBox(
       onTap: onTap,
+      height: image != null ? null : 150.h,
       child: image != null
           ? ClipRRect(
               borderRadius: BorderRadius.circular(10.r),
               child: Image.file(
                 image!,
                 width: double.infinity,
-                height: 139.h,
-                fit: BoxFit.cover,
+                fit: BoxFit.fitWidth,
               ),
             )
           : Column(
@@ -42,10 +42,11 @@ class PhotoUploadBox extends StatelessWidget {
 }
 
 class DashedBorderBox extends StatelessWidget {
-  const DashedBorderBox({super.key, required this.child, this.onTap});
+  const DashedBorderBox({super.key, required this.child, this.onTap, this.height});
 
   final Widget child;
   final VoidCallback? onTap;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +56,7 @@ class DashedBorderBox extends StatelessWidget {
         painter: _DashedBorderPainter(color: AppColors.dotColor, radius: 12.r),
         child: Container(
           width: double.infinity,
-          height: 139.h,
+          height: height ?? 150.h,
           alignment: Alignment.center,
           child: child,
         ),

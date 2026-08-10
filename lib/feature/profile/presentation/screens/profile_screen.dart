@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -19,6 +21,7 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   String _userName = '';
   String _userEmail = '';
+  String? _avatarPath;
 
   @override
   void initState() {
@@ -31,6 +34,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     setState(() {
       _userName = prefs.getString('saved_username') ?? '';
       _userEmail = prefs.getString('saved_email') ?? '';
+      _avatarPath = prefs.getString('saved_avatar_path');
     });
   }
 
@@ -71,6 +75,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               SizedBox(height: 32.h),
               ProfileAvatar(
                 imagePath: 'assets/images/user_avatar.png',
+                imageFile: _avatarPath != null ? File(_avatarPath!) : null,
                 onCameraTap: () async {
       await Navigator.of(context).push(
         MaterialPageRoute(
