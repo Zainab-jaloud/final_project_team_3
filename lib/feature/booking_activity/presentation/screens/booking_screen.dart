@@ -7,7 +7,6 @@ import 'package:flutter_application/feature/booking_activity/presentation/widget
 import 'package:flutter_application/feature/booking_activity/presentation/widget/completed_widget.dart';
 import 'package:flutter_application/feature/booking_activity/presentation/widget/no_booking.dart';
 import 'package:flutter_application/feature/booking_activity/presentation/widget/status_widget.dart';
-import 'package:flutter_application/feature/booking_payement/data/my_booking_model.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
