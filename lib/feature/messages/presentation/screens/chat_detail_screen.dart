@@ -66,8 +66,8 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
         leading: IconButton(
           icon: SvgPicture.asset(
             'assets/icons/ArrowLeft.svg',
-            width: 24.w,
-            height: 24.w,
+            width: 20.w,
+            height: 20.w,
           ),
           onPressed: () => Navigator.pop(context),
         ),

@@ -36,7 +36,9 @@ class _VerifyScreenState extends State<VerifyScreen> {
       ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal:24, vertical: 12.h),
+ 
+          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12.h),
+ 
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -50,9 +52,11 @@ class _VerifyScreenState extends State<VerifyScreen> {
                         subtitle:
                             'Please enter 6 digit verification that have been sent to your email address',
                       ),
+ 
                      SizedBox(
   height: MediaQuery.of(context).viewInsets.bottom > 0 ? 48 : 140,
 ),
+ 
                       OtpInputWidget(
                         length: 4,
                         onCompleted: (code) {
@@ -75,11 +79,14 @@ class _VerifyScreenState extends State<VerifyScreen> {
               ),
               Padding(
                 padding: EdgeInsets.only(bottom: 16.h, top: 12.h),
-                child: AppButton(textColor: AppColors.whiteColor,
-                backgroundColor: AppColors.primaryColor,
+                child: AppButton(
+                  textColor: AppColors.whiteColor,
+                  backgroundColor: AppColors.primaryColor,
                   text: 'Verify',
-                  onPressed:isCodeComplete
-                      ? () { FocusScope.of(context).unfocus();
+                  onPressed: isCodeComplete
+                      ? () {
+                          FocusScope.of(context).unfocus();
+ 
                           context.go('/create-new-password');
                         }
                       : null,

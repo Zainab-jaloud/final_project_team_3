@@ -21,6 +21,8 @@ class _ResetScreenState extends State<ResetScreen> {
     return Scaffold(
       backgroundColor: AppColors.pagescolor,
  
+
+ 
       appBar: CustomAppBar(
         title: '',
         icon1: '',
@@ -60,8 +62,11 @@ class _ResetScreenState extends State<ResetScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 16, top: 12),
-                child: AppButton(textColor: AppColors.whiteColor,
-                backgroundColor: AppColors.primaryColor,
+ 
+                child: AppButton(
+                  textColor: AppColors.whiteColor,
+                  backgroundColor: AppColors.primaryColor,
+ 
                   text: 'Continue',
                   onPressed: selectedContactMethod == null
                       ? null

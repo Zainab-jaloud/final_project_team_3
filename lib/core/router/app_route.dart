@@ -37,7 +37,7 @@ class AppRoute {
  
     initialLocation: '/splash',
  
- 
+  
     routes: [
       ShellRoute(
         builder: (context, state, child) {

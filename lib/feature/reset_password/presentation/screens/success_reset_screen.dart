@@ -29,8 +29,7 @@ class SuccessResetScreen extends StatelessWidget {
                       'Success!',
                       textAlign: TextAlign.center,
  
-                    style: AppTextStyle.heading1.copyWith(fontSize: 22),
- 
+                      style: AppTextStyle.heading1.copyWith(fontSize: 22),
  
                     ),
                     SizedBox(height: 15.h),
@@ -38,10 +37,11 @@ class SuccessResetScreen extends StatelessWidget {
                       'You password has been changed. Please \nlog in again with a new password.',
                       textAlign: TextAlign.center,
  
- 
-                      style: AppTextStyle.fasilitiesTextStyl.copyWith(fontSize: 15,color: AppColors.locationColor,),
- 
- 
+
+                      style: AppTextStyle.fasilitiesTextStyl.copyWith(
+                        fontSize: 15,
+                        color: AppColors.locationColor,
+                      ),
  
                     ),
                   ],
@@ -49,9 +49,16 @@ class SuccessResetScreen extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.only(bottom: 16.h, top: 12.h),
-                child: AppButton(textColor: AppColors.whiteColor,
-                backgroundColor: AppColors.primaryColor,
-                  text: 'Continue', onPressed: () {(context).push('/login');}),
+ 
+                child: AppButton(
+                  textColor: AppColors.whiteColor,
+                  backgroundColor: AppColors.primaryColor,
+                  text: 'Continue',
+                  onPressed: () {
+                    (context).push('/login');
+                  },
+                ),
+ 
               ),
             ],
           ),

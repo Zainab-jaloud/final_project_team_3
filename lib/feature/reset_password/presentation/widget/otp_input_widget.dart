@@ -64,7 +64,9 @@ class _OtpInputWidgetState extends State<OtpInputWidget> {
             keyboardType: TextInputType.number,
             maxLength: 1,
  
-            style: AppTextStyle. optionValueStyle.copyWith(fontSize: 20.sp),
+
+            style: AppTextStyle.optionValueStyle.copyWith(fontSize: 20.sp),
+
  
             inputFormatters: [FilteringTextInputFormatter.digitsOnly],
             decoration: InputDecoration(

@@ -62,7 +62,9 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                         title: 'Create New Password',
                         subtitle: 'Please enter a new password\n to change',
                       ),
-                      SizedBox(height:32),
+ 
+                      SizedBox(height: 32),
+ 
                       PasswordFieldWidget(
                         label: 'New Password',
                         hint: 'Password',
@@ -94,20 +96,22 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(bottom: 16.h, top:46),
-                child: AppButton(textColor: AppColors.whiteColor,
-                backgroundColor: AppColors.primaryColor,
+ 
+                padding: EdgeInsets.only(bottom: 16.h, top: 46),
+                child: AppButton(
+                  textColor: AppColors.whiteColor,
+                  backgroundColor: AppColors.primaryColor,
                   text: 'Change password',
                   onPressed: _isFormValid
                       ? () async {
-        FocusScope.of(context).unfocus();
+                          FocusScope.of(context).unfocus();
 
-        await Future.delayed(
-          const Duration(milliseconds: 150),
-        );
-               if (!mounted) return;
-               // ignore: use_build_context_synchronously
-               context.go('/success-reset');
+                          await Future.delayed(
+                            const Duration(milliseconds: 150),
+                          );
+                          if (!mounted) return;
+                          context.go('/success-reset');
+ 
                         }
                       : null,
                 ),

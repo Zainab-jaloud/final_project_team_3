@@ -22,6 +22,7 @@ class AppColors {
   static Color emptyStar=Color(0xFFFEDF89);
   static Color babyPurple= Color(0xFFF4EBFF);
  
+
 }
  
  

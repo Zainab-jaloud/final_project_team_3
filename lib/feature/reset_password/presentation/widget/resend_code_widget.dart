@@ -13,7 +13,13 @@ class ResendCodeWidget extends StatelessWidget {
       child: Column(
         children: [
  
-          Text("Don't receive code?", style: AppTextStyle.optionLabelStyle.copyWith(color: AppColors.titleColor,fontSize: 14)),
+          Text(
+            "Don't receive code?",
+            style: AppTextStyle.optionLabelStyle.copyWith(
+              color: AppColors.titleColor,
+              fontSize: 14,
+            ),
+          ),
  
           GestureDetector(
             onTap: onResend,
@@ -21,7 +27,9 @@ class ResendCodeWidget extends StatelessWidget {
               'Resend code',
  
  
+ 
               style: AppTextStyle.optionValueStyle.copyWith(color: AppColors.redHeartColor)
+ 
  
             ),
           ),
