@@ -28,7 +28,7 @@ class _AuthScreenState extends State<AuthScreen> {
   final TextEditingController _usernameController = TextEditingController(); 
   final TextEditingController _passwordController = TextEditingController();
   
-  // 
+  // انشاء نسخة كائن من ملف الخدمة لاستدعاء دوال الحفظ 
   final AuthLocalService _authLocalService = AuthLocalService();
 
   bool _rememberMe = false;

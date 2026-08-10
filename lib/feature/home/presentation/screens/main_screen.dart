@@ -51,7 +51,7 @@ class _MainScreenState extends State<MainScreen> {
  
         
       case 1:
-        context.push('/setlocation');
+        context.push('/maps');
         break;
 
       case 2:

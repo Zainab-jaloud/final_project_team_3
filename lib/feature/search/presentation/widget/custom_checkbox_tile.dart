@@ -19,21 +19,21 @@ class CustomCheckboxTile extends StatelessWidget {
       onTap: () => onChanged(!value),
       borderRadius: BorderRadius.circular(8),
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+        padding: const EdgeInsets.symmetric(vertical: 4.5,horizontal: 4.5),//horizontal: 3.5
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween, 
           children: [
             Text(
               title,
-              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black87),
+              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.black),
             ),
             
             //التشيك بوكس الويدجيت المخصص
             CustomCheckbox(
               hei: 20,
               wid: 20,
-              rad:5,
-              iconSize: 10,
+              rad:6,//درجة تدوير الحواف
+              iconSize: 13,
               value: value,
               onChanged: onChanged,
             ),

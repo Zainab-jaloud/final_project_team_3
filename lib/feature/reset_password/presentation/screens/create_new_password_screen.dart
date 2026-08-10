@@ -110,6 +110,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                             const Duration(milliseconds: 150),
                           );
                           if (!mounted) return;
+                          // ignore: use_build_context_synchronously
                           context.go('/success-reset');
  
                         }

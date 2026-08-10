@@ -18,7 +18,6 @@ import 'package:flutter_application/feature/reset_password/presentation/screens/
 import 'package:flutter_application/feature/reset_password/presentation/screens/success_reset_screen.dart';
 import 'package:flutter_application/feature/reset_password/presentation/screens/verify_screen.dart';
 import 'package:go_router/go_router.dart';
- 
 import 'package:flutter_application/feature/onboarding/presentation/screens/onboarding_screen.dart';
 import 'package:flutter_application/feature/booking_activity/presentation/screens/booking_screen.dart';
 import 'package:flutter_application/feature/booking_payement/data/my_booking_model.dart';
@@ -91,7 +90,7 @@ class AppRoute {
         path: '/login',
         builder: (context, state) => const AuthScreen(),
       ),
- 
+
        GoRoute(
         path: '/maps',
         builder: (context, state) => const MapScreen(),

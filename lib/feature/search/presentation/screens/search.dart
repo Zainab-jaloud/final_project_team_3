@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
-import 'package:flutter_svg/svg.dart'; 
+import 'package:flutter_svg/svg.dart';
 import 'package:flutter_application/feature/search/presentation/widget/search_location_tile.dart';
 import 'package:flutter_application/feature/search/presentation/widget/cancel_search_icon.dart';
 import 'package:flutter_application/feature/search/data/property_search_service.dart';
 import 'package:flutter_application/feature/search/data/search_item.dart';
 import 'package:flutter_application/feature/search/presentation/widget/search_field.dart';
-
+import 'package:flutter_application/feature/search/presentation/widget/highlighted_text.dart';
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
 
@@ -41,32 +41,6 @@ class _SearchScreenState extends State<SearchScreen> {
     super.dispose();
   }
 
-  // دالة تلوين الاحرف التي يتم البحث عنها
-  Widget buildHighlightedText(String text, String query, TextStyle defaultStyle) {
-    if (query.isEmpty || !text.toLowerCase().contains(query.toLowerCase())) {
-      return Text(text, style: defaultStyle);
-    }
-    final int startIndex = text.toLowerCase().indexOf(query.toLowerCase());
-    final int endIndex = startIndex + query.length;
-
-    return RichText(
-      text: TextSpan(
-        style: defaultStyle,
-        children: [
-          TextSpan(text: text.substring(0, startIndex)),
-          TextSpan(
-            text: text.substring(startIndex, endIndex),
-            style: defaultStyle.copyWith(
-              color: AppColors.primaryColor, 
-              fontWeight: defaultStyle.fontWeight ?? FontWeight.bold, 
-              fontSize: defaultStyle.fontSize,
-            ),
-          ),
-          TextSpan(text: text.substring(endIndex)),
-        ],
-      ),
-    );
-  }
 
 
   @override
@@ -88,14 +62,19 @@ class _SearchScreenState extends State<SearchScreen> {
 
               // search field
 Padding(
-  padding: const EdgeInsets.symmetric(horizontal: 24),
+  padding: const EdgeInsets.symmetric(horizontal: 20),
   child: CustomSearchField(
     controller: _searchController,
-    hintText: 'Search Property', // النص المخصص لصفحة البحث
+    hintText: 'Search Property', 
     autofocus: true,
-    // تمرير منطق الـ X والفلتر القديم الخاص بك هنا
+    
     suffixIcon: _query.isNotEmpty
-        ? CancelSearchIcon(onTap: () => _searchController.clear())
+        ? UnconstrainedBox(child: CancelSearchIcon(onTap: () { _searchController.clear();
+                        FocusScope.of(context).unfocus(); // اغلاق الكيبورد
+                        Navigator.pop(context);
+                        }
+           
+        ))
         : SizedBox(
             width: 27.w,
             height: 27.h,
@@ -106,17 +85,17 @@ Padding(
       if (value.trim().isEmpty) return;
       setState(() {
         if (suggestions.isNotEmpty) {
-          PropertySearchService.addToRecentItem(
-            keyword: value, 
-            recentList: recentSearches,
-          );
+        PropertySearchService.addToRecentItem(
+         property: suggestions.first, 
+         recentList: recentSearches,
+      );
           _searchController.text = suggestions.first.name;
           _searchController.selection = TextSelection.collapsed(offset: suggestions.first.name.length);
         } else {
-          PropertySearchService.addToRecentItem(
-            keyword: value, 
-            recentList: recentSearches,
-          );
+          // PropertySearchService.addToRecentItem(
+          //   keyword: value, 
+          //   recentList: recentSearches,
+          // );
         }
       });
     },
@@ -125,71 +104,6 @@ Padding(
 
 
 
-
-
-
-              // Padding(
-              //   padding: EdgeInsets.symmetric(horizontal: 16.0.w, vertical: 8.0.h),
-              //   child: Row(
-              //     children: [
-              //       Expanded(
-              //         child: TextField(
-              //           controller: _searchController,
-              //           autofocus: true, 
-              //           decoration: InputDecoration(
-              //             contentPadding: EdgeInsets.all(14.r),
-              //             hintText: 'Search Property',
-              //             hintStyle: AppTextStyle.optionLabelStyle.copyWith(fontSize: 14.sp),
-              //             prefixIcon: Padding(
-              //               padding: EdgeInsets.only(left: 16.w),
-              //               child: SizedBox(
-              //                 width: 24.w,
-              //                 height: 24.h,
-              //                 child: Center(child: SvgPicture.asset('assets/icons/Search.svg')),
-              //               ),
-              //             ),
-              //             suffixIcon: _query.isNotEmpty
-              //                 ? CancelSearchIcon(onTap: () => _searchController.clear())
-              //                 : SizedBox(
-              //                     width: 27.w,
-              //                     height: 27.h,
-              //                     child: Center(child: SvgPicture.asset('assets/icons/Filter.svg')),
-              //                   ),
-              //             enabledBorder: OutlineInputBorder(
-              //               borderRadius: BorderRadius.circular(12.r),
-              //               borderSide: BorderSide(color: AppColors.inputBorderColor),
-              //             ),
-              //             focusedBorder: OutlineInputBorder(
-              //               borderRadius: BorderRadius.circular(12.r),
-              //               borderSide: BorderSide(color: AppColors.inputBorderColor),
-              //             ),
-              //           ),
-              //           // دالة لقراءة النص العشوائي وضغط enter
-              //           onSubmitted: (value) {
-              //             if (value.trim().isEmpty) return;
-              //             setState(() {
-              //               if (suggestions.isNotEmpty) {
-              //                 PropertySearchService.addToRecentItem(
-              //                   // property: suggestions.first, 
-              //                   keyword: value, 
-              //                   recentList: recentSearches,
-              //                 );
-              //                 // اكمال النص باول نتيجة مطابقة تلقائيا عند ضغط Enter
-              //                 _searchController.text = suggestions.first.name;
-              //                 _searchController.selection = TextSelection.collapsed(offset: suggestions.first.name.length);
-              //               } else {
-              //                 PropertySearchService.addToRecentItem(
-              //                   keyword: value, 
-              //                   recentList: recentSearches,
-              //                 );
-              //               }
-              //             });
-              //           },
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
               
               Expanded(
                 child: _query.isEmpty && recentSearches.isEmpty
@@ -224,8 +138,7 @@ Padding(
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.symmetric(horizontal: 19.0),
-                                    child: SizedBox(width: 300.w, height: 119.h,
-                                      child: Image.asset('assets/images/no_results.png',width: double.infinity,)),// 
+                                    child: Image.asset('assets/images/no_results.png', width: MediaQuery.of(context).size.width * 0.6, fit: BoxFit.contain,),// 
                                   ),
                                   SizedBox(height: 24.h),
                                   Text('Search not found', style: AppTextStyle.optionValueStyle.copyWith(fontSize: 20.sp)),
@@ -235,7 +148,7 @@ Padding(
                                     child: Text(
                                       'please enable your location services for\nmore optimal result', 
                                       textAlign: TextAlign.center,
-                                      style: TextStyle(color: Colors.grey, fontSize: 14.sp, fontWeight: FontWeight.w500),
+                                      style: AppTextStyle.fasilitiesTextStyl.copyWith(color: AppColors.locationColor, fontSize: 14.sp),
                                     ),
                                   ),
                                 ],
@@ -243,7 +156,7 @@ Padding(
                             ),
                           )
                         : ListView(
-                            padding: EdgeInsets.all(16.0.r),
+                            padding: EdgeInsets.symmetric(horizontal:26.r,vertical:24.r ),
                             children: [
                           
                               if (recentSearches.isNotEmpty) ...[
@@ -251,12 +164,12 @@ Padding(
                                   'Recent', 
                                   style: AppTextStyle.optionValueStyle.copyWith(fontSize: 16.sp, color: Colors.black, fontWeight: FontWeight.bold)
                                 ),
-                                SizedBox(height: 12.h),
+                                SizedBox(height: 8.h),
                                 ...recentSearches.map((searchItem) {
                                   return SearchLocationTile(
                                     isRecent: true,
-                                    titleWidget: buildHighlightedText(searchItem.title, _query, AppTextStyle.optionValueStyle.copyWith(fontSize: 14.sp)),
-                                    subtitleWidget: buildHighlightedText(searchItem.subtitle, _query, AppTextStyle.optionLabelStyle.copyWith(fontSize: 12.sp, color: Colors.grey)), 
+                                    titleWidget:HighlightedText(text: searchItem.title,query: _query, defaultStyle: AppTextStyle.optionValueStyle.copyWith(fontSize: 14.sp),),
+                                    subtitleWidget:HighlightedText(text: searchItem.title,query: _query, defaultStyle:  AppTextStyle.optionLabelStyle.copyWith(fontSize: 12.sp, color: Colors.grey),), 
                                     onTap: () {
                                       setState(() {
                                         _searchController.text = searchItem.title;
@@ -274,7 +187,7 @@ Padding(
                                   'Result', 
                                   style: AppTextStyle.optionValueStyle.copyWith(fontSize: 16.sp, color: Colors.black, fontWeight: FontWeight.bold)
                                 ),
-                                SizedBox(height: 12.h),
+                                SizedBox(height: 8.h),
                                 ListView.builder(
                                   shrinkWrap: true,
                                   physics: const NeverScrollableScrollPhysics(), 
@@ -283,8 +196,8 @@ Padding(
                                     final property = suggestions[index];
                                     return SearchLocationTile(
                                       isRecent: false, 
-                                      titleWidget: buildHighlightedText(property.name, _query, AppTextStyle.optionValueStyle.copyWith(fontSize: 14.sp)),
-                                      subtitleWidget: buildHighlightedText(property.location, _query, AppTextStyle.optionLabelStyle.copyWith(fontSize: 12.sp, color: Colors.grey)),
+                                      titleWidget: HighlightedText(text: property.name, query: _query,defaultStyle: AppTextStyle.optionValueStyle.copyWith(fontSize: 14.sp),),
+                                      subtitleWidget:  HighlightedText(text: property.location, query: _query,defaultStyle: AppTextStyle.optionLabelStyle.copyWith(fontSize: 12.sp, color: Colors.grey),),
                                       onTap: () {
                                         setState(() {
                                           //حفظ العقار في property model

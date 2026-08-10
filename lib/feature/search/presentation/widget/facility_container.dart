@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
 
 class FacilityContainer extends StatelessWidget {
-  final IconData icon; 
+  final Widget icon; 
   final String label;
   final bool isSelected;
   final VoidCallback onTap;
@@ -33,7 +33,8 @@ class FacilityContainer extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, color: AppColors.secondaryColor, size: 24),
+            icon,
+            // Icon(icon, color: AppColors.secondaryColor, size: 24),
             const SizedBox(height: 4),
             Text(
               label,

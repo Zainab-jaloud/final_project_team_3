@@ -16,37 +16,43 @@ class FilterResultsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     //  استدعاء السيرفس الخارجية
     List<PropertyModel> filteredProperties = PropertyFilterService.filter(selection);
-
-    return Scaffold(
-      appBar: CustomAppBar(title: 'Filtered Results', icon1: '', icon2: '', rightIcon1: false, rightIcon2: false, onPageChanged: () {context.push('/home');},),
-      // Text('Filtered Results',style:AppTextStyle.optionValueStyle,)
-      body: filteredProperties.isEmpty
-          ? Center(child:  
-          Column(children:[ 
-            SizedBox(height: 104.h,),
-            Image.asset('assets/images/no_results.png',width: 215.w,height: 119.h,),
-            SizedBox(height: 24.h,),
-           Text('No Results Found',style: AppTextStyle.optionValueStyle.copyWith(fontSize: 20.sp),),
-                                  SizedBox(height: 15.h,),
-           Text('Try broadening your filters',style:AppTextStyle.optionLabelStyle.copyWith(fontSize: 14.sp)),
-
-                      //  SizedBox(height: 104.h,),
-          ])) 
-          : StatefulBuilder(
-              builder: (context, setStatePage) {
-                return ListView.builder(
-                  padding: const EdgeInsets.all(16),
-                  itemCount: filteredProperties.length,
-                  itemBuilder: (context, index) {
-                    return NearPlaces(
-                      isPopular: true,             
-                      properties: filteredProperties[index],        
-                      onChange: () => setStatePage(() {}),
-                    );
-                  },
-                );
-              },
-            ),
+    return SafeArea(
+      child: Scaffold(
+        appBar: CustomAppBar(title: 'Filtered Results', icon1: '', icon2: '', rightIcon1: false, rightIcon2: false, 
+         onPageChanged: () {context.pop();}),
+        // Text('Filtered Results',style:AppTextStyle.optionValueStyle,)
+        body: filteredProperties.isEmpty
+            ? Center(child:  
+            Column(children:[ 
+              SizedBox(height: 104.h,),
+              Image.asset('assets/images/no_results.png',width: 215.w,height: 119.h,),
+              SizedBox(height: 24.h,),
+             Text('No Results Found',style: AppTextStyle.optionValueStyle.copyWith(fontSize: 20.sp),),
+                                    SizedBox(height: 15.h,),
+             Text('Try broadening your filters',style:AppTextStyle.optionLabelStyle.copyWith(fontSize: 14.sp)),
+      
+                        //  SizedBox(height: 104.h,),
+            ])) 
+            : StatefulBuilder(
+                builder: (context, setStatePage) {
+                  return ListView.builder(
+                    padding: const EdgeInsets.all(24),
+                    itemCount: filteredProperties.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: NearPlaces(
+                          isPopular: true,             
+                          properties: filteredProperties[index],        
+                          onChange: () => setStatePage(() {}),
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
+      ),
+ 
     );
   }
 }

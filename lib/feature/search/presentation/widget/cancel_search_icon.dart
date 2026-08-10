@@ -14,18 +14,22 @@ class CancelSearchIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
-        margin: const EdgeInsets.all(8), 
-        width: 16,
-        height: 16,
-        decoration: BoxDecoration(
-          color: AppColors.secondaryColor, 
-          borderRadius: BorderRadius.circular(7),
-        ),
-        child: const Icon(
-          Icons.clear_rounded, 
-          color: Colors.white, 
-          size: 13, weight: 10.0,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, ),
+        child: Container(       
+          width: 20,
+          height: 20,
+          decoration: BoxDecoration(
+            color: AppColors.secondaryColor, 
+            borderRadius: BorderRadius.circular(5),
+          ),
+          child: Center(
+            child: const Icon(
+              Icons.clear_rounded, 
+              color: Colors.white, 
+              size: 12,
+            ),
+          ),
         ),
       ),
     );

@@ -20,7 +20,10 @@ class SearchField extends StatelessWidget {
       child: TextField(
          readOnly: true,
          onTap: () {
-           context.push('/search');},  
+ 
+           context.push('/search'); 
+          },
+ 
        decoration: InputDecoration(contentPadding: EdgeInsets.all(14),
          hintText:'Search Property',
       hintStyle:AppTextStyle.optionLabelStyle.copyWith(fontSize: 14),
