@@ -31,7 +31,7 @@ class AgentInfo extends StatelessWidget {
            Container(width: 36,height: 36,
            decoration: BoxDecoration(color: AppColors.svgBackground,borderRadius: BorderRadius.circular(55)),
            child:Center(child: GestureDetector(onTap: () {
-             
+             context.go('/chatdetails');
            },
             child: SvgPicture.asset('assets/icons/call.svg'))),),
            Container(width: 36,height: 36,

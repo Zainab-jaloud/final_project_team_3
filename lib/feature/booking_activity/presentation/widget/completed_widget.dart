@@ -18,29 +18,26 @@ class CompletedWidget extends StatelessWidget {
     return Column(
       children: [
         PropertyStatus(properties:properties[1], status:'completed', date:'08 Aug - 12 Aug'),
-     InkWell(
-      onTap: () {},
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-           vertical:8,
-        ),
-        child: Row(
-          children: [
-             GestureDetector(onTap: () => context.push('/write-review',extra:properties[1]),
-child: 
-             SvgPicture.asset('assets/icons/WriteReview.svg',width:21.w,height: 21.h,),),
-            const SizedBox(width: 16),
-            Text(
-              'Write review',
-              style: AppTextStyle.optionLabelStyle,
-            ),
-          ],
-        ),
-      ),
-    ),      
+     Padding(
+       padding: const EdgeInsets.symmetric(
+          vertical:8,
+       ),
+       child: Row(
+         children: [
+            GestureDetector(onTap: () => context.push('/write-review',extra:properties[1]),
+     child: 
+            SvgPicture.asset('assets/icons/WriteReview.svg',width:21.w,height: 21.h,),),
+           const SizedBox(width: 16),
+           Text(
+             'Write review',
+             style: AppTextStyle.optionLabelStyle,
+           ),
+         ],
+       ),
+     ),      
     Divider(color: AppColors.borderColor,thickness:0.5,),
      InkWell(
-    onTap: () {},
+   onTap: () {context.push('/chatdetails');},
       child: Padding(
         padding: const EdgeInsets.symmetric(
            vertical:8,

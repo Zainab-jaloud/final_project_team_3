@@ -38,7 +38,7 @@ final List<ChatModel> mockChats = [
   ChatModel(
     name: 'Savannah Nguyen',
  
-    imagePath: 'assets/images/Ellipse 17 (3).png',
+    imagePath:AppImages.person8,
     lastMessage: 'Is the apartment still available?',
     time: '11:20 AM',
  
@@ -53,7 +53,7 @@ final List<ChatModel> mockChats = [
   ChatModel(
     name: 'Leslie Alexander',
  
-    imagePath: 'assets/images/Ellipse 17 (5).png',
+    imagePath:AppImages.person10,
     lastMessage: "Thanks, I'll get back to you soon",
     time: '7:40 AM',
  

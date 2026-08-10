@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/core/constants/app_images.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
+import 'package:go_router/go_router.dart';
 import '../widget/property_card_widget.dart';
 import '../widget/chat_bubble_widget.dart';
 import '../widget/chat_input_field_widget.dart';
 
 class ChatDetailScreen extends StatefulWidget {
-  final String name;
-  final String imagePath;
-
+  final String ?name;
+  final String ?imagePath;
+final bool openedFromMessages;
   const ChatDetailScreen({
     super.key,
     required this.name,
-    required this.imagePath,
+    required this.imagePath, this.openedFromMessages = false,
   });
 
   @override
@@ -58,6 +60,16 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+  final String chatName =
+    widget.name == null || widget.name!.trim().isEmpty
+        ? 'Unknown User'
+        : widget.name!;
+
+final String chatImage =
+    widget.imagePath == null || widget.imagePath!.trim().isEmpty
+        ? AppImages.person1
+        : widget.imagePath!;
+        
     return Scaffold(
       backgroundColor: AppColors.pagescolor,
       appBar: AppBar(
@@ -69,14 +81,20 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
             width: 20.w,
             height: 20.w,
           ),
-          onPressed: () => Navigator.pop(context),
+         onPressed: () {
+  if (widget.openedFromMessages) {
+    Navigator.pop(context);
+  } else {
+    context.go('/messages');
+  }
+},
         ),
         titleSpacing: 0,
         title: Row(
           children: [
             CircleAvatar(
               radius: 23.r,
-              backgroundImage: AssetImage(widget.imagePath),
+              backgroundImage: AssetImage(chatImage),
             ),
             SizedBox(width: 10.w),
             Column(
@@ -84,7 +102,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  widget.name,
+                  chatName,
                   style: AppTextStyle.optionValueStyle.copyWith(fontSize: 13),
                 ),
                 SizedBox(height: 2.h),
@@ -163,7 +181,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                           isMe: msg['isMe'],
                           senderImagePath: msg['isMe']
                               ? null
-                              : widget.imagePath,
+                              : chatImage,
                         ),
                       ),
                     ],

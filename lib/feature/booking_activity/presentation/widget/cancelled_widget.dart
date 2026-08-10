@@ -5,6 +5,7 @@ import 'package:flutter_application/core/constants/text_style.dart';
 import 'package:flutter_application/feature/booking_activity/presentation/widget/status_widget.dart';
 import 'package:flutter_application/feature/home/data/model.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 class CancelledWidget extends StatelessWidget {
   const CancelledWidget({
@@ -17,7 +18,7 @@ class CancelledWidget extends StatelessWidget {
       children: [
         PropertyStatus(properties:properties[0],status:'Cancelled', date:'08 Aug - 12 Aug'),
           InkWell(
-    onTap: () {},
+    onTap: () {context.push('/chatdetails');},
       child: Padding(
         padding: const EdgeInsets.symmetric(
            vertical:8,

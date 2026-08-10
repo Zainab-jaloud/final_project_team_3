@@ -10,6 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
  
 import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
+import 'package:go_router/go_router.dart';
 import '../../data/message_model.dart';
 import '../widget/chat_list_item_widget.dart';
 import '../widget/chat_avatar_stack_widget.dart';
@@ -64,7 +65,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
         rightIcon1: true,
         rightIcon2: false,
         onTap: () {},
-        onPageChanged: () => Navigator.pop(context),
+        onPageChanged: () => context.go('/home'),
       ),
       body: SafeArea(
         child: Padding(
@@ -118,6 +119,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
                             builder: (_) => ChatDetailScreen(
                               name: chat.name,
                               imagePath: chat.imagePath,
+                              openedFromMessages: true,
                             ),
                           ),
                         );
