@@ -31,25 +31,25 @@ final List<ChatModel> mockChats = [
     name: 'Guy Hawkins',
     imagePath: 'assets/images/Ellipse 17 (2).png',
     lastMessage: 'Have a plan for discuss this ?',
-    time: '8:22 PM',
+    time: '7:22 AM',
   ),
   ChatModel(
     name: 'Savannah Nguyen',
     imagePath: 'assets/images/Ellipse 17 (3).png',
     lastMessage: 'Have a plan for discuss this ?',
-    time: '8:22 PM',
+    time: '10:00 PM',
   ),
   ChatModel(
     name: 'Arlene McCoy',
     imagePath: 'assets/images/Ellipse 17 (4).png',
 
     lastMessage: 'Have a plan for discuss this ?',
-    time: '8:22 PM',
+    time: '5:45 AM',
   ),
   ChatModel(
     name: 'Leslie Alexander',
     imagePath: 'assets/images/Ellipse 17 (5).png',
     lastMessage: 'Have a plan for discuss this ?',
-    time: '8:22 PM',
+    time: '6:00 AM',
   ),
 ];
