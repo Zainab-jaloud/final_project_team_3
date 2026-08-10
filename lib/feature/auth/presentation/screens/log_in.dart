@@ -239,7 +239,8 @@ class _AuthScreenState extends State<AuthScreen> {
                           if (_rememberMe == true) {
                             // استدعاء دالة الحفظ 
                             await _authLocalService.saveUserData(
-                              email: _emailController.text,                  
+                              email: _emailController.text,  
+                                              
                             ); 
                              await prefs.setBool('skip_onboarding', true);
                           } else {
@@ -252,6 +253,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         } else if (!isSignIn) {
                           
                           if (_rememberMe == false) {
+                            
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                 content: Text(
@@ -266,8 +268,11 @@ class _AuthScreenState extends State<AuthScreen> {
                             return; 
                           }
                             final prefs = await SharedPreferences.getInstance();
-
-  await prefs.setBool('skip_onboarding', false);
+  await _authLocalService.saveUserData(
+    email: _emailController.text,
+    username: _usernameController.text,
+  );
+                      await prefs.setBool('skip_onboarding', false);
                           context.go('/setlocation');
                         }
                       }

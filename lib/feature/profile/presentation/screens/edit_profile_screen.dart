@@ -36,19 +36,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     super.initState();
     _loadSavedProfileData();
   }
- 
-
-  Future<void> _loadSavedProfileData() async {
-    final prefs = await SharedPreferences.getInstance();
-    setState(() {
-      _nameController.text = prefs.getString('saved_name') ?? '';
-      _usernameController.text = prefs.getString('saved_username') ?? '';
-      _emailController.text = prefs.getString('saved_email') ?? '';
-      _dobController.text = prefs.getString('saved_dob') ?? '';
-    });
-  }
-
-  Future<void> _pickImage() async {
+ Future<void> _pickImage() async {
     final picked = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (picked != null) {
       setState(() {
@@ -73,20 +61,22 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     if (!afterAt.contains('gmail.com')) return false;
     return true;
   }
-// Future<void> _loadSavedProfileData() async {
-//   final prefs = await SharedPreferences.getInstance();
+Future _loadSavedProfileData() async {
+  final prefs = await SharedPreferences.getInstance();
 
-//   final username = prefs.getString('username') ?? '';
+  final username = prefs.getString('username') ?? '';
 
-//   final firstName = username.trim().split(' ').first;
+  final firstName = username.trim().split(' ').first;
 
-//   setState(() {
-//     _nameController.text = firstName;
-//     _usernameController.text = username;
-//     _emailController.text = prefs.getString('saved_email') ?? '';
-//     _dobController.text = prefs.getString('saved_dob') ?? '';
-//   });
-// }
+  setState(() {
+    _nameController.text = username;       // الاسم الكامل
+    _usernameController.text = firstName;  // الاسم الأول
+    _emailController.text =
+        prefs.getString('saved_email') ?? '';
+    _dobController.text =
+        prefs.getString('saved_dob') ?? '';
+  });
+}
   Future<void> _onSaveChange() async {
     final name = _nameController.text.trim();
     final username = _usernameController.text.trim();
@@ -106,6 +96,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('username', name);
+    await prefs.setString('firstName', username);
     await prefs.setString('saved_email', email);
     await prefs.setString('saved_dob', dob);
     if (_pickedImage != null) {
