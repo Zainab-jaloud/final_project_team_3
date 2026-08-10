@@ -57,26 +57,36 @@ void initState() {
     }
   }
   final TextEditingController reviewController = TextEditingController();
-  Future<void> submitReview() async {
-  if (_uploadedImage == null) {
-  ScaffoldMessenger.of(context).showSnackBar(
-    const SnackBar(content: Text('No photo added')),
-  );
-  return;
-}
+  Future<void> _submitReview() async {
+//   if (_uploadedImage == null) {
+//   ScaffoldMessenger.of(context).showSnackBar(
+//     const SnackBar(content: Text('No photo added')),
+//   );
+//   return;
+// }
 
- if (reviewController.text.trim().isEmpty) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Please write your review')),
-    );
-    return;
-  }
+  if (_reviewController.text.trim().isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please write a review')),
+      );
+      return;
+    }
+ 
+  // void _submitReview() {
+   
+
+ 
+  //   ScaffoldMessenger.of(context).showSnackBar(
+  //     const SnackBar(content: Text('Please write your review')),
+  //   );
+  //   return;
+  // }
 final prefs = await SharedPreferences.getInstance();
 final userName = prefs.getString('username') ?? 'Zainab';
 
 final review = ReviewsModel(
   name: userName,
-  description: reviewController.text.trim(),
+  description: _reviewController.text.trim(),
   photo: AppImages.user,
   myRating: 4,
 );
@@ -132,7 +142,7 @@ if (mounted) {
               child: Padding(
                 padding: EdgeInsets.all(12.w),
                 child: TextField(
-                  controller: reviewController,
+                  controller: _reviewController,
                   maxLength: _maxChars,
                   maxLines: null,
                   expands: true,
@@ -162,7 +172,7 @@ if (mounted) {
               width: double.infinity,
               height: 52.h,
               child: ElevatedButton(
-                onPressed:submitReview ,
+                onPressed:_submitReview ,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.primaryColor,
                   shape: RoundedRectangleBorder(

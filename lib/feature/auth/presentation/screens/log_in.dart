@@ -231,6 +231,8 @@ class _AuthScreenState extends State<AuthScreen> {
                     textColor: AppColors.whiteColor,
                     text: isSignIn ? "Sign in" : "Sign up",
                     onPressed: () async {
+              
+    
                       if (_formKey.currentState!.validate()) {
                         if (isSignIn) {
                           final prefs = await SharedPreferences.getInstance();
@@ -248,6 +250,7 @@ class _AuthScreenState extends State<AuthScreen> {
        
                           context.go('/setlocation');
                         } else if (!isSignIn) {
+                          
                           if (_rememberMe == false) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
@@ -262,10 +265,9 @@ class _AuthScreenState extends State<AuthScreen> {
                             );
                             return; 
                           }
-    await _authLocalService.saveUserData(
-    email: _emailController.text,
-    username: _usernameController.text,
-  );
+                            final prefs = await SharedPreferences.getInstance();
+
+  await prefs.setBool('skip_onboarding', false);
                           context.go('/setlocation');
                         }
                       }
