@@ -1,0 +1,203 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_application/core/constants/app_images.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_application/core/constants/app_color.dart';
+import 'package:flutter_application/core/constants/text_style.dart';
+import 'package:go_router/go_router.dart';
+import '../widget/property_card_widget.dart';
+import '../widget/chat_bubble_widget.dart';
+import '../widget/chat_input_field_widget.dart';
+
+class ChatDetailScreen extends StatefulWidget {
+  final String ?name;
+  final String ?imagePath;
+final bool openedFromMessages;
+  const ChatDetailScreen({
+    super.key,
+    required this.name,
+    required this.imagePath, this.openedFromMessages = false,
+  });
+
+  @override
+  State<ChatDetailScreen> createState() => _ChatDetailScreenState();
+}
+
+class _ChatDetailScreenState extends State<ChatDetailScreen> {
+  final TextEditingController _messageController = TextEditingController();
+
+  final List<Map<String, dynamic>> _messages = [
+    {
+      'text': 'Hello we are interested in this how\n about the price ?',
+      'time': '1:22 AM',
+      'isMe': true,
+    },
+    {'text': 'can it be negotiated ?', 'time': '1:22 AM', 'isMe': true},
+    {
+      'text': 'Hi there, the price\n is negotiable',
+      'time': '1:30 AM',
+      'isMe': false,
+    },
+  ];
+
+  void _sendMessage() {
+    if (_messageController.text.trim().isEmpty) return;
+    setState(() {
+      _messages.add({
+        'text': _messageController.text.trim(),
+        'time': 'Now',
+        'isMe': true,
+      });
+      _messageController.clear();
+    });
+  }
+
+  @override
+  void dispose() {
+    _messageController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+  final String chatName =
+    widget.name == null || widget.name!.trim().isEmpty
+        ? 'Unknown User'
+        : widget.name!;
+
+final String chatImage =
+    widget.imagePath == null || widget.imagePath!.trim().isEmpty
+        ? AppImages.person1
+        : widget.imagePath!;
+        
+    return Scaffold(
+      backgroundColor: AppColors.pagescolor,
+      appBar: AppBar(
+        backgroundColor: AppColors.pagescolor,
+        elevation: 0,
+        leading: IconButton(
+          icon: SvgPicture.asset(
+            'assets/icons/ArrowLeft.svg',
+            width: 20.w,
+            height: 20.w,
+          ),
+         onPressed: () {
+  if (widget.openedFromMessages) {
+    Navigator.pop(context);
+  } else {
+    context.go('/messages');
+  }
+},
+        ),
+        titleSpacing: 0,
+        title: Row(
+          children: [
+            CircleAvatar(
+              radius: 23.r,
+              backgroundImage: AssetImage(chatImage),
+            ),
+            SizedBox(width: 10.w),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  chatName,
+                  style: AppTextStyle.optionValueStyle.copyWith(fontSize: 13),
+                ),
+                SizedBox(height: 2.h),
+                Row(
+                  children: [
+                    Container(
+                      width: 8.w,
+                      height: 8.w,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: AppColors.green,
+                      ),
+                    ),
+                    SizedBox(width: 4.w),
+                    Text(
+                      'Online',
+                      style: AppTextStyle.optionLabelStyle.copyWith(
+                        fontSize: 11,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
+        actions: [
+          GestureDetector(
+            onTap: () {},
+            child: SvgPicture.asset(
+              'assets/icons/phone.svg',
+              width: 38.w,
+              height: 38.h,
+            ),
+          ),
+          SizedBox(width: 10.w),
+          GestureDetector(
+            onTap: () {},
+            child: SvgPicture.asset(
+              'assets/icons/IconsVedio.svg',
+              width: 40.w,
+              height: 40.w,
+            ),
+          ),
+          SizedBox(width: 16.w),
+        ],
+      ),
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
+          child: Column(
+            children: [
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        width: double.infinity,
+                        child: Text(
+                          'Today',
+                          textAlign: TextAlign.center,
+                          style: AppTextStyle.optionValueStyle,
+                        ),
+                      ),
+                      SizedBox(height: 16),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: PropertyCardWidget(),
+                      ),
+                      SizedBox(height: 13.h),
+                      ..._messages.map(
+                        (msg) => ChatBubbleWidget(
+                          message: msg['text'],
+                          time: msg['time'],
+                          isMe: msg['isMe'],
+                          senderImagePath: msg['isMe']
+                              ? null
+                              : chatImage,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 12.h),
+              ChatInputFieldWidget(
+                controller: _messageController,
+                onAddTap: () {},
+                onSendTap: _sendMessage,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
