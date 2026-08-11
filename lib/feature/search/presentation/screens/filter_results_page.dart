@@ -40,10 +40,13 @@ class FilterResultsPage extends StatelessWidget {
                     padding: const EdgeInsets.all(16),
                     itemCount: filteredProperties.length,
                     itemBuilder: (context, index) {
-                      return NearPlaces(
-                        isPopular: true,             
-                        properties: filteredProperties[index],        
-                        onChange: () => setStatePage(() {}),
+                      return Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: NearPlaces(
+                          isPopular: true,             
+                          properties: filteredProperties[index],        
+                          onChange: () => setStatePage(() {}),
+                        ),
                       );
                     },
                   );

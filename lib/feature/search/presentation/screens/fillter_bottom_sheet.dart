@@ -55,8 +55,8 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
           children: [
             Center(child: SizedBox(height:9 ,)),
              Center(
-               child: Container(width:48.w,height: 10.h, decoration: const BoxDecoration(
-                       color: AppColors.dotColor,
+               child: Container(width:48.w,height: 9.h, decoration:  BoxDecoration(
+                       color: AppColors.borderColor,
                        borderRadius: BorderRadius.all( Radius.circular(8)),
                      ),),
              ),

@@ -29,7 +29,7 @@ class FilterActionButtons extends StatelessWidget {
             ),
             child: const Text(
               'Reset',
-              style: TextStyle(color: Colors.grey, fontSize: 16),
+              style: TextStyle(color: Colors.grey, fontSize: 17),
             ),
           ),
         ),
@@ -50,7 +50,7 @@ class FilterActionButtons extends StatelessWidget {
             ),
             child: const Text(
               'Apply',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
             ),
           ),
         ),
