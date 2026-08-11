@@ -40,7 +40,7 @@ class _CridetCardShapState extends State<CridetCardShap> {
                 Image.asset('assets/images/twocircels.png',height:48,width:48,),
               ],),
               SizedBox(height: 43,),
-    SizedBox(width: 193.w,height: 18,
+    SizedBox(width: 199.w,height: 23.h,
       child: TextField(  readOnly: true,
   enabled: false,
         controller: widget.cardController,
@@ -53,16 +53,18 @@ class _CridetCardShapState extends State<CridetCardShap> {
       color: AppColors.whiteColor,
       fontSize: 16,
         ),
-        decoration: const InputDecoration(
+        
+        decoration: const InputDecoration(contentPadding: EdgeInsets.symmetric(vertical: 10),
       border: InputBorder.none,
       hintText: '0000 0000 0000 0000',
-      hintStyle: TextStyle(
+    
+      hintStyle: TextStyle( 
         color: Colors.white,
       ),
         ),
       ),
     ),
-               SizedBox(height: 43,),
+               SizedBox(height:37.h,),
                Row(children: [
                 Text('Brooklynsim',style: AppTextStyle.optionLabelStyle.copyWith(color: AppColors.whiteColor,fontSize: 15),),
                 Spacer(),

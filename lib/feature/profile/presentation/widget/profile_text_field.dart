@@ -42,7 +42,7 @@ class ProfileTextField extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height:8),
+        SizedBox(height:10.h),
         Container(
           width: 327.w,
           height: 52.h,
