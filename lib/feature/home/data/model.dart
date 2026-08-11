@@ -35,7 +35,7 @@ List<PropertyModel> recomended = [
 
     rating: 4.7, bathub: '3', bedrooms: '3', type: 'Apartement', status: 'For Rent',
 
-     description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. 1500s, when an unknown printer took when an unknown printer took a type',
+     description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. 1500s,when an unknown printer took when an unknown printer took a type  unknown printer took  unknown printer took a type .......',
  
   ),
     PropertyModel(
