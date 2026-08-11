@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
  
 
 class ShareItem extends StatelessWidget {
@@ -23,9 +24,9 @@ class ShareItem extends StatelessWidget {
           
           child:Image.asset(icon)
         ),
-        const SizedBox(height: 8),
+         SizedBox(height: 8.h),
         Text(
-          title,
+          title,maxLines: 1,
           style: AppTextStyle.optionValueStyle.copyWith(fontSize: 12)
         
         ),

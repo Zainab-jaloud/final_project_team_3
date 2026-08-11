@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/core/constants/app_color.dart';
 import 'package:flutter_application/core/constants/text_style.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FilterActionButtons extends StatelessWidget {
   final VoidCallback onResetPressed;
@@ -44,13 +45,13 @@ class FilterActionButtons extends StatelessWidget {
               backgroundColor: AppColors.primaryColor, 
               foregroundColor: Colors.white,
               minimumSize: const Size(0, 54),
-              padding: const EdgeInsets.symmetric(horizontal: 56),
+              padding:   EdgeInsets.symmetric(horizontal: 50.w),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
               ),
             ),
             child:  Text(
-              'Apply',
+              'Apply',maxLines: 1,
               style:AppTextStyle.optionValueStyle.copyWith(color: AppColors.whiteColor,fontSize: 18),
             ),
           ),

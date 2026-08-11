@@ -23,7 +23,7 @@ class _PersonsReviewsState extends State<PersonsReviews> {
   @override
   Widget build(BuildContext context) {
     return Container(
-    width: 278.w,
+    width: 333.w,
     height: 114.h,
     decoration: BoxDecoration(borderRadius: BorderRadius.circular(8),
       color: AppColors.whiteColor,border:Border.all(color:AppColors.dotColor,width:1)),
@@ -46,32 +46,34 @@ class _PersonsReviewsState extends State<PersonsReviews> {
                     children: [
                        Text(widget.name,style:AppTextStyle.optionValueStyle.copyWith(fontSize: 16)
         ),
-                   Spacer(),  
+     Spacer(),  
          RatingBar.builder(
-  initialRating: _rating,
-  itemCount: 5,
-   itemSize:12,
-unratedColor:AppColors.emptyStar,
-
-  itemBuilder: (context, _) => SvgPicture.asset(
-    'assets/icons/Star.svg',
-        // ignore: deprecated_member_use
-        color:AppColors.starColor,
-  ),
-  onRatingUpdate: (rating) {
-    setState(() {
-      _rating = rating;
-    });
-  },
+           initialRating: _rating,
+           itemCount: 5,
+            itemSize:12,
+         unratedColor:AppColors.emptyStar,
+         
+           itemBuilder: (context, _) => SvgPicture.asset(
+             'assets/icons/Star.svg',
+                 // ignore: deprecated_member_use
+                 color:AppColors.starColor,
+           ),
+           onRatingUpdate: (rating) {
+             setState(() {
+               _rating = rating;
+             });
+           },
                   )]),
     
-                   SizedBox(height: 8,),
+                   SizedBox(height: 8.h,),
     
-                  Text(
-                    widget.comment,
-                    style:AppTextStyle.optionLabelStyle,
-                    maxLines: 3,
-                    overflow: TextOverflow.fade,
+                  Expanded(
+                    child: Text(
+                      widget.comment,
+                      style:AppTextStyle.optionLabelStyle,
+                      maxLines: 3,
+                      overflow: TextOverflow.fade,
+                    ),
                   ),
                 ],
               ),

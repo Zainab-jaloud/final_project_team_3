@@ -48,8 +48,8 @@ class ShareBottomSheet extends StatelessWidget {
               child: GridView.count(
                 physics: const NeverScrollableScrollPhysics(),
                 crossAxisCount: 3,
-                mainAxisSpacing:24,
-                crossAxisSpacing: 63,
+                mainAxisSpacing:26,
+                crossAxisSpacing:10,
                 children:  [
                   ShareItem(
                     icon:AppImages.facebook,
